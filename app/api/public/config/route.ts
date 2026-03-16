@@ -7,9 +7,9 @@ export async function GET() {
     tagline: "La guggen simpatica",
     links: [
       { id: "1", label: "Sito ufficiale", url: "https://www.stracaganass.com" },
-      { id: "2", label: "Agenda", url: "https://stracaganass0.wordpress.com" },
-      { id: "3", label: "Instagram", url: "https://www.instagram.com" },
-      { id: "4", label: "WhatsApp", url: "https://www.whatsapp.com" }
+      { id: "2", label: "Area Soci", url: "https://stracaganass0.wordpress.com/area-soci/" },
+      { id: "3", label: "Instagram", url: "https://www.instagram.com/stracaganass/" },
+      { id: "4", label: "WhatsApp", url: "https://whatsapp.com/channel/0029Va9XWFk11ulQK0DMLc0R" }
     ]
   });
 }
