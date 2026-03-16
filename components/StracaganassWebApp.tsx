@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import OneSignal from "react-onesignal";
 import { motion } from "framer-motion";
 import {
   Bell,
@@ -230,6 +231,29 @@ export default function StracaganassWebApp() {
   const [error, setError] = useState("");
   const [deletingId, setDeletingId] = useState("");
 
+  useEffect(() => {
+  async function initOneSignal() {
+    if (typeof window === "undefined") return;
+
+    const appId = process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID;
+    if (!appId) return;
+
+    try {
+      await OneSignal.init({
+        appId,
+        notifyButton: {
+          enable: false,
+        },
+        allowLocalhostAsSecureOrigin: false,
+      });
+    } catch (error) {
+      console.error("Errore inizializzazione OneSignal:", error);
+    }
+  }
+
+  initOneSignal();
+}, []);
+
   const [eventForm, setEventForm] = useState({
     title: "",
     date: "",
@@ -278,6 +302,32 @@ export default function StracaganassWebApp() {
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
   const enableNotifications = async () => {
+  setLoading(true);
+  try {
+    const appId = process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID;
+    if (!appId) {
+      alert("OneSignal non è configurato nelle variabili ambiente.");
+      return;
+    }
+
+    await OneSignal.login(`guest-${Date.now()}`).catch(() => {});
+    await OneSignal.Notifications.requestPermission();
+
+    const permission = await OneSignal.Notifications.permission;
+    if (permission !== true) {
+      alert("Permesso notifiche non concesso.");
+      return;
+    }
+
+    setPushEnabled(true);
+    alert("Notifiche attivate correttamente.");
+  } catch (err) {
+    console.error(err);
+    alert("Errore durante l'attivazione delle notifiche.");
+  } finally {
+    setLoading(false);
+  }
+};
     if (!("Notification" in window)) {
       alert("Browser non compatibile con le notifiche.");
       return;
