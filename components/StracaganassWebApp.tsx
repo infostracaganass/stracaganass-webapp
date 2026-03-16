@@ -301,65 +301,39 @@ export default function StracaganassWebApp() {
 
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
-  const enableNotifications = async () => {
+const enableNotifications = async () => {
+  if (!(typeof window !== "undefined" && "Notification" in window)) {
+    alert("Browser non compatibile con le notifiche.");
+    return;
+  }
+
   setLoading(true);
+
   try {
-    const appId = process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID;
-    if (!appId) {
-      alert("OneSignal non è configurato nelle variabili ambiente.");
-      return;
-    }
+    const permission = await Notification.requestPermission();
 
-    await OneSignal.login(`guest-${Date.now()}`).catch(() => {});
-    await OneSignal.Notifications.requestPermission();
-
-    const permission = await OneSignal.Notifications.permission;
-    if (permission !== true) {
+    if (permission !== "granted") {
       alert("Permesso notifiche non concesso.");
       return;
     }
 
+    await apiFetch<{ ok: true }>("/api/push/subscribe", {
+      method: "POST",
+      body: JSON.stringify({
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        subscription: null
+      })
+    });
+
     setPushEnabled(true);
     alert("Notifiche attivate correttamente.");
   } catch (err) {
-    console.error(err);
-    alert("Errore durante l'attivazione delle notifiche.");
+    alert(err instanceof Error ? err.message : "Errore attivazione notifiche.");
   } finally {
     setLoading(false);
   }
 };
-    if (!("Notification" in window)) {
-      alert("Browser non compatibile con le notifiche.");
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const permission = await Notification.requestPermission();
-      if (permission !== "granted") {
-        alert("Permesso notifiche non concesso.");
-        return;
-      }
-
-      await apiFetch<{ ok: true }>("/api/push/subscribe", {
-        method: "POST",
-        body: JSON.stringify({
-          userAgent: navigator.userAgent,
-          platform: navigator.platform,
-          subscription: null,
-        }),
-      });
-
-      setPushEnabled(true);
-      new Notification("Notifiche attivate", {
-        body: "Riceverai gli aggiornamenti su eventi e notizie.",
-      });
-    } catch (err) {
-      alert(err instanceof Error ? err.message : "Errore attivazione notifiche.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const login = async () => {
     setLoading(true);
