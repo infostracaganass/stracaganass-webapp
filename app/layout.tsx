@@ -2,8 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Stracaganass WebApp",
-  description: "Eventi, notizie e link utili della guggen Stracaganass.",
+  title: "StracApp",
+  description: "Eventi, notizie e link utili a portata di mano.",
   manifest: "/manifest.webmanifest",
 };
 
