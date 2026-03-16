@@ -54,7 +54,7 @@ const FALLBACK_EVENTS: EventItem[] = [];
 const FALLBACK_NEWS: NewsItem[] = [];
 const DEFAULT_CONFIG: Config = {
   associationName: "Stracaganass",
-  appTitle: "Stracaganass WebApp",
+  appTitle: "StracApp",
   tagline: "La guggen simpatica",
   links: [
     { id: "1", label: "Sito ufficiale", url: "https://www.stracaganass.com" },
