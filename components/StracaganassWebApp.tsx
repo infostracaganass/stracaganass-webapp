@@ -231,7 +231,7 @@ export default function StracaganassWebApp() {
   const [error, setError] = useState("");
   const [deletingId, setDeletingId] = useState("");
 
-  useEffect(() => {
+ useEffect(() => {
   async function initOneSignal() {
     if (typeof window === "undefined") return;
 
@@ -241,17 +241,13 @@ export default function StracaganassWebApp() {
     try {
       await OneSignal.init({
         appId,
-        notifyButton: {
-          enable: false,
-        },
-        allowLocalhostAsSecureOrigin: false,
       });
     } catch (error) {
       console.error("Errore inizializzazione OneSignal:", error);
     }
   }
 
-  initOneSignal();
+  void initOneSignal();
 }, []);
 
   const [eventForm, setEventForm] = useState({
