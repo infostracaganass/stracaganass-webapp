@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   return NextResponse.json({
     associationName: process.env.NEXT_PUBLIC_ASSOCIATION_NAME || "Stracaganass",
-    appTitle: process.env.NEXT_PUBLIC_APP_TITLE || "Stracaganass WebApp",
+    appTitle: process.env.NEXT_PUBLIC_APP_TITLE || "StracApp",
     tagline: "La guggen simpatica",
     links: [
       { id: "1", label: "Sito ufficiale", url: "https://stracaganass0.wordpress.com/" },
