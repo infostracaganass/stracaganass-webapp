@@ -480,7 +480,15 @@ const enableNotifications = async () => {
         </div>
       ) : null}
 
-      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 24, marginTop: 24 }}>
+     <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr",
+    gap: 24,
+    marginTop: 24,
+    alignItems: "start",
+  }}
+>
         <div style={{ display: "grid", gap: 24 }}>
           <Card>
             <div style={{ padding: 24 }}>
