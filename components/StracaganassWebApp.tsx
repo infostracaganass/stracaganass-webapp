@@ -437,7 +437,14 @@ const enableNotifications = async () => {
   };
 
   return (
-    <main style={{ maxWidth: 1200, margin: "0 auto", padding: 24 }}>
+    <main
+  style={{
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: isMobile ? 14 : 24,
+    width: "100%",
+  }}
+>
       <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
           <div style={{ padding: 24, position: "relative", overflow: "hidden" }}>
