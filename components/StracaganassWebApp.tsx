@@ -555,7 +555,7 @@ const enableNotifications = async () => {
           marginBottom: 8,
         }}
       >
-        L'app della Straca
+        
       </div>
 
       <div
