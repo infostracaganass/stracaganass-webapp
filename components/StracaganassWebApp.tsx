@@ -678,7 +678,14 @@ const enableNotifications = async () => {
             </div>
           </Card>
 
-          <section>
+          <section
+  style={{
+    background: "#f8fbff",
+    border: "1px solid #dbeafe",
+    borderRadius: 24,
+    padding: isMobile ? 16 : 20,
+  }}
+>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, gap: 12 }}>
               <div>
   <h2
@@ -772,7 +779,14 @@ const enableNotifications = async () => {
             ) : null}
           </section>
 
-          <section>
+          <section
+  style={{
+    background: "#fffdf7",
+    border: "1px solid #fef3c7",
+    borderRadius: 24,
+    padding: isMobile ? 16 : 20,
+  }}
+>
             <div style={{ marginBottom: 12 }}>
   <h2
     style={{
