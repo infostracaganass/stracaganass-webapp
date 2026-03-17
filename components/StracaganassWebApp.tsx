@@ -324,6 +324,18 @@ const isAndroid =
   }, []);
 
 useEffect(() => {
+  if (typeof window === "undefined") return;
+
+  const savedPushState = localStorage.getItem("stracapp_push_enabled");
+  const browserPermission =
+    "Notification" in window ? Notification.permission : "default";
+
+  if (savedPushState === "true" && browserPermission === "granted") {
+    setPushEnabled(true);
+  }
+}, []);
+  
+useEffect(() => {
   const handler = (e: any) => {
     e.preventDefault();
     setDeferredPrompt(e);
