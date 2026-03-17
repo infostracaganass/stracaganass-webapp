@@ -220,6 +220,14 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 
 export default function StracaganassWebApp() {
   const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
+  const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const updateLayout = () => setIsMobile(window.innerWidth < 900);
+  updateLayout();
+  window.addEventListener("resize", updateLayout);
+  return () => window.removeEventListener("resize", updateLayout);
+}, []);
   const [events, setEvents] = useState<EventItem[]>(FALLBACK_EVENTS);
   const [news, setNews] = useState<NewsItem[]>(FALLBACK_NEWS);
   const [showAllEvents, setShowAllEvents] = useState(false);
