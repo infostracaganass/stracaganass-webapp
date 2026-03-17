@@ -588,7 +588,7 @@ const enableNotifications = async () => {
         </div>
 
         <div style={{ fontSize: 14, color: "#64748b" }}>
-          Le informazioni della guggen sempre a portata di mano
+          Per sistemi iPhone o Android
         </div>
       </div>
     </div>
