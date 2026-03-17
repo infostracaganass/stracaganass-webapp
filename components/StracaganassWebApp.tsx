@@ -556,7 +556,13 @@ const enableNotifications = async () => {
               </Button>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+    gap: 16,
+  }}
+>
               {bootLoading ? (
                 <div>Caricamento eventi...</div>
               ) : visibleEvents.length ? (
