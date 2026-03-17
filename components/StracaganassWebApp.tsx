@@ -518,12 +518,11 @@ const enableNotifications = async () => {
       <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
   <div style={{ padding: 24 }}>
-    <div style={{ textAlign: "center" }}>
+    <div>
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
           gap: 10,
           marginBottom: 6,
         }}
@@ -556,7 +555,7 @@ const enableNotifications = async () => {
           marginBottom: 8,
         }}
       >
-        La guggen simpatica
+        L'app della Straca
       </div>
 
       <div
@@ -566,7 +565,7 @@ const enableNotifications = async () => {
           color: "#1e3a8a",
         }}
       >
-        Stracaganass
+        Stracaganass Guggen Band
       </div>
 
       <div
