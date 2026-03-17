@@ -328,6 +328,22 @@ useEffect(() => {
 
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
+const handleInstallClick = async () => {
+  if (isIos) {
+    setShowIosHelp(true);
+    return;
+  }
+
+  if (!deferredPrompt) {
+    alert("Installazione non disponibile su questo dispositivo in questo momento.");
+    return;
+  }
+
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  setDeferredPrompt(null);
+};
+  
 const enableNotifications = async () => {
   if (!(typeof window !== "undefined" && "Notification" in window)) {
     alert("Browser non compatibile con le notifiche.");
