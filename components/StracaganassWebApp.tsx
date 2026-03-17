@@ -725,7 +725,28 @@ const enableNotifications = async () => {
                       </div>
                       <div style={{ color: "#475569", display: "grid", gap: 6, fontSize: 14 }}>
                         <div style={{ display: "flex", gap: 8, alignItems: "center" }}><Calendar size={15} /> {formatDate(item.date)}</div>
-                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}><MapPin size={15} /> {item.place || "Da confermare"}</div>
+                        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+  <MapPin size={15} />
+
+  <span>{item.place || "Da confermare"}</span>
+
+  {item.place ? (
+    <a
+      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.place)}`}
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        marginLeft: 6,
+        fontSize: 13,
+        color: "#0369a1",
+        fontWeight: 600,
+        textDecoration: "none"
+      }}
+    >
+      Apri mappa
+    </a>
+  ) : null}
+</div>
                       </div>
                       <div style={{ color: "#334155" }}>{item.description || ""}</div>
                       {admin ? (
