@@ -650,9 +650,19 @@ const enableNotifications = async () => {
           <section>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, gap: 12 }}>
               <div>
-                <h2 style={{ margin: 0, fontSize: 32 }}>Eventi in arrivo</h2>
-                <p style={{ margin: "6px 0 0", color: "#64748b" }}>I 5 appuntamenti più vicini vengono mostrati per primi.</p>
-              </div>
+  <h2
+    style={{
+      margin: 0,
+      fontSize: 32,
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      color: "#1e3a8a",
+    }}
+  >
+    📅 Eventi in arrivo
+  </h2>
+</div>
               <Button variant="outline" onClick={() => void loadData()} title="Aggiorna">
                 <RefreshCw size={16} />
               </Button>
