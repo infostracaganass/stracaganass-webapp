@@ -332,6 +332,9 @@ useEffect(() => {
 
   if (savedPushState === "true" && browserPermission === "granted") {
     setPushEnabled(true);
+  } else {
+    setPushEnabled(false);
+    localStorage.removeItem("stracapp_push_enabled");
   }
 }, []);
   
@@ -398,6 +401,7 @@ const enableNotifications = async () => {
     });
 
     setPushEnabled(true);
+    localStorage.setItem("stracapp_push_enabled", "true");
     alert("Notifiche attivate correttamente.");
   } catch (err) {
     alert(err instanceof Error ? err.message : "Errore attivazione notifiche.");
