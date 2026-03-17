@@ -220,6 +220,8 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 
 export default function StracaganassWebApp() {
   const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+const [showIosHelp, setShowIosHelp] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
 useEffect(() => {
@@ -272,6 +274,14 @@ useEffect(() => {
     body: "",
   });
 
+const isIos =
+  typeof window !== "undefined" &&
+  /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+
+const isAndroid =
+  typeof window !== "undefined" &&
+  /android/i.test(window.navigator.userAgent);
+  
   const loadData = async () => {
     try {
       setError("");
