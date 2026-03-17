@@ -556,39 +556,74 @@ const enableNotifications = async () => {
 >
         <div style={{ display: "grid", gap: 24 }}>
           <Card>
-            <div style={{ padding: 24 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#0369a1", fontWeight: 700 }}>
-                <Smartphone size={18} /> Installa la webapp sul tuo cellulare
-              </div>
-        <div
-  style={{
-    display: "grid",
-    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-    gap: 16,
-    marginTop: 16,
-  }}
->
-                <div style={{ background: "#f0f9ff", border: "1px solid #e0f2fe", borderRadius: 20, padding: 16 }}>
-                  <strong>Su iPhone</strong>
-                  <ol>
-                    <li>Apri il sito in Safari</li>
-                    <li>Tocca Condividi</li>
-                    <li>Scegli “Aggiungi a Home”</li>
-                    <li>Conferma</li>
-                  </ol>
-                </div>
-                <div style={{ background: "#fffbeb", border: "1px solid #fde68a", borderRadius: 20, padding: 16 }}>
-                  <strong>Su Android</strong>
-                  <ol>
-                    <li>Apri il sito in Chrome</li>
-                    <li>Apri il menu</li>
-                    <li>Scegli “Installa app”</li>
-                    <li>Conferma</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </Card>
+  <div style={{ padding: 24 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#0369a1", fontWeight: 700 }}>
+      <Smartphone size={18} /> Installa la webapp sul tuo cellulare
+    </div>
+
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+        gap: 16,
+        marginTop: 16,
+      }}
+    >
+      <div style={{ background: "#f0f9ff", border: "1px solid #e0f2fe", borderRadius: 20, padding: 16 }}>
+        <strong>Su iPhone</strong>
+        <ol>
+          <li>Apri il sito in Safari</li>
+          <li>Tocca Condividi</li>
+          <li>Scegli “Aggiungi a Home”</li>
+          <li>Conferma</li>
+        </ol>
+      </div>
+
+      <div style={{ background: "#fffbeb", border: "1px solid #fde68a", borderRadius: 20, padding: 16 }}>
+        <strong>Su Android</strong>
+        <ol>
+          <li>Apri il sito in Chrome</li>
+          <li>Apri il menu</li>
+          <li>Scegli “Installa app”</li>
+          <li>Conferma</li>
+        </ol>
+      </div>
+    </div>
+
+    <div style={{ marginTop: 16 }}>
+      <Button onClick={() => void handleInstallClick()}>
+        {isIos ? "Come installare su iPhone" : isAndroid ? "Installa app" : "Installa / salva app"}
+      </Button>
+    </div>
+
+    {showIosHelp ? (
+      <div
+        style={{
+          marginTop: 16,
+          background: "#fff7ed",
+          border: "1px solid #fed7aa",
+          borderRadius: 16,
+          padding: 16,
+          color: "#7c2d12",
+        }}
+      >
+        <strong>Installazione su iPhone</strong>
+        <ol style={{ marginTop: 8, paddingLeft: 18 }}>
+          <li>Apri il sito in Safari</li>
+          <li>Tocca il pulsante Condividi</li>
+          <li>Seleziona “Aggiungi a Home”</li>
+          <li>Conferma</li>
+        </ol>
+
+        <div style={{ marginTop: 12 }}>
+          <Button variant="outline" onClick={() => setShowIosHelp(false)}>
+            Chiudi
+          </Button>
+        </div>
+      </div>
+    ) : null}
+  </div>
+</Card>
 
           <Card>
             <div style={{ padding: 24, display: "flex", justifyContent: "space-between", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
