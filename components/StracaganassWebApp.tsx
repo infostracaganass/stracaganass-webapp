@@ -472,7 +472,15 @@ const enableNotifications = async () => {
               >
                 <Megaphone size={16} /> {config.tagline}
               </div>
-              <h1 style={{ fontSize: 44, margin: "14px 0 10px", lineHeight: 1.05 }}>{config.appTitle}</h1>
+              <h1
+  style={{
+    fontSize: isMobile ? 30 : 44,
+    margin: "14px 0 10px",
+    lineHeight: 1.05,
+  }}
+>
+  {config.appTitle}
+</h1>
               <p style={{ maxWidth: 760, color: "#475569", fontSize: 18 }}>
                 Eventi, ultime notizie e link utili della guggen in uno spazio semplice, veloce e pensato per essere usato dal cellulare.
               </p>
