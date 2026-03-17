@@ -447,15 +447,8 @@ const enableNotifications = async () => {
 >
       <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
-          <div style={{ padding: 24, position: "relative", overflow: "hidden" }}>
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "radial-gradient(circle at top right, rgba(250,204,21,0.22), transparent 28%), radial-gradient(circle at top left, rgba(125,211,252,0.22), transparent 26%)",
-              }}
-            />
+          <div style={{ padding: 24 }}>
+           
             <div style={{ position: "relative", zIndex: 1 }}>
               <div
                 style={{
