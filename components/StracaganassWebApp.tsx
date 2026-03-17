@@ -472,15 +472,33 @@ const enableNotifications = async () => {
               >
                 <Megaphone size={16} /> {config.tagline}
               </div>
-             <h1
+             <div
   style={{
-    fontSize: isMobile ? 30 : 44,
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
     margin: "14px 0 10px",
-    lineHeight: 1.05,
   }}
 >
-  StracAPP
-</h1>
+  <img
+    src="/logo-stracaganass.png"
+    alt="Stracaganass"
+    style={{
+      height: isMobile ? 36 : 48,
+      width: "auto",
+    }}
+  />
+
+  <h1
+    style={{
+      fontSize: isMobile ? 30 : 44,
+      margin: 0,
+      lineHeight: 1.05,
+    }}
+  >
+    StracAPP
+  </h1>
+</div>
               <p style={{ maxWidth: 760, color: "#475569", fontSize: 18 }}>
   Le informazioni a portata di mano
 </p>
