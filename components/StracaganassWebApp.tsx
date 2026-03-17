@@ -762,9 +762,19 @@ const enableNotifications = async () => {
 
           <section>
             <div style={{ marginBottom: 12 }}>
-              <h2 style={{ margin: 0, fontSize: 32 }}>Link utili</h2>
-              <p style={{ margin: "6px 0 0", color: "#64748b" }}>I collegamenti principali dell’associazione.</p>
-            </div>
+  <h2
+    style={{
+      margin: 0,
+      fontSize: 32,
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      color: "#1e3a8a"
+    }}
+  >
+    🔗 Link utili
+  </h2>
+</div>
            <div
   style={{
     display: "grid",
