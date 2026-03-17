@@ -842,7 +842,7 @@ const enableNotifications = async () => {
               {!admin ? (
                 <div style={{ display: "grid", gap: 12 }}>
                   <p style={{ color: "#cbd5e1", margin: 0 }}>
-                    Accesso semplice per inserire eventi e news in pochi secondi.
+                    Modifica eventi e ultime info
                   </p>
                   <Field label="Password amministratore">
                     <TextInput type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
