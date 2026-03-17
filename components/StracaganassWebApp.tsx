@@ -307,6 +307,19 @@ const isAndroid =
     void loadData();
   }, []);
 
+useEffect(() => {
+  const handler = (e: any) => {
+    e.preventDefault();
+    setDeferredPrompt(e);
+  };
+
+  window.addEventListener("beforeinstallprompt", handler as EventListener);
+
+  return () => {
+    window.removeEventListener("beforeinstallprompt", handler as EventListener);
+  };
+}, []);
+  
   const upcomingEvents = useMemo(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
