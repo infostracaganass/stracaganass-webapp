@@ -636,7 +636,7 @@ const enableNotifications = async () => {
                 <div>
                   <div style={{ fontWeight: 700 }}>Ricevi notifiche su eventi e notizie</div>
                   <div style={{ color: "#64748b", fontSize: 14 }}>
-                    Attiva le notifiche per ricevere gli aggiornamenti dell’associazione.
+                    Attiva le notifiche per rimanere aggiornato 
                   </div>
                 </div>
               </div>
