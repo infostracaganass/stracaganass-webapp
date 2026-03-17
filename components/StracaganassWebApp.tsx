@@ -58,11 +58,27 @@ const DEFAULT_CONFIG: Config = {
   appTitle: "StracApp",
   tagline: "La guggen simpatica",
   links: [
-    { id: "1", label: "Sito ufficiale", url: "https://www.stracaganass.com" },
-    { id: "2", label: "Agenda", url: "https://stracaganass0.wordpress.com" },
-    { id: "3", label: "Instagram", url: "https://www.instagram.com" },
-    { id: "4", label: "WhatsApp", url: "https://www.whatsapp.com" }
-  ],
+  {
+    id: "site",
+    label: "Sito ufficiale",
+    url: "https://www.stracaganass.com"
+  },
+  {
+    id: "facebook",
+    label: "Facebook",
+    url: "https://www.facebook.com/Stracaganass"
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    url: "https://www.instagram.com/stracaganass/"
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp canale",
+    url: "https://whatsapp.com/channel/0029Va9XWFk11ulQK0DMLc0R"
+  }
+],
 };
 
 function formatDate(dateString: string) {
