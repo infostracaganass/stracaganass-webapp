@@ -84,7 +84,6 @@ const DEFAULT_CONFIG: Config = {
 function formatDate(dateString: string) {
   try {
     return new Intl.DateTimeFormat("it-CH", {
-      weekday: "short",
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
