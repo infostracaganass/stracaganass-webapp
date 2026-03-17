@@ -517,57 +517,70 @@ const enableNotifications = async () => {
 >
       <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
-          <div style={{ padding: 24 }}>
-           
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "#e0f2fe",
-                  color: "#0369a1",
-                  padding: "8px 12px",
-                  borderRadius: 999,
-                  fontSize: 14,
-                  fontWeight: 700,
-                }}
-              >
-                <Megaphone size={16} /> {config.tagline}
-              </div>
-             <div
-  style={{
-    display: "flex",
-    alignItems: "center",
-    gap: 12,
-    margin: "14px 0 10px",
-  }}
->
-  <img
-    src="/logo-stracaganass.png"
-    alt="Stracaganass"
-    style={{
-      height: isMobile ? 36 : 48,
-      width: "auto",
-    }}
-  />
+  <div style={{ padding: 24 }}>
+    <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 10,
+          marginBottom: 6,
+        }}
+      >
+        <img
+          src="/logo-stracaganass.png"
+          alt="Stracaganass"
+          style={{
+            height: isMobile ? 28 : 34,
+            width: "auto",
+          }}
+        />
 
-  <h1
-    style={{
-      fontSize: isMobile ? 30 : 44,
-      margin: 0,
-      lineHeight: 1.05,
-    }}
-  >
-    StracAPP
-  </h1>
-</div>
-              <p style={{ maxWidth: 760, color: "#475569", fontSize: 18 }}>
-  Le informazioni a portata di mano
-</p>
-            </div>
-          </div>
-        </Card>
+        <span
+          style={{
+            fontSize: isMobile ? 26 : 32,
+            fontWeight: 800,
+            color: "#0f172a",
+          }}
+        >
+          StracAPP
+        </span>
+      </div>
+
+      <div
+        style={{
+          fontSize: 14,
+          color: "#64748b",
+          fontWeight: 600,
+          marginBottom: 8,
+        }}
+      >
+        La guggen simpatica
+      </div>
+
+      <div
+        style={{
+          fontSize: 18,
+          fontWeight: 700,
+          color: "#1e3a8a",
+        }}
+      >
+        Stracaganass
+      </div>
+
+      <div
+        style={{
+          fontSize: 14,
+          color: "#475569",
+          marginTop: 4,
+        }}
+      >
+        Le informazioni a portata di mano
+      </div>
+    </div>
+  </div>
+</Card>
       </motion.section>
 
       {error ? (
