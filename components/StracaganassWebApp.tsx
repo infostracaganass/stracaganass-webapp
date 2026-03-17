@@ -886,17 +886,7 @@ const enableNotifications = async () => {
             </div>
           </Card>
 
-          <Card>
-            <div style={{ padding: 20 }}>
-              <strong>Backend semplice consigliato</strong>
-              <ul style={{ color: "#475569" }}>
-                <li>Frontend Next.js su Vercel</li>
-                <li>Database Supabase Postgres</li>
-                <li>Una sola password admin lato server</li>
-                <li>Notifiche con OneSignal</li>
-              </ul>
-            </div>
-          </Card>
+         
         </aside>
       </div>
     </main>
