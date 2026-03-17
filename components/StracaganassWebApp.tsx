@@ -593,16 +593,9 @@ const enableNotifications = async () => {
       </div>
     </div>
 
-    <Button
-      onClick={() => void handleInstallClick()}
-      style={{
-        padding: "10px 18px",
-        fontWeight: 700,
-        borderRadius: 14,
-      }}
-    >
-      {isIos ? "Guida installazione" : "Installa app"}
-    </Button>
+  <Button onClick={() => void handleInstallClick()}>
+  {isIos ? "Guida installazione" : "Installa app"}
+</Button>
   </div>
 
   {showIosHelp ? (
