@@ -495,7 +495,14 @@ const enableNotifications = async () => {
               <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#0369a1", fontWeight: 700 }}>
                 <Smartphone size={18} /> Installa la webapp sul tuo cellulare
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 16 }}>
+        <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+    gap: 16,
+    marginTop: 16,
+  }}
+>
                 <div style={{ background: "#f0f9ff", border: "1px solid #e0f2fe", borderRadius: 20, padding: 16 }}>
                   <strong>Su iPhone</strong>
                   <ol>
