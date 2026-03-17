@@ -643,7 +643,13 @@ const enableNotifications = async () => {
               <h2 style={{ margin: 0, fontSize: 32 }}>Link utili</h2>
               <p style={{ margin: "6px 0 0", color: "#64748b" }}>I collegamenti principali dell’associazione.</p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+           <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+    gap: 16,
+  }}
+>
               {config.links.map((link) => (
                 <a href={link.url} target="_blank" rel="noreferrer" key={link.id}>
                   <Card>
