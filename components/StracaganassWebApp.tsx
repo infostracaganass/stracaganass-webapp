@@ -482,8 +482,8 @@ const enableNotifications = async () => {
   StracAPP
 </h1>
               <p style={{ maxWidth: 760, color: "#475569", fontSize: 18 }}>
-                Eventi, ultime notizie e link utili della guggen in uno spazio semplice, veloce e pensato per essere usato dal cellulare.
-              </p>
+  Le informazioni a portata di mano
+</p>
             </div>
           </div>
         </Card>
