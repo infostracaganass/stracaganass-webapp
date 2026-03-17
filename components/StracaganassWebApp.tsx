@@ -628,9 +628,9 @@ const enableNotifications = async () => {
       <strong>Installazione su iPhone</strong>
 
       <ol style={{ marginTop: 8, paddingLeft: 18 }}>
-        <li>Verifica di aver aperto il link in Safari</li>
+        <li>Aperto il link ricevuto in Safari</li>
         <li>Tocca il pulsante Condividi</li>
-        <li>Seleziona “Aggiungi a Home”</li>
+        <li>Seleziona “Aggiungi a schermata Home”</li>
         <li>Conferma</li>
       </ol>
 
