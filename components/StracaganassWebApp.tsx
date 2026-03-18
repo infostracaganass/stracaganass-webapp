@@ -861,7 +861,7 @@ setLoading(false);
     disabled={checkingNotifications}
   >
     {checkingNotifications ? <Loader2 size={16} /> : null}
-    Verifica notifiche
+    Verifica
   </Button>
 </div>
 
