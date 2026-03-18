@@ -955,34 +955,8 @@ const login = async () => {
       : "Problema con configurazione notifiche"}
   </div>
 )}
-
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 6,
-      color: deviceRegistered ? "#15803d" : "#b91c1c",
-    }}
-  >
-    {deviceRegistered ? <CheckCircle size={14} /> : <XCircle size={14} />}
-    Device registrato
-  </div>
-
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 6,
-      color: subscriptionActive ? "#15803d" : "#b91c1c",
-    }}
-  >
-    {subscriptionActive ? <CheckCircle size={14} /> : <XCircle size={14} />}
-    Subscription attiva
-  </div>
 </div>
-              
-            </div>
-          </Card>
+</Card>
 
           <section
   style={{
