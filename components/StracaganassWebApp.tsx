@@ -715,10 +715,33 @@ const enableNotifications = async () => {
                   </div>
                 </div>
               </div>
-              <Button onClick={enableNotifications} disabled={loading || pushEnabled}>
-                {loading ? <Loader2 size={16} /> : null}
-                {pushEnabled ? "Notifiche attive" : "Attiva notifiche"}
-              </Button>
+              <Button onClick={() => void enableNotifications()} disabled={loading || pushEnabled}>
+  {loading ? <Loader2 size={16} /> : null}
+  {pushEnabled ? (
+    <>
+      <CheckCircle size={16} /> Notifiche attive
+    </>
+  ) : (
+    "Attiva notifiche"
+  )}
+</Button>
+
+              {pushEnabled ? (
+  <div
+    style={{
+      marginTop: 8,
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      color: "#15803d",
+      fontSize: 13,
+      fontWeight: 600,
+    }}
+  >
+    <CheckCircle size={14} /> Browser autorizzato a ricevere notifiche
+  </div>
+) : null}
+              
             </div>
           </Card>
 
