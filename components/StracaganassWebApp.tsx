@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   Smartphone,
   Trash2,
+  AlertTriangle,
   XCircle,
 } from "lucide-react";
 
@@ -890,26 +891,70 @@ setLoading(false);
   </Button>
 </div>
 
-<div
-  style={{
-    marginTop: 10,
-    display: "grid",
-    gap: 6,
-    fontSize: 13,
-    fontWeight: 600,
-  }}
->
+{!verificationDone ? (
   <div
     style={{
-      display: "flex",
-      alignItems: "center",
+      marginTop: 10,
+      display: "grid",
       gap: 6,
-      color: browserPermissionGranted ? "#15803d" : "#b91c1c",
+      fontSize: 13,
+      fontWeight: 600,
     }}
   >
-    {browserPermissionGranted ? <CheckCircle size={14} /> : <XCircle size={14} />}
-    Browser autorizzato
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        color: browserPermissionGranted ? "#15803d" : "#b91c1c",
+      }}
+    >
+      {browserPermissionGranted ? <CheckCircle size={14} /> : <XCircle size={14} />}
+      Browser autorizzato
+    </div>
+
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        color: deviceRegistered ? "#15803d" : "#b91c1c",
+      }}
+    >
+      {deviceRegistered ? <CheckCircle size={14} /> : <XCircle size={14} />}
+      Device registrato
+    </div>
+
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        color: subscriptionActive ? "#15803d" : "#b91c1c",
+      }}
+    >
+      {subscriptionActive ? <CheckCircle size={14} /> : <XCircle size={14} />}
+      Subscription attiva
+    </div>
   </div>
+) : (
+  <div
+    style={{
+      marginTop: 10,
+      fontSize: 14,
+      fontWeight: 700,
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      color: verificationOk ? "#15803d" : "#b45309",
+    }}
+  >
+    {verificationOk ? <CheckCircle size={16} /> : <AlertTriangle size={16} />}
+    {verificationOk
+      ? "Sistema notifiche pronto"
+      : "Problema con configurazione notifiche"}
+  </div>
+)}
 
   <div
     style={{
