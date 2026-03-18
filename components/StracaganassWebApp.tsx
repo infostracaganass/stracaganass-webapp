@@ -836,16 +836,34 @@ setLoading(false);
                   </div>
                 </div>
               </div>
-              <Button onClick={() => void enableNotifications()} disabled={loading || pushEnabled}>
-  {loading ? <Loader2 size={16} /> : null}
-  {pushEnabled ? (
-    <>
-      <CheckCircle size={16} /> Notifiche attive
-    </>
-  ) : (
-    "Attiva notifiche"
-  )}
-</Button>
+              <div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
+    marginTop: 12,
+  }}
+>
+  <Button onClick={() => void enableNotifications()} disabled={loading || pushEnabled}>
+    {loading ? <Loader2 size={16} /> : null}
+    {pushEnabled ? (
+      <>
+        <CheckCircle size={16} /> Notifiche attive
+      </>
+    ) : (
+      "Attiva notifiche"
+    )}
+  </Button>
+
+  <Button
+    variant="outline"
+    onClick={() => void verifyNotifications()}
+    disabled={checkingNotifications}
+  >
+    {checkingNotifications ? <Loader2 size={16} /> : null}
+    Verifica notifiche
+  </Button>
+</div>
 
 <div
   style={{
