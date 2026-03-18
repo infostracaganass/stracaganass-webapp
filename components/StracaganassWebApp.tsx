@@ -245,6 +245,8 @@ const [subscriptionActive, setSubscriptionActive] = useState(false);
 const [showIosHelp, setShowIosHelp] = useState(false);
   const [checkingNotifications, setCheckingNotifications] = useState(false);
   const [verificationDone, setVerificationDone] = useState(false);
+  const [appInstalled, setAppInstalled] = useState(false);
+const [installChecked, setInstallChecked] = useState(false);
 const [verificationOk, setVerificationOk] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -392,6 +394,17 @@ useEffect(() => {
   }, 5000);
 
   return () => clearInterval(interval);
+}, []);
+
+  useEffect(() => {
+  if (typeof window === "undefined") return;
+
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    (window.navigator as any).standalone === true;
+
+  setAppInstalled(isStandalone);
+  setInstallChecked(true);
 }, []);
   
 useEffect(() => {
