@@ -828,9 +828,33 @@ const login = async () => {
       </div>
     </div>
 
-  <Button onClick={() => void handleInstallClick()}>
-  {isIos ? "Guida installazione" : "Installa app"}
+  <Button
+  onClick={() => void handleInstallClick()}
+  disabled={appInstalled}
+>
+  {appInstalled ? (
+    <>
+      <CheckCircle size={16} /> Installato
+    </>
+  ) : (
+    "Guida installazione"
+  )}
 </Button>
+    {installChecked && appInstalled ? (
+  <div
+    style={{
+      marginTop: 8,
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      color: "#15803d",
+      fontSize: 13,
+      fontWeight: 600,
+    }}
+  >
+    <CheckCircle size={14} /> Webapp installata correttamente
+  </div>
+) : null}
   </div>
 
   {showIosHelp ? (
