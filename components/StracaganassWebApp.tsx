@@ -856,7 +856,7 @@ const login = async () => {
                   <Bell size={18} color="#d97706" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700 }}>Ricevi notifiche su eventi e notizie</div>
+                  <div style={{ fontWeight: 700 }}>Status delle notifiche push</div>
                   <div style={{ color: "#64748b", fontSize: 14 }}>
                     Attiva le notifiche per rimanere aggiornato 
                   </div>
