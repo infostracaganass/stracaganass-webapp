@@ -386,6 +386,8 @@ const enableNotifications = async () => {
     const permission = await Notification.requestPermission();
 
     if (permission !== "granted") {
+      setPushEnabled(false);
+      localStorage.removeItem("stracapp_push_enabled");
       alert("Permesso notifiche non concesso.");
       return;
     }
@@ -399,10 +401,20 @@ const enableNotifications = async () => {
       })
     });
 
-    setPushEnabled(true);
-    localStorage.setItem("stracapp_push_enabled", "true");
-    alert("Notifiche attivate correttamente.");
+    const finalPermission = Notification.permission;
+
+    if (finalPermission === "granted") {
+      setPushEnabled(true);
+      localStorage.setItem("stracapp_push_enabled", "true");
+      alert("Notifiche attivate correttamente.");
+    } else {
+      setPushEnabled(false);
+      localStorage.removeItem("stracapp_push_enabled");
+      alert("Le notifiche non risultano attive sul browser.");
+    }
   } catch (err) {
+    setPushEnabled(false);
+    localStorage.removeItem("stracapp_push_enabled");
     alert(err instanceof Error ? err.message : "Errore attivazione notifiche.");
   } finally {
     setLoading(false);
