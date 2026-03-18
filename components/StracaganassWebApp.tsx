@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   Bell,
   Calendar,
+  CheckCircle,
   ChevronDown,
   ChevronUp,
   ExternalLink,
