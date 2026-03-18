@@ -503,6 +503,65 @@ setLoading(false);
 }
 };
 
+  const verifyNotifications = async () => {
+  setCheckingNotifications(true);
+
+  try {
+    if (typeof window === "undefined" || !("Notification" in window)) {
+      setBrowserPermissionGranted(false);
+      setDeviceRegistered(false);
+      setSubscriptionActive(false);
+      setPushEnabled(false);
+      return;
+    }
+
+    const permission = Notification.permission;
+    const browserOk = permission === "granted";
+
+    setBrowserPermissionGranted(browserOk);
+
+    if (!browserOk) {
+      setDeviceRegistered(false);
+      setSubscriptionActive(false);
+      setPushEnabled(false);
+      localStorage.removeItem("stracapp_push_enabled");
+      return;
+    }
+
+    try {
+      const oneSignal = (window as any).OneSignal;
+
+      if (oneSignal && oneSignal.User && oneSignal.User.PushSubscription) {
+        const optedIn = oneSignal.User.PushSubscription.optedIn === true;
+        const subscriptionId = oneSignal.User.PushSubscription.id;
+
+        setDeviceRegistered(Boolean(subscriptionId));
+        setSubscriptionActive(optedIn);
+        setPushEnabled(optedIn);
+      } else {
+        setDeviceRegistered(true);
+        setSubscriptionActive(true);
+        setPushEnabled(true);
+      }
+    } catch {
+      setDeviceRegistered(true);
+      setSubscriptionActive(true);
+      setPushEnabled(true);
+    }
+
+    localStorage.setItem("stracapp_push_enabled", "true");
+  } catch (err) {
+    console.error(err);
+    setBrowserPermissionGranted(false);
+    setDeviceRegistered(false);
+    setSubscriptionActive(false);
+    setPushEnabled(false);
+    localStorage.removeItem("stracapp_push_enabled");
+  } finally {
+    setCheckingNotifications(false);
+  }
+};
+
   const login = async () => {
     setLoading(true);
     try {
