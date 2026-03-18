@@ -323,18 +323,37 @@ const isAndroid =
   }, []);
 
 useEffect(() => {
-  if (typeof window === "undefined") return;
+  const checkPushStatus = () => {
+    if (typeof window === "undefined") return;
 
-  const savedPushState = localStorage.getItem("stracapp_push_enabled");
-  const browserPermission =
-    "Notification" in window ? Notification.permission : "default";
+    const permission =
+      "Notification" in window ? Notification.permission : "default";
 
-  if (savedPushState === "true" && browserPermission === "granted") {
-    setPushEnabled(true);
-  } else {
-    setPushEnabled(false);
-    localStorage.removeItem("stracapp_push_enabled");
-  }
+    if (permission === "granted") {
+      setPushEnabled(true);
+      localStorage.setItem("stracapp_push_enabled", "true");
+    } else {
+      setPushEnabled(false);
+      localStorage.removeItem("stracapp_push_enabled");
+    }
+  };
+
+  checkPushStatus();
+}, []);
+
+  useEffect(() => {
+  const interval = setInterval(() => {
+    if ("Notification" in window) {
+      const permission = Notification.permission;
+
+      if (permission !== "granted") {
+        setPushEnabled(false);
+        localStorage.removeItem("stracapp_push_enabled");
+      }
+    }
+  }, 5000);
+
+  return () => clearInterval(interval);
 }, []);
   
 useEffect(() => {
