@@ -507,6 +507,7 @@ setLoading(false);
 
   const verifyNotifications = async () => {
   setCheckingNotifications(true);
+  setVerificationDone(false);
 
   try {
     if (typeof window === "undefined" || !("Notification" in window)) {
@@ -514,6 +515,8 @@ setLoading(false);
       setDeviceRegistered(false);
       setSubscriptionActive(false);
       setPushEnabled(false);
+      setVerificationOk(false);
+      setVerificationDone(true);
       return;
     }
 
@@ -527,8 +530,13 @@ setLoading(false);
       setSubscriptionActive(false);
       setPushEnabled(false);
       localStorage.removeItem("stracapp_push_enabled");
+      setVerificationOk(false);
+      setVerificationDone(true);
       return;
     }
+
+    let registered = false;
+    let subscribed = false;
 
     try {
       const oneSignal = (window as any).OneSignal;
@@ -537,21 +545,34 @@ setLoading(false);
         const optedIn = oneSignal.User.PushSubscription.optedIn === true;
         const subscriptionId = oneSignal.User.PushSubscription.id;
 
-        setDeviceRegistered(Boolean(subscriptionId));
-        setSubscriptionActive(optedIn);
-        setPushEnabled(optedIn);
+        registered = Boolean(subscriptionId);
+        subscribed = optedIn;
+
+        setDeviceRegistered(registered);
+        setSubscriptionActive(subscribed);
+        setPushEnabled(subscribed);
       } else {
+        registered = true;
+        subscribed = true;
+
         setDeviceRegistered(true);
         setSubscriptionActive(true);
         setPushEnabled(true);
       }
     } catch {
+      registered = true;
+      subscribed = true;
+
       setDeviceRegistered(true);
       setSubscriptionActive(true);
       setPushEnabled(true);
     }
 
     localStorage.setItem("stracapp_push_enabled", "true");
+
+    const allOk = browserOk && registered && subscribed;
+    setVerificationOk(allOk);
+    setVerificationDone(true);
   } catch (err) {
     console.error(err);
     setBrowserPermissionGranted(false);
@@ -559,6 +580,8 @@ setLoading(false);
     setSubscriptionActive(false);
     setPushEnabled(false);
     localStorage.removeItem("stracapp_push_enabled");
+    setVerificationOk(false);
+    setVerificationDone(true);
   } finally {
     setCheckingNotifications(false);
   }
