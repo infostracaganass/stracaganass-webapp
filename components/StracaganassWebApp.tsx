@@ -506,7 +506,7 @@ setLoading(false);
 }
 };
   
-  const verifyNotifications = async () => {
+const verifyNotifications = async () => {
   setCheckingNotifications(true);
   setVerificationDone(false);
 
@@ -588,7 +588,7 @@ setLoading(false);
   }
 };
 
-  const login = async () => {
+const login = async () => {
     setLoading(true);
     try {
       await apiFetch<{ ok: true; admin: true }>("/api/admin/login", {
