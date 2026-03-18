@@ -505,7 +505,7 @@ alert(err instanceof Error ? err.message : "Errore attivazione notifiche.");
 setLoading(false);
 }
 };
-
+  
   const verifyNotifications = async () => {
   setCheckingNotifications(true);
   setVerificationDone(false);
