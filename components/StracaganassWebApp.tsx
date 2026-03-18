@@ -243,6 +243,8 @@ const [deviceRegistered, setDeviceRegistered] = useState(false);
 const [subscriptionActive, setSubscriptionActive] = useState(false);
 const [showIosHelp, setShowIosHelp] = useState(false);
   const [checkingNotifications, setCheckingNotifications] = useState(false);
+  const [verificationDone, setVerificationDone] = useState(false);
+const [verificationOk, setVerificationOk] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
 useEffect(() => {
