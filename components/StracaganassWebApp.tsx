@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   Smartphone,
   Trash2,
+  XCircle,
 } from "lucide-react";
 
 type EventItem = {
@@ -237,6 +238,9 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 export default function StracaganassWebApp() {
   const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [browserPermissionGranted, setBrowserPermissionGranted] = useState(false);
+const [deviceRegistered, setDeviceRegistered] = useState(false);
+const [subscriptionActive, setSubscriptionActive] = useState(false);
 const [showIosHelp, setShowIosHelp] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -324,22 +328,51 @@ const isAndroid =
   }, []);
 
 useEffect(() => {
-  const checkPushStatus = () => {
+  const checkPushStatus = async () => {
     if (typeof window === "undefined") return;
 
     const permission =
       "Notification" in window ? Notification.permission : "default";
 
-    if (permission === "granted") {
-      setPushEnabled(true);
-      localStorage.setItem("stracapp_push_enabled", "true");
-    } else {
+    const browserOk = permission === "granted";
+    setBrowserPermissionGranted(browserOk);
+
+    if (!browserOk) {
       setPushEnabled(false);
+      setDeviceRegistered(false);
+      setSubscriptionActive(false);
       localStorage.removeItem("stracapp_push_enabled");
+      return;
+    }
+
+    // Stato base browser
+    setPushEnabled(true);
+    localStorage.setItem("stracapp_push_enabled", "true");
+
+    // Controllo OneSignal, se disponibile
+    try {
+      const oneSignal = (window as any).OneSignal;
+
+      if (oneSignal && oneSignal.User && oneSignal.User.PushSubscription) {
+        const optedIn = oneSignal.User.PushSubscription.optedIn === true;
+        const subscriptionId = oneSignal.User.PushSubscription.id;
+
+        setSubscriptionActive(optedIn);
+        setDeviceRegistered(Boolean(subscriptionId));
+        setPushEnabled(optedIn || browserOk);
+      } else {
+        // fallback semplice
+        setDeviceRegistered(browserOk);
+        setSubscriptionActive(browserOk);
+      }
+    } catch (error) {
+      console.error("Errore controllo stato OneSignal:", error);
+      setDeviceRegistered(browserOk);
+      setSubscriptionActive(browserOk);
     }
   };
 
-  checkPushStatus();
+  void checkPushStatus();
 }, []);
 
   useEffect(() => {
