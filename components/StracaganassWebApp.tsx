@@ -454,24 +454,52 @@ const enableNotifications = async () => {
       })
     });
 
-    const finalPermission = Notification.permission;
+   const finalPermission = Notification.permission;
 
-    if (finalPermission === "granted") {
-      setPushEnabled(true);
-      localStorage.setItem("stracapp_push_enabled", "true");
-      alert("Notifiche attivate correttamente.");
+if (finalPermission === "granted") {
+  setBrowserPermissionGranted(true);
+
+  try {
+    const oneSignal = (window as any).OneSignal;
+
+    if (oneSignal && oneSignal.User && oneSignal.User.PushSubscription) {
+      const optedIn = oneSignal.User.PushSubscription.optedIn === true;
+      const subscriptionId = oneSignal.User.PushSubscription.id;
+
+      setDeviceRegistered(Boolean(subscriptionId));
+      setSubscriptionActive(optedIn);
+      setPushEnabled(optedIn);
     } else {
-      setPushEnabled(false);
-      localStorage.removeItem("stracapp_push_enabled");
-      alert("Le notifiche non risultano attive sul browser.");
+      setDeviceRegistered(true);
+      setSubscriptionActive(true);
+      setPushEnabled(true);
     }
-  } catch (err) {
-    setPushEnabled(false);
-    localStorage.removeItem("stracapp_push_enabled");
-    alert(err instanceof Error ? err.message : "Errore attivazione notifiche.");
-  } finally {
-    setLoading(false);
+  } catch {
+    setDeviceRegistered(true);
+    setSubscriptionActive(true);
+    setPushEnabled(true);
   }
+
+  localStorage.setItem("stracapp_push_enabled", "true");
+  alert("Notifiche attivate correttamente.");
+} else {
+  setBrowserPermissionGranted(false);
+  setPushEnabled(false);
+  setDeviceRegistered(false);
+  setSubscriptionActive(false);
+  localStorage.removeItem("stracapp_push_enabled");
+  alert("Le notifiche non risultano attive sul browser.");
+}
+} catch (err) {
+setPushEnabled(false);
+setBrowserPermissionGranted(false);
+setDeviceRegistered(false);
+setSubscriptionActive(false);
+localStorage.removeItem("stracapp_push_enabled");
+alert(err instanceof Error ? err.message : "Errore attivazione notifiche.");
+} finally {
+setLoading(false);
+}
 };
 
   const login = async () => {
