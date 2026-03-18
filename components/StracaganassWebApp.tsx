@@ -242,6 +242,7 @@ export default function StracaganassWebApp() {
 const [deviceRegistered, setDeviceRegistered] = useState(false);
 const [subscriptionActive, setSubscriptionActive] = useState(false);
 const [showIosHelp, setShowIosHelp] = useState(false);
+  const [checkingNotifications, setCheckingNotifications] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
 useEffect(() => {
