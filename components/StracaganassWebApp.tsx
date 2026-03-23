@@ -1238,42 +1238,42 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
             </div>
 
             <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-              <MapPin size={15} />
+  <MapPin size={15} />
 
-              <span>{item.place || "Da confermare"}</span>
+  <span>{item.place || "Da confermare"}</span>
 
-              {item.place ? (
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.place)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{
-                    marginLeft: 6,
-                    fontSize: 13,
-                    color: "#0369a1",
-                    fontWeight: 600,
-                    textDecoration: "none",
-                  }}
-                >
-                  Apri mappa
-                </a>
-              ) : null}
+  {item.place ? (
+    <a
+      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.place)}`}
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        marginLeft: 6,
+        fontSize: 13,
+        color: "#0369a1",
+        fontWeight: 600,
+        textDecoration: "none"
+      }}
+    >
+      Apri mappa
+    </a>
+  ) : null}
 
-              <a
-                href={buildCalendarLink(item)}
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  marginLeft: 6,
-                  fontSize: 13,
-                  color: "#0369a1",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                }}
-              >
-                Aggiungi al calendario
-              </a>
-            </div>
+  <a
+    href={buildCalendarLink(item)}
+    target="_blank"
+    rel="noreferrer"
+    style={{
+      marginLeft: 6,
+      fontSize: 13,
+      color: "#0369a1",
+      fontWeight: 600,
+      textDecoration: "none"
+    }}
+  >
+    Aggiungi al calendario
+  </a>
+</div>
           </div>
 
           <div style={{ color: "#334155" }}>{item.description || ""}</div>
