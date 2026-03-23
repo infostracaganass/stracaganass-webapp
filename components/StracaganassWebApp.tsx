@@ -1058,9 +1058,7 @@ const login = async () => {
 ) : null}
 </h2>
 </div>
-              <Button variant="outline" onClick={() => void loadData()} title="Aggiorna">
-                <RefreshCw size={16} />
-              </Button>
+            
             </div>
 
             <div
