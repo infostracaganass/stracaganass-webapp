@@ -1110,7 +1110,11 @@ const login = async () => {
               {bootLoading ? (
                 <div>Caricamento eventi...</div>
               ) : visibleEvents.length ? (
-                visibleEvents.map((item) => (
+                visibleEvents.map((item, index) => {
+  const isNextEvent = index === 0;
+  const eventIsToday = isToday(item.date);
+
+  return (
                   <Card key={item.id}>
                     <div style={{ padding: 20, display: "grid", gap: 10 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
@@ -1156,8 +1160,9 @@ const login = async () => {
                         </Button>
                       ) : null}
                     </div>
-                  </Card>
-                ))
+                      </Card>
+  );
+})
               ) : (
                 <div>Nessun evento disponibile.</div>
               )}
