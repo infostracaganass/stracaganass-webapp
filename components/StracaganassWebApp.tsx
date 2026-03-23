@@ -5,6 +5,7 @@ import OneSignal from "react-onesignal";
 import { motion } from "framer-motion";
 import {
   Bell,
+  ChevronRight,
   Calendar,
   CheckCircle,
   ChevronDown,
@@ -902,10 +903,11 @@ const login = async () => {
       display: "flex",
       alignItems: "center",
       gap: 8,
-      color: "#1e3a8a"
+      color: "#0f172a"
     }}
   >
-    📰 Info Alert
+    <ChevronRight size={22} color="#1e3a8a" />
+  Info Alert
   </h2>
 </div>
             <div style={{ display: "grid", gap: 16 }}>
@@ -950,10 +952,11 @@ const login = async () => {
       display: "flex",
       alignItems: "center",
       gap: 8,
-      color: "#1e3a8a",
+      color: "#0f172a",
     }}
   >
-    📅 Eventi in arrivo
+    <ChevronRight size={22} color="#1e3a8a" />
+Eventi in arrivo
   </h2>
 </div>
               <Button variant="outline" onClick={() => void loadData()} title="Aggiorna">
@@ -1050,10 +1053,11 @@ const login = async () => {
       display: "flex",
       alignItems: "center",
       gap: 8,
-      color: "#1e3a8a"
+      color: "#0f172a"
     }}
   >
-    🔗 Link utili
+    <ChevronRight size={22} color="#1e3a8a" />
+  Link utili
   </h2>
 </div>
            <div
