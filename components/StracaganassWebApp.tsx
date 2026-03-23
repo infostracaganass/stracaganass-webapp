@@ -1033,9 +1033,9 @@ const login = async () => {
     padding: 20,
     display: "grid",
     gap: 10,
-    border: isNextEvent ? "2px solid #93c5fd" : "none",
-    borderRadius: 20,
-    background: isNextEvent ? "#eff6ff" : "white",
+    border: visibleEvents[0]?.id === item.id ? "2px solid #93c5fd" : "none",
+borderRadius: 20,
+background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   }}
 >
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
@@ -1130,9 +1130,9 @@ const login = async () => {
             padding: 20,
             display: "grid",
             gap: 10,
-            border: isNextEvent ? "2px solid #93c5fd" : "none",
-            borderRadius: 20,
-            background: isNextEvent ? "#eff6ff" : "white",
+            border: visibleEvents[0]?.id === item.id ? "2px solid #93c5fd" : "none",
+borderRadius: 20,
+background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
