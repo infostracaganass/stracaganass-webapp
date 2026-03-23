@@ -886,6 +886,53 @@ const login = async () => {
   ) : null}
 </Card>
 
+         <section
+  style={{
+    background: "#fffdf7",
+    border: "1px solid #fef3c7",
+    borderRadius: 24,
+    padding: isMobile ? 16 : 20,
+  }}
+>
+            <div style={{ marginBottom: 12 }}>
+  <h2
+    style={{
+      margin: 0,
+      fontSize: 32,
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      color: "#1e3a8a"
+    }}
+  >
+    📰 Ultime info
+  </h2>
+</div>
+            <div style={{ display: "grid", gap: 16 }}>
+              {news.map((item) => (
+                <Card key={item.id}>
+                  <div style={{ padding: 20, display: "grid", gap: 10 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+                      <div>
+                        <div style={{ fontSize: 12, textTransform: "uppercase", color: "#b45309", fontWeight: 700 }}>Notizia</div>
+                        <div style={{ fontSize: 22, fontWeight: 800 }}>{item.title}</div>
+                      </div>
+                      <div style={{ border: "1px solid #bae6fd", borderRadius: 999, padding: "6px 10px", height: "fit-content", color: "#0369a1" }}>
+                        {formatDate(item.date)}
+                      </div>
+                    </div>
+                    <div style={{ color: "#334155" }}>{item.body || ""}</div>
+                    {admin ? (
+                      <Button variant="outline" onClick={() => void deleteNews(item.id)} disabled={deletingId === item.id}>
+                        <Trash2 size={16} /> Elimina
+                      </Button>
+                    ) : null}
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </section>
+          
           <section
   style={{
     background: "#f8fbff",
@@ -985,53 +1032,6 @@ const login = async () => {
                 </Button>
               </div>
             ) : null}
-          </section>
-
-          <section
-  style={{
-    background: "#fffdf7",
-    border: "1px solid #fef3c7",
-    borderRadius: 24,
-    padding: isMobile ? 16 : 20,
-  }}
->
-            <div style={{ marginBottom: 12 }}>
-  <h2
-    style={{
-      margin: 0,
-      fontSize: 32,
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      color: "#1e3a8a"
-    }}
-  >
-    📰 Ultime info
-  </h2>
-</div>
-            <div style={{ display: "grid", gap: 16 }}>
-              {news.map((item) => (
-                <Card key={item.id}>
-                  <div style={{ padding: 20, display: "grid", gap: 10 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-                      <div>
-                        <div style={{ fontSize: 12, textTransform: "uppercase", color: "#b45309", fontWeight: 700 }}>Notizia</div>
-                        <div style={{ fontSize: 22, fontWeight: 800 }}>{item.title}</div>
-                      </div>
-                      <div style={{ border: "1px solid #bae6fd", borderRadius: 999, padding: "6px 10px", height: "fit-content", color: "#0369a1" }}>
-                        {formatDate(item.date)}
-                      </div>
-                    </div>
-                    <div style={{ color: "#334155" }}>{item.body || ""}</div>
-                    {admin ? (
-                      <Button variant="outline" onClick={() => void deleteNews(item.id)} disabled={deletingId === item.id}>
-                        <Trash2 size={16} /> Elimina
-                      </Button>
-                    ) : null}
-                  </div>
-                </Card>
-              ))}
-            </div>
           </section>
 
           <section
