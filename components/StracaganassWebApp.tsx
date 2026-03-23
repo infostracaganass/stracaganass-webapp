@@ -999,18 +999,29 @@ const login = async () => {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, gap: 12 }}>
               <div>
   <h2
-    style={{
-      margin: 0,
-      fontSize: 32,
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      color: "#0f172a",
-    }}
-  >
-    <ChevronRight size={22} color="#1e3a8a" />
-Prossimi eventi
-  </h2>
+  style={{
+    margin: 0,
+    fontSize: 32,
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    color: "#0f172a",
+  }}
+>
+  <ChevronRight size={22} color="#1e3a8a" />
+  Prossimi eventi
+  {hasNewEvents ? (
+    <span
+      style={{
+        width: 10,
+        height: 10,
+        borderRadius: "50%",
+        background: "#dc2626",
+        display: "inline-block",
+      }}
+    />
+  ) : null}
+</h2>
 </div>
               <Button variant="outline" onClick={() => void loadData()} title="Aggiorna">
                 <RefreshCw size={16} />
