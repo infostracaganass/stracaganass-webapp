@@ -1019,7 +1019,7 @@ const login = async () => {
     padding: isMobile ? 16 : 20,
   }}
 >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, gap: 12 }}>
+            <div style={{ marginBottom: 12 }}>
               <div>
   <h2
   style={{
