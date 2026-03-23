@@ -431,6 +431,53 @@ useEffect(() => {
 
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
+  const eventsSignature = useMemo(() => {
+  return events
+    .map((item) => `${item.id}:${item.date}:${item.time || ""}:${item.title}`)
+    .join("|");
+}, [events]);
+
+const newsSignature = useMemo(() => {
+  return news
+    .map((item) => `${item.id}:${item.date}:${item.title}`)
+    .join("|");
+}, [news]);
+
+  useEffect(() => {
+  if (bootLoading || typeof window === "undefined") return;
+
+  const savedEventsSignature = localStorage.getItem("stracapp_seen_events_signature");
+  const savedNewsSignature = localStorage.getItem("stracapp_seen_news_signature");
+
+  if (savedEventsSignature === null) {
+    localStorage.setItem("stracapp_seen_events_signature", eventsSignature);
+    setHasNewEvents(false);
+  } else {
+    setHasNewEvents(savedEventsSignature !== eventsSignature);
+  }
+
+  if (savedNewsSignature === null) {
+    localStorage.setItem("stracapp_seen_news_signature", newsSignature);
+    setHasNewNews(false);
+  } else {
+    setHasNewNews(savedNewsSignature !== newsSignature);
+  }
+}, [bootLoading, eventsSignature, newsSignature]);
+
+  useEffect(() => {
+  if (bootLoading || typeof window === "undefined") return;
+  if (!hasNewEvents && !hasNewNews) return;
+
+  const timer = window.setTimeout(() => {
+    localStorage.setItem("stracapp_seen_events_signature", eventsSignature);
+    localStorage.setItem("stracapp_seen_news_signature", newsSignature);
+    setHasNewEvents(false);
+    setHasNewNews(false);
+  }, 6000);
+
+  return () => window.clearTimeout(timer);
+}, [bootLoading, hasNewEvents, hasNewNews, eventsSignature, newsSignature]);
+
 const handleInstallClick = async () => {
   if (isIos) {
     setShowIosHelp(true);
