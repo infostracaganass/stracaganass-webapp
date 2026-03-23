@@ -1540,7 +1540,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     zIndex: 1000,
   }}
 >
-  <Mail size={22} />
+  <Mail size={26} />
 </a>
     </main>
   );
