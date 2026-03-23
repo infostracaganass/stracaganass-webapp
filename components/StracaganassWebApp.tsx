@@ -97,6 +97,39 @@ function formatDate(dateString: string) {
   }
 }
 
+function isToday(dateString: string) {
+  try {
+    const today = new Date();
+    const date = new Date(dateString);
+
+    return (
+      today.getFullYear() === date.getFullYear() &&
+      today.getMonth() === date.getMonth() &&
+      today.getDate() === date.getDate()
+    );
+  } catch {
+    return false;
+  }
+}
+
+function buildCalendarLink(item: EventItem) {
+  try {
+    const start = new Date(`${item.date}T${item.time || "18:00"}`);
+    const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+
+    const formatGoogleDate = (value: Date) =>
+      value.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+
+    const title = encodeURIComponent(item.title || "Evento Stracaganass");
+    const details = encodeURIComponent(item.description || "");
+    const location = encodeURIComponent(item.place || "");
+
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatGoogleDate(start)}/${formatGoogleDate(end)}&details=${details}&location=${location}`;
+  } catch {
+    return "#";
+  }
+}
+
 async function apiFetch<T>(url: string, options?: RequestInit): Promise<T> {
   const response = await fetch(url, {
     credentials: "include",
