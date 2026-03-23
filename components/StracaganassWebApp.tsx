@@ -1039,10 +1039,45 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   }}
 >
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-                      <div>
-                        <div style={{ fontSize: 12, textTransform: "uppercase", color: "#b45309", fontWeight: 700 }}>Notizia</div>
-                        <div style={{ fontSize: 22, fontWeight: 800 }}>{item.title}</div>
-                      </div>
+  <div style={{ display: "grid", gap: 8 }}>
+    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+      <div style={{ fontSize: 12, textTransform: "uppercase", color: "#0369a1", fontWeight: 700 }}>
+        Evento
+      </div>
+
+      {isNextEvent ? (
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 700,
+            color: "#1d4ed8",
+            background: "#dbeafe",
+            borderRadius: 999,
+            padding: "4px 8px",
+          }}
+        >
+          Prossimo evento
+        </span>
+      ) : null}
+
+      {eventIsToday ? (
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 700,
+            color: "#b91c1c",
+            background: "#fee2e2",
+            borderRadius: 999,
+            padding: "4px 8px",
+          }}
+        >
+          OGGI
+        </span>
+      ) : null}
+    </div>
+
+    <div style={{ fontSize: 22, fontWeight: 800 }}>{item.title}</div>
+  </div>
                       <div style={{ border: "1px solid #bae6fd", borderRadius: 999, padding: "6px 10px", height: "fit-content", color: "#0369a1" }}>
                         {formatDate(item.date)}
                       </div>
