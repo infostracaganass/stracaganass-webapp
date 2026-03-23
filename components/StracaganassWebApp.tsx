@@ -333,8 +333,14 @@ const isAndroid =
   };
 
   useEffect(() => {
+  void loadData();
+
+  const interval = window.setInterval(() => {
     void loadData();
-  }, []);
+  }, 30000);
+
+  return () => window.clearInterval(interval);
+}, []);
 
 useEffect(() => {
   const checkPushStatus = async () => {
