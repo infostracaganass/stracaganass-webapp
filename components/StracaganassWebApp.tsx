@@ -950,18 +950,29 @@ const login = async () => {
 >
             <div style={{ marginBottom: 12 }}>
   <h2
-    style={{
-      margin: 0,
-      fontSize: 32,
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      color: "#0f172a"
-    }}
-  >
-    <ChevronRight size={22} color="#1e3a8a" />
-  Info Alert
-  </h2>
+  style={{
+    margin: 0,
+    fontSize: 32,
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    color: "#0f172a"
+  }}
+>
+  <ChevronRight size={22} color="#1e3a8a" />
+  Info alert
+  {hasNewNews ? (
+    <span
+      style={{
+        width: 10,
+        height: 10,
+        borderRadius: "50%",
+        background: "#dc2626",
+        display: "inline-block",
+      }}
+    />
+  ) : null}
+</h2>
 </div>
             <div style={{ display: "grid", gap: 16 }}>
               {news.map((item) => (
