@@ -1043,7 +1043,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   <div style={{ display: "grid", gap: 8 }}>
     <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
       <div style={{ fontSize: 12, textTransform: "uppercase", color: "#0369a1", fontWeight: 700 }}>
-        Evento
+        News
       </div>
 
       {visibleEvents[0]?.id === item.id ? (
