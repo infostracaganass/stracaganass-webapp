@@ -1117,73 +1117,149 @@ const login = async () => {
   }}
 >
               {bootLoading ? (
-                <div>Caricamento eventi...</div>
-              ) : visibleEvents.length ? (
-                visibleEvents.map((item, index) => {
-  const isNextEvent = index === 0;
-  const eventIsToday = isToday(item.date);
+  <div>Caricamento eventi...</div>
+) : visibleEvents.length ? (
+  visibleEvents.map((item, index) => {
+    const isNextEvent = index === 0;
+    const eventIsToday = isToday(item.date);
 
-  return (
-                  <Card key={item.id}>
-                    <div
-  style={{
-    padding: 20,
-    display: "grid",
-    gap: 10,
-    border: isNextEvent ? "2px solid #93c5fd" : "none",
-    borderRadius: 20,
-    background: isNextEvent ? "#eff6ff" : "white",
-  }}
->
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-                        <div>
-                          <div style={{ fontSize: 12, textTransform: "uppercase", color: "#0369a1", fontWeight: 700 }}>Evento</div>
-                          <div style={{ fontSize: 22, fontWeight: 800 }}>{item.title}</div>
-                        </div>
-                        {item.time ? (
-                          <div style={{ background: "#fef3c7", color: "#92400e", borderRadius: 999, padding: "6px 10px", height: "fit-content" }}>
-                            {item.time}
-                          </div>
-                        ) : null}
-                      </div>
-                      <div style={{ color: "#475569", display: "grid", gap: 6, fontSize: 14 }}>
-                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}><Calendar size={15} /> {formatDate(item.date)}</div>
-                        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-  <MapPin size={15} />
+    return (
+      <Card key={item.id}>
+        <div
+          style={{
+            padding: 20,
+            display: "grid",
+            gap: 10,
+            border: isNextEvent ? "2px solid #93c5fd" : "none",
+            borderRadius: 20,
+            background: isNextEvent ? "#eff6ff" : "white",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+            <div style={{ display: "grid", gap: 8 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                <div
+                  style={{
+                    fontSize: 12,
+                    textTransform: "uppercase",
+                    color: "#0369a1",
+                    fontWeight: 700,
+                  }}
+                >
+                  Evento
+                </div>
 
-  <span>{item.place || "Da confermare"}</span>
+                {isNextEvent ? (
+                  <span
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: "#1d4ed8",
+                      background: "#dbeafe",
+                      borderRadius: 999,
+                      padding: "4px 8px",
+                    }}
+                  >
+                    Prossimo evento
+                  </span>
+                ) : null}
 
-  {item.place ? (
-    <a
-      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.place)}`}
-      target="_blank"
-      rel="noreferrer"
-      style={{
-        marginLeft: 6,
-        fontSize: 13,
-        color: "#0369a1",
-        fontWeight: 600,
-        textDecoration: "none"
-      }}
-    >
-      Apri mappa
-    </a>
-  ) : null}
-</div>
-                      </div>
-                      <div style={{ color: "#334155" }}>{item.description || ""}</div>
-                      {admin ? (
-                        <Button variant="outline" onClick={() => void deleteEvent(item.id)} disabled={deletingId === item.id}>
-                          <Trash2 size={16} /> Elimina
-                        </Button>
-                      ) : null}
-                    </div>
-                      </Card>
-  );
-})
-              ) : (
-                <div>Nessun evento disponibile.</div>
-              )}
+                {eventIsToday ? (
+                  <span
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: "#b91c1c",
+                      background: "#fee2e2",
+                      borderRadius: 999,
+                      padding: "4px 8px",
+                    }}
+                  >
+                    OGGI
+                  </span>
+                ) : null}
+              </div>
+
+              <div style={{ fontSize: 22, fontWeight: 800 }}>{item.title}</div>
+            </div>
+
+            {item.time ? (
+              <div
+                style={{
+                  background: "#fef3c7",
+                  color: "#92400e",
+                  borderRadius: 999,
+                  padding: "6px 10px",
+                  height: "fit-content",
+                }}
+              >
+                {item.time}
+              </div>
+            ) : null}
+          </div>
+
+          <div style={{ color: "#475569", display: "grid", gap: 6, fontSize: 14 }}>
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <Calendar size={15} /> {formatDate(item.date)}
+            </div>
+
+            <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+              <MapPin size={15} />
+
+              <span>{item.place || "Da confermare"}</span>
+
+              {item.place ? (
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.place)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    marginLeft: 6,
+                    fontSize: 13,
+                    color: "#0369a1",
+                    fontWeight: 600,
+                    textDecoration: "none",
+                  }}
+                >
+                  Apri mappa
+                </a>
+              ) : null}
+
+              <a
+                href={buildCalendarLink(item)}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  marginLeft: 6,
+                  fontSize: 13,
+                  color: "#0369a1",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                }}
+              >
+                Aggiungi al calendario
+              </a>
+            </div>
+          </div>
+
+          <div style={{ color: "#334155" }}>{item.description || ""}</div>
+
+          {admin ? (
+            <Button
+              variant="outline"
+              onClick={() => void deleteEvent(item.id)}
+              disabled={deletingId === item.id}
+            >
+              <Trash2 size={16} /> Elimina
+            </Button>
+          ) : null}
+        </div>
+      </Card>
+    );
+  })
+) : (
+  <div>Nessun evento disponibile.</div>
+)}
             </div>
 
             {upcomingEvents.length > 5 ? (
