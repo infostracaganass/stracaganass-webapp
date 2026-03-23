@@ -806,17 +806,18 @@ const login = async () => {
   >
     <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
       <div
-        style={{
-          background: "#e0f2fe",
-          borderRadius: 16,
-          padding: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Smartphone size={20} color="#0369a1" />
-      </div>
+  style={{
+    background: "white",
+    border: "1px solid #bae6fd",
+    borderRadius: 16,
+    padding: 10,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+>
+  <Smartphone size={20} color="#0369a1" />
+</div>
 
       <div>
         <div style={{ fontWeight: 800, fontSize: 18 }}>
