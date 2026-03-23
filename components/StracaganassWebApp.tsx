@@ -16,6 +16,7 @@ import {
   LogOut,
   MapPin,
   Megaphone,
+  Mail,
   Newspaper,
   Plus,
   RefreshCw,
@@ -1540,6 +1541,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     gap: 8,
   }}
 >
+  <Mail size={16} />
   Contattaci
 </a>
     </main>
