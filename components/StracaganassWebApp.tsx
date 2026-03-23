@@ -961,7 +961,8 @@ const login = async () => {
 >
   <ChevronRight size={22} color="#1e3a8a" />
   Info alert
-  {hasNewNews ? (
+ {hasNewNews ? (
+  <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
     <span
       style={{
         width: 14,
@@ -971,7 +972,18 @@ const login = async () => {
         display: "inline-block",
       }}
     />
-  ) : null}
+    <span
+      style={{
+        fontSize: 11,
+        fontWeight: 600,
+        color: "#dc2626",
+        letterSpacing: 0.5,
+      }}
+    >
+      NEW
+    </span>
+  </span>
+) : null}
 </h2>
 </div>
             <div style={{ display: "grid", gap: 16 }}>
@@ -1021,7 +1033,8 @@ const login = async () => {
 >
   <ChevronRight size={22} color="#1e3a8a" />
   Prossimi eventi
-  {hasNewEvents ? (
+ {hasNewEvents ? (
+  <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
     <span
       style={{
         width: 14,
@@ -1031,7 +1044,18 @@ const login = async () => {
         display: "inline-block",
       }}
     />
-  ) : null}
+    <span
+      style={{
+        fontSize: 11,
+        fontWeight: 600,
+        color: "#dc2626",
+        letterSpacing: 0.5,
+      }}
+    >
+      NEW
+    </span>
+  </span>
+) : null}
 </h2>
 </div>
               <Button variant="outline" onClick={() => void loadData()} title="Aggiorna">
