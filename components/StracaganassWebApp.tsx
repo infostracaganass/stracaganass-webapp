@@ -800,7 +800,7 @@ const login = async () => {
       justifyContent: "space-between",
       gap: 16,
       flexWrap: "wrap",
-      background: "#f8fafc",
+      background: "white",
       borderRadius: 20,
     }}
   >
