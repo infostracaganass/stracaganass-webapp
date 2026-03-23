@@ -1234,9 +1234,25 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
           </div>
 
           <div style={{ color: "#475569", display: "grid", gap: 6, fontSize: 14 }}>
-            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-              <Calendar size={15} /> {formatDate(item.date)}
-            </div>
+            <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+  <Calendar size={15} />
+  <span>{formatDate(item.date)}</span>
+
+  <a
+    href={buildCalendarLink(item)}
+    target="_blank"
+    rel="noreferrer"
+    style={{
+      marginLeft: 6,
+      fontSize: 13,
+      color: "#0369a1",
+      fontWeight: 600,
+      textDecoration: "none"
+    }}
+  >
+    Aggiungi al calendario
+  </a>
+</div>
 
             <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
   <MapPin size={15} />
@@ -1259,21 +1275,6 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
       Apri mappa
     </a>
   ) : null}
-
-  <a
-    href={buildCalendarLink(item)}
-    target="_blank"
-    rel="noreferrer"
-    style={{
-      marginLeft: 6,
-      fontSize: 13,
-      color: "#0369a1",
-      fontWeight: 600,
-      textDecoration: "none"
-    }}
-  >
-    Aggiungi al calendario
-  </a>
 </div>
           </div>
 
