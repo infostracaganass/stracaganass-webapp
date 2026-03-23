@@ -90,7 +90,7 @@ function formatDate(dateString: string) {
     return new Intl.DateTimeFormat("it-CH", {
       day: "2-digit",
       month: "2-digit",
-      year: "numeric",
+      year: "2-digit",
     }).format(new Date(dateString));
   } catch {
     return dateString;
