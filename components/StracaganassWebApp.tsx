@@ -1149,20 +1149,20 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                   Evento
                 </div>
 
-                {isNextEvent ? (
-                  <span
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 700,
-                      color: "#1d4ed8",
-                      background: "#dbeafe",
-                      borderRadius: 999,
-                      padding: "4px 8px",
-                    }}
-                  >
-                    Prossimo evento
-                  </span>
-                ) : null}
+                {visibleEvents[0]?.id === item.id ? (
+  <span
+    style={{
+      fontSize: 11,
+      fontWeight: 700,
+      color: "#1d4ed8",
+      background: "#dbeafe",
+      borderRadius: 999,
+      padding: "4px 8px",
+    }}
+  >
+    Prossimo evento
+  </span>
+) : null}
 
                 {eventIsToday ? (
                   <span
