@@ -964,8 +964,8 @@ const login = async () => {
   {hasNewNews ? (
     <span
       style={{
-        width: 10,
-        height: 10,
+        width: 14,
+        height: 14,
         borderRadius: "50%",
         background: "#dc2626",
         display: "inline-block",
@@ -1024,8 +1024,8 @@ const login = async () => {
   {hasNewEvents ? (
     <span
       style={{
-        width: 10,
-        height: 10,
+        width: 14,
+        height: 14,
         borderRadius: "50%",
         background: "#dc2626",
         display: "inline-block",
