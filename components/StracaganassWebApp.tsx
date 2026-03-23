@@ -1032,7 +1032,7 @@ const login = async () => {
   }}
 >
   <ChevronRight size={22} color="#1e3a8a" />
-  Prossimi eventi
+  Eventi
  {hasNewEvents ? (
   <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
     <span
