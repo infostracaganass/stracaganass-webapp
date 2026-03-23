@@ -1523,27 +1523,24 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
         </aside>
       </div>
 <a
-  href="mailto:sabrina.mottini@hotmail.com?subject=Contatto%20da%20StracAPP"
+  href="mailto:sabrina.mottini@hotmail.com"
   style={{
     position: "fixed",
-    right: 16,
-    bottom: 16,
-    zIndex: 1000,
-    background: "#0f172a",
+    bottom: 70,
+    right: 20,
+    background: "#0284c7",
     color: "white",
-    textDecoration: "none",
-    padding: isMobile ? "10px 12px" : "12px 14px",
-    borderRadius: 999,
-    boxShadow: "0 10px 25px rgba(15,23,42,0.18)",
-    fontSize: 13,
-    fontWeight: 700,
-    display: "inline-flex",
+    padding: 12,
+    borderRadius: "50%",
+    display: "flex",
     alignItems: "center",
-    gap: 8,
+    justifyContent: "center",
+    textDecoration: "none",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+    zIndex: 1000,
   }}
 >
-  <Mail size={16} />
-  Contattaci
+  <Mail size={22} />
 </a>
     </main>
   );
