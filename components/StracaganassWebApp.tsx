@@ -888,8 +888,8 @@ const login = async () => {
 
          <section
   style={{
-    background: "#fffdf7",
-    border: "1px solid #fef3c7",
+    background: "#f8fafc",
+    border: "1px solid #e2e8f0",
     borderRadius: 24,
     padding: isMobile ? 16 : 20,
   }}
@@ -935,8 +935,8 @@ const login = async () => {
           
           <section
   style={{
-    background: "#f8fbff",
-    border: "1px solid #dbeafe",
+    background: "#f8fafc",
+    border: "1px solid #e2e8f0",
     borderRadius: 24,
     padding: isMobile ? 16 : 20,
   }}
