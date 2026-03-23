@@ -905,7 +905,7 @@ const login = async () => {
       color: "#1e3a8a"
     }}
   >
-    📰 Ultime info
+    📰 Info Alert
   </h2>
 </div>
             <div style={{ display: "grid", gap: 16 }}>
