@@ -1120,7 +1120,6 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   <div>Caricamento eventi...</div>
 ) : visibleEvents.length ? (
   visibleEvents.map((item, index) => {
-    const isNextEvent = index === 0;
     const eventIsToday = isToday(item.date);
 
     return (
