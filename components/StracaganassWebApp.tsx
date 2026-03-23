@@ -791,6 +791,8 @@ const login = async () => {
   }}
 >
         <div style={{ display: "grid", gap: 24 }}>
+
+          {!appInstalled ? (
           <Card>
   <div
     style={{
@@ -887,7 +889,8 @@ const login = async () => {
     </div>
   ) : null}
 </Card>
-
+) : null}
+          
          <section
   style={{
     background: "#f8fafc",
