@@ -1061,20 +1061,20 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </span>
 ) : null}
 
-      {eventIsToday ? (
-        <span
-          style={{
-            fontSize: 11,
-            fontWeight: 700,
-            color: "#b91c1c",
-            background: "#fee2e2",
-            borderRadius: 999,
-            padding: "4px 8px",
-          }}
-        >
-          OGGI
-        </span>
-      ) : null}
+      {isToday(item.date) ? (
+  <span
+    style={{
+      fontSize: 11,
+      fontWeight: 700,
+      color: "#b91c1c",
+      background: "#fee2e2",
+      borderRadius: 999,
+      padding: "4px 8px",
+    }}
+  >
+    OGGI
+  </span>
+) : null}
     </div>
 
     <div style={{ fontSize: 22, fontWeight: 800 }}>{item.title}</div>
