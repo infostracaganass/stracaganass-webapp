@@ -960,7 +960,7 @@ const login = async () => {
     }}
   >
     <ChevronRight size={22} color="#1e3a8a" />
-Eventi in arrivo
+Prossimi eventi
   </h2>
 </div>
               <Button variant="outline" onClick={() => void loadData()} title="Aggiorna">
