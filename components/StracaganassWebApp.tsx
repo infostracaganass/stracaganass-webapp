@@ -1028,7 +1028,16 @@ const login = async () => {
             <div style={{ display: "grid", gap: 16 }}>
               {news.map((item) => (
                 <Card key={item.id}>
-                  <div style={{ padding: 20, display: "grid", gap: 10 }}>
+                  <div
+  style={{
+    padding: 20,
+    display: "grid",
+    gap: 10,
+    border: isNextEvent ? "2px solid #93c5fd" : "none",
+    borderRadius: 20,
+    background: isNextEvent ? "#eff6ff" : "white",
+  }}
+>
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
                       <div>
                         <div style={{ fontSize: 12, textTransform: "uppercase", color: "#b45309", fontWeight: 700 }}>Notizia</div>
