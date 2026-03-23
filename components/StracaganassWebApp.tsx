@@ -1520,6 +1520,28 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
          
         </aside>
       </div>
+<a
+  href="mailto:sabrina.mottini@hotmail.com?subject=Contatto%20da%20StracAPP"
+  style={{
+    position: "fixed",
+    right: 16,
+    bottom: 16,
+    zIndex: 1000,
+    background: "#0f172a",
+    color: "white",
+    textDecoration: "none",
+    padding: isMobile ? "10px 12px" : "12px 14px",
+    borderRadius: 999,
+    boxShadow: "0 10px 25px rgba(15,23,42,0.18)",
+    fontSize: 13,
+    fontWeight: 700,
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+  }}
+>
+  Contattaci
+</a>
     </main>
   );
 }
