@@ -1020,7 +1020,7 @@ const login = async () => {
         letterSpacing: 0.5,
       }}
     >
-      NEW
+      Prossimo evento
     </span>
   </span>
 ) : null}
