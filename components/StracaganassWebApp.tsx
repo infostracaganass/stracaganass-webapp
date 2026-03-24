@@ -873,7 +873,7 @@ const login = async () => {
      <div
   style={{
     display: "grid",
-    gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr",
+    gridTemplateColumns: "1fr",
     gap: 24,
     marginTop: 24,
     alignItems: "start",
