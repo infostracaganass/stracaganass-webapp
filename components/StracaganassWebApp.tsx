@@ -1057,7 +1057,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
       padding: "4px 8px",
     }}
   >
-    Prossimo evento
+    NEXT
   </span>
 ) : null}
 
