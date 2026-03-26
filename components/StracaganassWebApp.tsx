@@ -1020,7 +1020,7 @@ const login = async () => {
         letterSpacing: 0.5,
       }}
     >
-      New
+      NEW
     </span>
   </span>
 ) : null}
