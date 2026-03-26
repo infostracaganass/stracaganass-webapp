@@ -1027,7 +1027,10 @@ const login = async () => {
 </h2>
 </div>
             <div style={{ display: "grid", gap: 16 }}>
-              {news.map((item) => (
+  {bootLoading ? (
+    <div>Caricamento news...</div>
+  ) : news.length ? (
+    news.map((item) => (
                 <Card key={item.id}>
                   <div
   style={{
@@ -1091,8 +1094,11 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                     ) : null}
                   </div>
                 </Card>
-              ))}
-            </div>
+              ))
+  ) : (
+    <div>Nessuna news disponibile.</div>
+  )}
+</div>
           </section>
           
           <section
