@@ -348,6 +348,7 @@ const [hasNewNews, setHasNewNews] = useState(false);
   const [bootLoading, setBootLoading] = useState(true);
   const [error, setError] = useState("");
   const [deletingId, setDeletingId] = useState("");
+  const [sponsorLogos, setSponsorLogos] = useState<string[]>([]);
 
  useEffect(() => {
   async function initOneSignal() {
