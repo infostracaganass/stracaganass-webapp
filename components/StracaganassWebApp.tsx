@@ -927,53 +927,57 @@ const login = async () => {
       </motion.section>
 
 <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
-  <Card>
-    <div
-      style={{
-        padding: isMobile ? "10px 12px" : "12px 16px",
-        overflow: "hidden",
-        background: "white",
-      }}
-    >
+  <div style={{ marginTop: 16 }}>
+    <Card>
       <div
         style={{
-          display: "flex",
-          gap: 18,
-          alignItems: "center",
-          width: "max-content",
-          animation: "stracappSponsorScroll 40s linear infinite",
+          padding: isMobile ? 12 : 16,
+          overflow: "hidden",
+          borderRadius: 24,
+          background: "white",
         }}
       >
-        {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
-          <div
-            key={`${logo}-${index}`}
-            style={{
-              flex: "0 0 auto",
-              height: isMobile ? 40 : 52,
-              width: isMobile ? 90 : 130,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "white",
-              borderRadius: 12,
-              padding: 6,
-            }}
-          >
-            <img
-              src={logo}
-              alt="Sponsor"
+        <div
+          style={{
+            display: "flex",
+            width: "max-content",
+            alignItems: "center",
+            gap: isMobile ? 14 : 18,
+            animation: "stracappSponsorScroll 35s linear infinite",
+            WebkitAnimation: "stracappSponsorScroll 35s linear infinite",
+          }}
+        >
+          {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
+            <div
+              key={`${logo}-${index}`}
               style={{
-                maxHeight: "100%",
-                maxWidth: "100%",
-                objectFit: "contain",
-                display: "block",
+                flex: "0 0 auto",
+                height: isMobile ? 44 : 54,
+                width: isMobile ? 90 : 130,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: 14,
+                background: "white",
+                padding: 6,
               }}
-            />
-          </div>
-        ))}
+            >
+              <img
+                src={logo}
+                alt="Sponsor"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </Card>
+    </Card>
+  </div>
 </motion.section>
       
       {error ? (
