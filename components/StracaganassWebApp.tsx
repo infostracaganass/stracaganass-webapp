@@ -423,6 +423,10 @@ const isAndroid =
 }, []);
 
 useEffect(() => {
+  setSponsorLogos(shuffleArray(SPONSOR_LOGOS));
+}, []);
+  
+useEffect(() => {
   const checkPushStatus = async () => {
     if (typeof window === "undefined") return;
 
