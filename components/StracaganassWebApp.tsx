@@ -131,6 +131,51 @@ function buildCalendarLink(item: EventItem) {
   }
 }
 
+const SPONSOR_LOGOS = [
+  "/sponsors/1.png",
+  "/sponsors/2.png",
+  "/sponsors/3.png",
+  "/sponsors/4.png",
+  "/sponsors/5.png",
+  "/sponsors/6.png",
+  "/sponsors/7.png",
+  "/sponsors/8.png",
+  "/sponsors/9.png",
+  "/sponsors/10.png",
+  "/sponsors/11.png",
+  "/sponsors/12.png",
+  "/sponsors/13.png",
+  "/sponsors/14.png",
+  "/sponsors/15.png",
+  "/sponsors/16.png",
+  "/sponsors/17.png",
+  "/sponsors/18.png",
+  "/sponsors/19.png",
+  "/sponsors/20.png",
+  "/sponsors/21.png",
+  "/sponsors/22.png",
+  "/sponsors/23.png",
+  "/sponsors/24.png",
+  "/sponsors/25.png",
+  "/sponsors/26.png",
+  "/sponsors/27.png",
+  "/sponsors/28.png",
+  "/sponsors/29.png",
+  "/sponsors/30.png",
+  "/sponsors/31.png",
+];
+
+function shuffleArray<T>(array: T[]) {
+  const copy = [...array];
+
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
 async function apiFetch<T>(url: string, options?: RequestInit): Promise<T> {
   const response = await fetch(url, {
     credentials: "include",
