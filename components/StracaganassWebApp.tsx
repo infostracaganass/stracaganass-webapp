@@ -1400,6 +1400,21 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </span>
 ) : null}
 
+                {visibleEvents[0]?.id === item.id && getEventCountdown(item.date, item.time) ? (
+  <span
+    style={{
+      fontSize: 11,
+      fontWeight: 700,
+      color: "#0369a1",
+      background: "#e0f2fe",
+      borderRadius: 999,
+      padding: "4px 8px",
+    }}
+  >
+    {getEventCountdown(item.date, item.time)}
+  </span>
+) : null}
+
                 {eventIsToday ? (
                   <span
                     style={{
