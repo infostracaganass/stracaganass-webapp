@@ -349,6 +349,8 @@ const [hasNewNews, setHasNewNews] = useState(false);
   const [error, setError] = useState("");
   const [deletingId, setDeletingId] = useState("");
   const [sponsorLogos, setSponsorLogos] = useState<string[]>([]);
+  const sponsorTrackRef = useRef<HTMLDivElement | null>(null);
+const [sponsorScrollDistance, setSponsorScrollDistance] = useState(0);
 
  useEffect(() => {
   async function initOneSignal() {
