@@ -914,6 +914,56 @@ const login = async () => {
 </Card>
       </motion.section>
 
+<motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
+  <Card>
+    <div
+      style={{
+        padding: isMobile ? "10px 12px" : "12px 16px",
+        overflow: "hidden",
+        background: "white",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          gap: 18,
+          alignItems: "center",
+          width: "max-content",
+          animation: "stracappSponsorScroll 40s linear infinite",
+        }}
+      >
+        {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
+          <div
+            key={`${logo}-${index}`}
+            style={{
+              flex: "0 0 auto",
+              height: isMobile ? 40 : 52,
+              width: isMobile ? 90 : 130,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "white",
+              borderRadius: 12,
+              padding: 6,
+            }}
+          >
+            <img
+              src={logo}
+              alt="Sponsor"
+              style={{
+                maxHeight: "100%",
+                maxWidth: "100%",
+                objectFit: "contain",
+                display: "block",
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </Card>
+</motion.section>
+      
       {error ? (
         <div style={{ marginTop: 16, color: "#b91c1c", background: "#fef2f2", border: "1px solid #fecaca", padding: 14, borderRadius: 16 }}>
           {error}
