@@ -866,18 +866,7 @@ const login = async () => {
     width: "100%",
   }}
 >
-      <style>
-  {`
-    @keyframes stracappSponsorScroll {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(-50%, 0, 0);
-      }
-    }
-  `}
-</style>
+      
       <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
   <div style={{ padding: 24 }}>
