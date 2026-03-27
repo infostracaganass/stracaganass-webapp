@@ -1405,8 +1405,8 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     style={{
       fontSize: 11,
       fontWeight: 700,
-      color: "#0369a1",
-      background: "#e0f2fe",
+      color: "#1d4ed8",
+      background: "#dbeafe",
       borderRadius: 999,
       padding: "4px 8px",
     }}
