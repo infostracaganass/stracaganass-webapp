@@ -98,6 +98,31 @@ function formatDate(dateString: string) {
   }
 }
 
+function getEventCountdown(dateString: string, time?: string | null) {
+  try {
+    const eventDate = new Date(`${dateString}T${time || "00:00"}`);
+    const now = new Date();
+
+    const diff = eventDate.getTime() - now.getTime();
+
+    if (diff <= 0) return null;
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(hours / 24);
+
+    if (days === 0 && hours < 24) {
+      if (hours <= 1) return "oggi";
+      return `-${hours} ore`;
+    }
+
+    if (days === 1) return "domani";
+
+    return `-${days} giorni`;
+  } catch {
+    return null;
+  }
+}
+
 function isToday(dateString: string) {
   try {
     const today = new Date();
