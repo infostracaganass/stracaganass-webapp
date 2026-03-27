@@ -427,6 +427,23 @@ const isAndroid =
 useEffect(() => {
   setSponsorLogos(shuffleArray(SPONSOR_LOGOS));
 }, []);
+
+  useEffect(() => {
+  const updateSponsorScrollDistance = () => {
+    const track = sponsorTrackRef.current;
+    if (!track) return;
+
+    setSponsorScrollDistance(track.scrollWidth / 2);
+  };
+
+  updateSponsorScrollDistance();
+
+  window.addEventListener("resize", updateSponsorScrollDistance);
+
+  return () => {
+    window.removeEventListener("resize", updateSponsorScrollDistance);
+  };
+}, [sponsorLogos, isMobile]);
   
 useEffect(() => {
   const checkPushStatus = async () => {
