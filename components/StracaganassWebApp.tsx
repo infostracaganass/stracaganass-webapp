@@ -946,7 +946,7 @@ const login = async () => {
       </motion.section>
 
 <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
-  <div style={{ marginTop: 16 }}>
+  <div style={{ marginTop: 24 }}>
     <Card>
       <div
         style={{
@@ -956,44 +956,90 @@ const login = async () => {
           background: "white",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            width: "max-content",
-            alignItems: "center",
-            gap: isMobile ? 14 : 18,
-            animation: "stracappSponsorScroll 35s linear infinite",
-            WebkitAnimation: "stracappSponsorScroll 35s linear infinite",
-          }}
-        >
-          {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
-            <div
-              key={`${logo}-${index}`}
-              style={{
-                flex: "0 0 auto",
-                height: isMobile ? 44 : 54,
-                width: isMobile ? 90 : 130,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                borderRadius: 14,
-                background: "white",
-                padding: 6,
-              }}
-            >
-              <img
-                src={logo}
-                alt="Sponsor"
+        {sponsorScrollDistance > 0 ? (
+          <motion.div
+            ref={sponsorTrackRef}
+            animate={{ x: [0, -sponsorScrollDistance] }}
+            transition={{
+              ease: "linear",
+              duration: 35,
+              repeat: Infinity,
+            }}
+            style={{
+              display: "flex",
+              width: "max-content",
+              alignItems: "center",
+              gap: isMobile ? 14 : 18,
+              willChange: "transform",
+            }}
+          >
+            {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
+              <div
+                key={`${logo}-${index}`}
                 style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                  display: "block",
+                  flex: "0 0 auto",
+                  height: isMobile ? 44 : 54,
+                  width: isMobile ? 90 : 130,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 14,
+                  background: "white",
+                  padding: 6,
                 }}
-              />
-            </div>
-          ))}
-        </div>
+              >
+                <img
+                  src={logo}
+                  alt="Sponsor"
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    objectFit: "contain",
+                    display: "block",
+                  }}
+                />
+              </div>
+            ))}
+          </motion.div>
+        ) : (
+          <div
+            ref={sponsorTrackRef}
+            style={{
+              display: "flex",
+              width: "max-content",
+              alignItems: "center",
+              gap: isMobile ? 14 : 18,
+            }}
+          >
+            {[...sponsorLogos, ...sponsorLogos].map((logo, index) => (
+              <div
+                key={`${logo}-${index}`}
+                style={{
+                  flex: "0 0 auto",
+                  height: isMobile ? 44 : 54,
+                  width: isMobile ? 90 : 130,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 14,
+                  background: "white",
+                  padding: 6,
+                }}
+              >
+                <img
+                  src={logo}
+                  alt="Sponsor"
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    objectFit: "contain",
+                    display: "block",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </Card>
   </div>
