@@ -1710,58 +1710,157 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
        
         <aside style={{ display: "grid", gap: 24, alignSelf: "start" }}>
           <Card>
-            <div style={{ padding: 24, background: "#0f172a", color: "white", borderRadius: 24 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                <Lock size={18} color="#fde68a" />
-                <strong>Area amministratore</strong>
+  <div
+    style={{
+      padding: 24,
+      background: "#0f172a",
+      color: "white",
+      borderRadius: 24,
+    }}
+  >
+    <button
+      onClick={() => setAdminPanelOpen((value) => !value)}
+      style={{
+        width: "100%",
+        background: "transparent",
+        border: "none",
+        color: "white",
+        padding: 0,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 12,
+        textAlign: "left",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <Lock size={18} color="#fde68a" />
+        <strong>Area amministratore</strong>
+      </div>
+
+      {adminPanelOpen ? (
+        <ChevronUp size={18} color="#cbd5e1" />
+      ) : (
+        <ChevronDown size={18} color="#cbd5e1" />
+      )}
+    </button>
+
+    {adminPanelOpen ? (
+      <div style={{ marginTop: 16 }}>
+        {!admin ? (
+          <div style={{ display: "grid", gap: 12 }}>
+            <p style={{ color: "#cbd5e1", margin: 0 }}>
+              Modifica eventi e ultime info
+            </p>
+            <Field label="Password amministratore">
+              <TextInput
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Field>
+            <Button variant="secondary" onClick={() => void login()} disabled={loading}>
+              {loading ? <Loader2 size={16} /> : null} Accedi
+            </Button>
+          </div>
+        ) : (
+          <div style={{ display: "grid", gap: 20 }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: 12,
+                background: "rgba(255,255,255,0.06)",
+                padding: 12,
+                borderRadius: 16,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#86efac" }}>
+                <ShieldCheck size={16} /> Sessione attiva
               </div>
-
-              {!admin ? (
-                <div style={{ display: "grid", gap: 12 }}>
-                  <p style={{ color: "#cbd5e1", margin: 0 }}>
-                    
-                  </p>
-                  <Field label="Password amministratore">
-                    <TextInput type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                  </Field>
-                  <Button variant="secondary" onClick={() => void login()} disabled={loading}>
-                    {loading ? <Loader2 size={16} /> : null} Accedi
-                  </Button>
-                </div>
-              ) : (
-                <div style={{ display: "grid", gap: 20 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, background: "rgba(255,255,255,0.06)", padding: 12, borderRadius: 16 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#86efac" }}>
-                      <ShieldCheck size={16} /> Sessione attiva
-                    </div>
-                    <Button variant="outline" onClick={() => void logout()}>
-                      <LogOut size={16} /> Esci
-                    </Button>
-                  </div>
-
-                  <div style={{ display: "grid", gap: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}><Plus size={16} /> Nuovo evento</div>
-                    <Field label="Titolo"><TextInput value={eventForm.title} onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })} /></Field>
-                    <Field label="Data"><TextInput type="date" value={eventForm.date} onChange={(e) => setEventForm({ ...eventForm, date: e.target.value })} /></Field>
-                    <Field label="Ora"><TextInput type="time" value={eventForm.time} onChange={(e) => setEventForm({ ...eventForm, time: e.target.value })} /></Field>
-                    <Field label="Luogo"><TextInput value={eventForm.place} onChange={(e) => setEventForm({ ...eventForm, place: e.target.value })} /></Field>
-                    <Field label="Descrizione"><TextArea value={eventForm.description} onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })} /></Field>
-                    <Button onClick={() => void addEvent()} disabled={loading}>{loading ? <Loader2 size={16} /> : null} Aggiungi evento</Button>
-                  </div>
-
-                  <div style={{ height: 1, background: "rgba(255,255,255,0.12)" }} />
-
-                  <div style={{ display: "grid", gap: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}><Newspaper size={16} /> Nuova notizia</div>
-                    <Field label="Titolo"><TextInput value={newsForm.title} onChange={(e) => setNewsForm({ ...newsForm, title: e.target.value })} /></Field>
-                    <Field label="Data"><TextInput type="date" value={newsForm.date} onChange={(e) => setNewsForm({ ...newsForm, date: e.target.value })} /></Field>
-                    <Field label="Testo"><TextArea value={newsForm.body} onChange={(e) => setNewsForm({ ...newsForm, body: e.target.value })} /></Field>
-                    <Button variant="secondary" onClick={() => void addNews()} disabled={loading}>{loading ? <Loader2 size={16} /> : null} Aggiungi notizia</Button>
-                  </div>
-                </div>
-              )}
+              <Button variant="outline" onClick={() => void logout()}>
+                <LogOut size={16} /> Esci
+              </Button>
             </div>
-          </Card>
+
+            <div style={{ display: "grid", gap: 12 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
+                <Plus size={16} /> Nuovo evento
+              </div>
+              <Field label="Titolo">
+                <TextInput
+                  value={eventForm.title}
+                  onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
+                />
+              </Field>
+              <Field label="Data">
+                <TextInput
+                  type="date"
+                  value={eventForm.date}
+                  onChange={(e) => setEventForm({ ...eventForm, date: e.target.value })}
+                />
+              </Field>
+              <Field label="Ora">
+                <TextInput
+                  type="time"
+                  value={eventForm.time}
+                  onChange={(e) => setEventForm({ ...eventForm, time: e.target.value })}
+                />
+              </Field>
+              <Field label="Luogo">
+                <TextInput
+                  value={eventForm.place}
+                  onChange={(e) => setEventForm({ ...eventForm, place: e.target.value })}
+                />
+              </Field>
+              <Field label="Descrizione">
+                <TextArea
+                  value={eventForm.description}
+                  onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
+                />
+              </Field>
+              <Button onClick={() => void addEvent()} disabled={loading}>
+                {loading ? <Loader2 size={16} /> : null} Aggiungi evento
+              </Button>
+            </div>
+
+            <div style={{ height: 1, background: "rgba(255,255,255,0.12)" }} />
+
+            <div style={{ display: "grid", gap: 12 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
+                <Newspaper size={16} /> Nuova notizia
+              </div>
+              <Field label="Titolo">
+                <TextInput
+                  value={newsForm.title}
+                  onChange={(e) => setNewsForm({ ...newsForm, title: e.target.value })}
+                />
+              </Field>
+              <Field label="Data">
+                <TextInput
+                  type="date"
+                  value={newsForm.date}
+                  onChange={(e) => setNewsForm({ ...newsForm, date: e.target.value })}
+                />
+              </Field>
+              <Field label="Testo">
+                <TextArea
+                  value={newsForm.body}
+                  onChange={(e) => setNewsForm({ ...newsForm, body: e.target.value })}
+                />
+              </Field>
+              <Button variant="secondary" onClick={() => void addNews()} disabled={loading}>
+                {loading ? <Loader2 size={16} /> : null} Aggiungi notizia
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    ) : null}
+  </div>
+</Card>
 
          
         </aside>
