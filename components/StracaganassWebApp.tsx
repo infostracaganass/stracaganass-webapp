@@ -798,8 +798,9 @@ const login = async () => {
         body: JSON.stringify({ password }),
       });
       setAdmin(true);
-      setPassword("");
-      setError("");
+setAdminPanelOpen(true);
+setPassword("");
+setError("");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Accesso non riuscito.");
     } finally {
