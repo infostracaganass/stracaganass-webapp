@@ -809,16 +809,18 @@ setError("");
   };
 
   const logout = async () => {
-    setLoading(true);
-    try {
-      await apiFetch<{ ok: true }>("/api/admin/logout", { method: "POST" });
-      setAdmin(false);
-    } catch {
-      setAdmin(false);
-    } finally {
-      setLoading(false);
-    }
-  };
+  setLoading(true);
+  try {
+    await apiFetch<{ ok: true }>("/api/admin/logout", { method: "POST" });
+    setAdmin(false);
+    setAdminPanelOpen(false);
+  } catch {
+    setAdmin(false);
+    setAdminPanelOpen(false);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const addEvent = async () => {
     if (!eventForm.title || !eventForm.date) {
