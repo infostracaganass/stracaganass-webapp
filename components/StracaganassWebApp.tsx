@@ -1561,13 +1561,33 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
               {config.links.map((link) => (
                 <a href={link.url} target="_blank" rel="noreferrer" key={link.id}>
                   <Card>
-                    <div style={{ padding: 20, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-                      <div>
-                        <div style={{ fontWeight: 800 }}>{link.label}</div>
-                        <div style={{ fontSize: 14, color: "#64748b" }}>Apri collegamento</div>
-                      </div>
-                      <ExternalLink size={16} color="#0369a1" />
-                    </div>
+                    <div
+  style={{
+    padding: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+  }}
+>
+  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    
+    {/* ICONA DINAMICA */}
+    {link.id === "site" && <Globe size={18} color="#0369a1" />}
+    {link.id === "facebook" && <Facebook size={18} color="#1877F2" />}
+    {link.id === "instagram" && <Instagram size={18} color="#E1306C" />}
+    {link.id === "whatsapp" && <MessageCircle size={18} color="#25D366" />}
+
+    <div>
+      <div style={{ fontWeight: 800 }}>{link.label}</div>
+      <div style={{ fontSize: 14, color: "#64748b" }}>
+        Apri collegamento
+      </div>
+    </div>
+  </div>
+
+  <ExternalLink size={16} color="#0369a1" />
+</div>
                   </Card>
                 </a>
               ))}
