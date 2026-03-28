@@ -24,6 +24,10 @@ import {
   Smartphone,
   Trash2,
   AlertTriangle,
+  Globe,
+Facebook,
+Instagram,
+MessageCircle,
   XCircle,
 } from "lucide-react";
 
