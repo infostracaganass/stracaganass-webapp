@@ -373,6 +373,7 @@ const [hasNewNews, setHasNewNews] = useState(false);
   const [pushEnabled, setPushEnabled] = useState(false);
   const [admin, setAdmin] = useState(false);
   const [password, setPassword] = useState("");
+  const [adminPanelOpen, setAdminPanelOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [bootLoading, setBootLoading] = useState(true);
   const [error, setError] = useState("");
