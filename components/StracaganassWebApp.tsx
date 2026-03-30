@@ -1797,32 +1797,52 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     }}
   >
     <button
-      onClick={() => setAdminPanelOpen((value) => !value)}
+  onClick={() => setAdminPanelOpen((value) => !value)}
+  style={{
+    width: "100%",
+    background: "transparent",
+    border: "none",
+    color: "white",
+    padding: 0,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 16,
+    textAlign: "left",
+  }}
+>
+  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+    <div
       style={{
-        width: "100%",
-        background: "transparent",
-        border: "none",
-        color: "white",
-        padding: 0,
-        cursor: "pointer",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.18)",
+        borderRadius: 16,
+        padding: 10,
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        gap: 12,
-        textAlign: "left",
+        justifyContent: "center",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-        <Lock size={18} color="#fde68a" />
-        <strong>Area amministratore</strong>
-      </div>
+      <Lock size={18} color="#fde68a" />
+    </div>
 
-      {adminPanelOpen ? (
-        <ChevronUp size={18} color="#cbd5e1" />
-      ) : (
-        <ChevronDown size={18} color="#cbd5e1" />
-      )}
-    </button>
+    <div>
+      <div style={{ fontWeight: 700, color: "white" }}>
+        Area amministratore
+      </div>
+      <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+        Effettua il login
+      </div>
+    </div>
+  </div>
+
+  {adminPanelOpen ? (
+    <ChevronUp size={18} color="#cbd5e1" />
+  ) : (
+    <ChevronDown size={18} color="#cbd5e1" />
+  )}
+</button>
 
     {adminPanelOpen ? (
       <div style={{ marginTop: 16 }}>
