@@ -357,6 +357,7 @@ export default function StracaganassWebApp() {
 const [deviceRegistered, setDeviceRegistered] = useState(false);
 const [subscriptionActive, setSubscriptionActive] = useState(false);
 const [showIosHelp, setShowIosHelp] = useState(false);
+  const [installPanelOpen, setInstallPanelOpen] = useState(false);
   const [checkingNotifications, setCheckingNotifications] = useState(false);
   const [verificationDone, setVerificationDone] = useState(false);
   const [notificationsPanelOpen, setNotificationsPanelOpen] = useState(false);
