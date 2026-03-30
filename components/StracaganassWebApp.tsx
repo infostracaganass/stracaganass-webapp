@@ -625,6 +625,8 @@ const newsSignature = useMemo(() => {
 }, [bootLoading, hasNewEvents, hasNewNews, eventsSignature, newsSignature]);
 
 const handleInstallClick = async () => {
+  setInstallPanelOpen(true);
+
   if (isIos) {
     setShowIosHelp(true);
     return;
