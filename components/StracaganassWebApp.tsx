@@ -24,7 +24,6 @@ import {
   Smartphone,
   Trash2,
   AlertTriangle,
-  Lock,
   Globe,
 Facebook,
 Instagram,
