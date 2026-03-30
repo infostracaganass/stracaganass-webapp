@@ -1607,112 +1607,152 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
         </div>
 
           <Card>
-            <div style={{ padding: 24, display: "flex", justifyContent: "space-between", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
-              <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                <div style={{ background: "white", border: "1px solid #fde68a", borderRadius: 16, padding: 10 }}>
-                  <Bell size={18} color="#d97706" />
-                </div>
-                <div>
-                  <div style={{ fontWeight: 700 }}>Status delle notifiche push</div>
-                  <div style={{ color: "#64748b", fontSize: 14 }}>
-                    Attiva le notifiche per rimanere aggiornato 
-                  </div>
-                </div>
-              </div>
-              <div
-  style={{
-    display: "flex",
-    flexWrap: "wrap",
-    gap: 10,
-    marginTop: 12,
-  }}
->
-  <Button onClick={() => void enableNotifications()} disabled={loading || pushEnabled}>
-    {loading ? <Loader2 size={16} /> : null}
-    {pushEnabled ? (
-      <>
-        <CheckCircle size={16} /> Notifiche attive
-      </>
-    ) : (
-      "Attiva notifiche"
-    )}
-  </Button>
-
-  <Button
-    variant="outline"
-    onClick={() => void verifyNotifications()}
-    disabled={checkingNotifications}
-  >
-    {checkingNotifications ? <Loader2 size={16} /> : null}
-    Verifica
-  </Button>
-</div>
-
-{!verificationDone ? (
-  <div
-    style={{
-      marginTop: 10,
-      display: "grid",
-      gap: 6,
-      fontSize: 13,
-      fontWeight: 600,
-    }}
-  >
-    <div
+  <div style={{ padding: 24 }}>
+    <button
+      onClick={() => setNotificationsPanelOpen((value) => !value)}
       style={{
+        width: "100%",
+        background: "transparent",
+        border: "none",
+        padding: 0,
+        cursor: "pointer",
         display: "flex",
         alignItems: "center",
-        gap: 6,
-        color: browserPermissionGranted ? "#15803d" : "#b91c1c",
+        justifyContent: "space-between",
+        gap: 16,
+        textAlign: "left",
       }}
     >
-      {browserPermissionGranted ? <CheckCircle size={14} /> : <XCircle size={14} />}
-      Browser autorizzato
-    </div>
+      <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+        <div
+          style={{
+            background: "white",
+            border: "1px solid #fde68a",
+            borderRadius: 16,
+            padding: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Bell size={18} color="#d97706" />
+        </div>
 
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 6,
-        color: deviceRegistered ? "#15803d" : "#b91c1c",
-      }}
-    >
-      {deviceRegistered ? <CheckCircle size={14} /> : <XCircle size={14} />}
-      Device registrato
-    </div>
+        <div>
+          <div style={{ fontWeight: 700, color: "#0f172a" }}>
+            Status delle notifiche push
+          </div>
+          <div style={{ color: "#64748b", fontSize: 14 }}>
+            Attiva le notifiche per rimanere aggiornato
+          </div>
+        </div>
+      </div>
 
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 6,
-        color: subscriptionActive ? "#15803d" : "#b91c1c",
-      }}
-    >
-      {subscriptionActive ? <CheckCircle size={14} /> : <XCircle size={14} />}
-      Subscription attiva
-    </div>
+      {notificationsPanelOpen ? (
+        <ChevronUp size={18} color="#64748b" />
+      ) : (
+        <ChevronDown size={18} color="#64748b" />
+      )}
+    </button>
+
+    {notificationsPanelOpen ? (
+      <div style={{ marginTop: 16 }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 10,
+            marginTop: 12,
+          }}
+        >
+          <Button onClick={() => void enableNotifications()} disabled={loading || pushEnabled}>
+            {loading ? <Loader2 size={16} /> : null}
+            {pushEnabled ? (
+              <>
+                <CheckCircle size={16} /> Notifiche attive
+              </>
+            ) : (
+              "Attiva notifiche"
+            )}
+          </Button>
+
+          <Button
+            variant="outline"
+            onClick={() => void verifyNotifications()}
+            disabled={checkingNotifications}
+          >
+            {checkingNotifications ? <Loader2 size={16} /> : null}
+            Verifica
+          </Button>
+        </div>
+
+        {!verificationDone ? (
+          <div
+            style={{
+              marginTop: 10,
+              display: "grid",
+              gap: 6,
+              fontSize: 13,
+              fontWeight: 600,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                color: browserPermissionGranted ? "#15803d" : "#b91c1c",
+              }}
+            >
+              {browserPermissionGranted ? <CheckCircle size={14} /> : <XCircle size={14} />}
+              Browser autorizzato
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                color: deviceRegistered ? "#15803d" : "#b91c1c",
+              }}
+            >
+              {deviceRegistered ? <CheckCircle size={14} /> : <XCircle size={14} />}
+              Device registrato
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                color: subscriptionActive ? "#15803d" : "#b91c1c",
+              }}
+            >
+              {subscriptionActive ? <CheckCircle size={14} /> : <XCircle size={14} />}
+              Subscription attiva
+            </div>
+          </div>
+        ) : (
+          <div
+            style={{
+              marginTop: 10,
+              fontSize: 14,
+              fontWeight: 700,
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              color: verificationOk ? "#15803d" : "#b45309",
+            }}
+          >
+            {verificationOk ? <CheckCircle size={16} /> : <AlertTriangle size={16} />}
+            {verificationOk
+              ? "Sistema notifiche pronto"
+              : "Problema con configurazione notifiche"}
+          </div>
+        )}
+      </div>
+    ) : null}
   </div>
-) : (
-  <div
-    style={{
-      marginTop: 10,
-      fontSize: 14,
-      fontWeight: 700,
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      color: verificationOk ? "#15803d" : "#b45309",
-    }}
-  >
-    {verificationOk ? <CheckCircle size={16} /> : <AlertTriangle size={16} />}
-    {verificationOk
-      ? "Sistema notifiche pronto"
-      : "Problema con configurazione notifiche"}
-  </div>
-)}
-</div>
 </Card>
        
         <aside style={{ display: "grid", gap: 24, alignSelf: "start" }}>
