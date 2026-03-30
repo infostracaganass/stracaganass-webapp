@@ -24,6 +24,7 @@ import {
   Smartphone,
   Trash2,
   AlertTriangle,
+  Lock,
   Globe,
 Facebook,
 Instagram,
@@ -86,7 +87,12 @@ const DEFAULT_CONFIG: Config = {
     id: "whatsapp",
     label: "WhatsApp canale",
     url: "https://whatsapp.com/channel/0029Va9XWFk11ulQK0DMLc0R"
-  }
+  },
+    {
+  id: "area_soci",
+  label: "Area soci",
+  url: "https://stracaganass0.wordpress.com/area-soci/"
+}
 ],
 };
 
@@ -1581,6 +1587,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     {link.id === "facebook" && <Facebook size={18} color="#1877F2" />}
     {link.id === "instagram" && <Instagram size={18} color="#E1306C" />}
     {link.id === "whatsapp" && <MessageCircle size={18} color="#25D366" />}
+    {link.id === "area_soci" && <Lock size={18} color="#0f172a" />}
 
     <div>
       <div style={{ fontWeight: 800 }}>{link.label}</div>
