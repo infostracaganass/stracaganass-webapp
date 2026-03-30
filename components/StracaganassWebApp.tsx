@@ -1798,7 +1798,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
         {!admin ? (
           <div style={{ display: "grid", gap: 12 }}>
             <p style={{ color: "#cbd5e1", margin: 0 }}>
-              Modifica eventi e ultime info
+              
             </p>
             <Field label="Password amministratore">
               <TextInput
