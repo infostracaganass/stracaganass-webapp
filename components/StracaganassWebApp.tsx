@@ -1643,7 +1643,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
             Status delle notifiche push
           </div>
           <div style={{ color: "#64748b", fontSize: 14 }}>
-            Attiva le notifiche per rimanere aggiornato
+            Attiva le notifiche push
           </div>
         </div>
       </div>
