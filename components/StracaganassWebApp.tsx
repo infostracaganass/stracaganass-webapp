@@ -1094,102 +1094,130 @@ setError("");
         <div style={{ display: "grid", gap: 24 }}>
 
           {!appInstalled ? (
-          <Card>
-  <div
-    style={{
-      padding: 20,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      gap: 16,
-      flexWrap: "wrap",
-      background: "white",
-      borderRadius: 20,
-    }}
-  >
-    <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-      <div
-  style={{
-    background: "white",
-    border: "1px solid #bae6fd",
-    borderRadius: 16,
-    padding: 10,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }}
->
-  <Smartphone size={20} color="#0369a1" />
-</div>
+  <Card>
+    <div style={{ padding: 24 }}>
+      <button
+        onClick={() => setInstallPanelOpen((value) => !value)}
+        style={{
+          width: "100%",
+          background: "transparent",
+          border: "none",
+          padding: 0,
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          textAlign: "left",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div
+            style={{
+              background: "white",
+              border: "1px solid #bae6fd",
+              borderRadius: 16,
+              padding: 10,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Smartphone size={20} color="#0369a1" />
+          </div>
 
-      <div>
-        <div style={{ fontWeight: 800, fontSize: 18 }}>
-          Installa StracAPP
+          <div>
+            <div style={{ fontWeight: 700, color: "#0f172a" }}>
+              Installa StracAPP
+            </div>
+
+            <div style={{ color: "#64748b", fontSize: 14 }}>
+              Per sistemi iPhone o Android
+            </div>
+          </div>
         </div>
 
-        <div style={{ fontSize: 14, color: "#64748b" }}>
-          Per sistemi iPhone o Android
+        {installPanelOpen ? (
+          <ChevronUp size={18} color="#64748b" />
+        ) : (
+          <ChevronDown size={18} color="#64748b" />
+        )}
+      </button>
+
+      {installPanelOpen ? (
+        <div style={{ marginTop: 16 }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 10,
+              marginTop: 12,
+            }}
+          >
+            <Button
+              onClick={() => void handleInstallClick()}
+              disabled={appInstalled}
+            >
+              {appInstalled ? (
+                <>
+                  <CheckCircle size={16} /> Installato
+                </>
+              ) : (
+                "Guida installazione"
+              )}
+            </Button>
+          </div>
+
+          {installChecked && appInstalled ? (
+            <div
+              style={{
+                marginTop: 8,
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                color: "#15803d",
+                fontSize: 13,
+                fontWeight: 600,
+              }}
+            >
+              <CheckCircle size={14} /> Webapp installata correttamente
+            </div>
+          ) : null}
+
+          {showIosHelp ? (
+            <div
+              style={{
+                marginTop: 16,
+                background: "#fff7ed",
+                border: "1px solid #fed7aa",
+                borderRadius: 16,
+                padding: 16,
+                color: "#7c2d12",
+              }}
+            >
+              <strong>Installazione su iPhone</strong>
+
+              <ol style={{ marginTop: 8, paddingLeft: 18 }}>
+                <li>Aperto il link ricevuto in Safari</li>
+                <li>Tocca il pulsante Condividi</li>
+                <li>Seleziona “Aggiungi a schermata Home”</li>
+                <li>Conferma</li>
+              </ol>
+
+              <div style={{ marginTop: 12 }}>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowIosHelp(false)}
+                >
+                  Chiudi
+                </Button>
+              </div>
+            </div>
+          ) : null}
         </div>
-      </div>
+      ) : null}
     </div>
-
-  <Button
-  onClick={() => void handleInstallClick()}
-  disabled={appInstalled}
->
-  {appInstalled ? (
-    <>
-      <CheckCircle size={16} /> Installato
-    </>
-  ) : (
-    "Guida installazione"
-  )}
-</Button>
-    {installChecked && appInstalled ? (
-  <div
-    style={{
-      marginTop: 8,
-      display: "flex",
-      alignItems: "center",
-      gap: 6,
-      color: "#15803d",
-      fontSize: 13,
-      fontWeight: 600,
-    }}
-  >
-    <CheckCircle size={14} /> Webapp installata correttamente
-  </div>
-) : null}
-  </div>
-
-  {showIosHelp ? (
-    <div
-      style={{
-        marginTop: 16,
-        background: "#fff7ed",
-        border: "1px solid #fed7aa",
-        borderRadius: 16,
-        padding: 16,
-        color: "#7c2d12",
-      }}
-    >
-      <strong>Installazione su iPhone</strong>
-
-      <ol style={{ marginTop: 8, paddingLeft: 18 }}>
-        <li>Aperto il link ricevuto in Safari</li>
-        <li>Tocca il pulsante Condividi</li>
-        <li>Seleziona “Aggiungi a schermata Home”</li>
-        <li>Conferma</li>
-      </ol>
-
-      <div style={{ marginTop: 12 }}>
-        <Button variant="outline" onClick={() => setShowIosHelp(false)}>
-          Chiudi
-        </Button>
-      </div>
-    </div>
-  ) : null}
-</Card>
+  </Card>
 ) : null}
           
          <section
