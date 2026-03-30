@@ -359,6 +359,7 @@ const [subscriptionActive, setSubscriptionActive] = useState(false);
 const [showIosHelp, setShowIosHelp] = useState(false);
   const [checkingNotifications, setCheckingNotifications] = useState(false);
   const [verificationDone, setVerificationDone] = useState(false);
+  const [notificationsPanelOpen, setNotificationsPanelOpen] = useState(false);
   const [appInstalled, setAppInstalled] = useState(false);
 const [installChecked, setInstallChecked] = useState(false);
 const [verificationOk, setVerificationOk] = useState(false);
