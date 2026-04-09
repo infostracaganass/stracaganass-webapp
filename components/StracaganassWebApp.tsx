@@ -354,8 +354,8 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 const ENABLE_TOP_ALERT_BANNER = true;
 
 const TOP_ALERT_BANNER = {
-  title: "Cerchiamo nuovi membri. Ti aspettiamo!",
-  body: "La Stracaganass cerca nuovi membri musicisti per la stagione 2026/2027. Se hai interesse, piacere, curiosità, puoi senza impegno mandare la tua richiesta di informazioni o adesione a sabrina.mottini@hotmail.com. Nel mese di giugno 2026 sarà previta una grigliata offerta per mostrare a tutte e tutti il mondo della guggen. Ti aspettiamo!",
+  title: "Unisciti alla Stracaganass!",
+  body: "La Stracaganass apre le porte a nuovi musicisti per la stagione 2026/2027. Curioso o interessato? Scrivici senza impegno a sabrina.mottini@hotmail.com. A giugno 2026 ti aspetta anche una grigliata offerta per scoprire il mondo della guggen. Vieni a conoscerci!",
 };
 
 export default function StracaganassWebApp() {
