@@ -29,6 +29,7 @@ Facebook,
 Instagram,
 MessageCircle,
   XCircle,
+  Info,
 } from "lucide-react";
 
 type EventItem = {
