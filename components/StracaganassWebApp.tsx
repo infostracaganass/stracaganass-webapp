@@ -831,6 +831,26 @@ const verifyNotifications = async () => {
   }
 };
 
+const loginMembersArea = () => {
+  if (memberPassword === "straca2026!") {
+    setMemberLoggedIn(true);
+    setMembersAreaOpen(true);
+    setMemberPassword("");
+    setMemberError("");
+    return;
+  }
+
+  setMemberLoggedIn(false);
+  setMemberError("Password soci non corretta.");
+};
+
+const logoutMembersArea = () => {
+  setMemberLoggedIn(false);
+  setMembersAreaOpen(false);
+  setMemberPassword("");
+  setMemberError("");
+};
+  
 const login = async () => {
     setLoading(true);
     try {
