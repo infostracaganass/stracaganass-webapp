@@ -1807,8 +1807,9 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
             </div>
           </section>
         </div>
-
-          <Card>
+       
+        <aside style={{ display: "grid", gap: 24, alignSelf: "start" }}>
+                    <Card>
   <div style={{ padding: 24 }}>
     <button
       onClick={() => setNotificationsPanelOpen((value) => !value)}
@@ -2079,9 +2080,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
       </div>
     ) : null}
   </div>
-</Card>
-       
-        <aside style={{ display: "grid", gap: 24, alignSelf: "start" }}>
+</Card>          
           <Card>
   <div
     style={{
