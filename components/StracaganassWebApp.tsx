@@ -1442,17 +1442,16 @@ setError("");
     <div>Caricamento news...</div>
   ) : news.length ? (
     news.map((item) => (
-                <Card key={item.id}>
-                  <div
-  style={{
-    padding: 20,
-    display: "grid",
-    gap: 10,
-    border: visibleEvents[0]?.id === item.id ? "2px solid #93c5fd" : "none",
-borderRadius: 20,
-background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
-  }}
->
+  <Card key={item.id}>
+    <div
+      style={{
+        padding: 20,
+        display: "grid",
+        gap: 10,
+        borderRadius: 20,
+        background: "white",
+      }}
+    >
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
   <div style={{ display: "grid", gap: 8 }}>
     <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
