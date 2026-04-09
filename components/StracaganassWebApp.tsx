@@ -351,6 +351,13 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
   );
 }
 
+const ENABLE_TOP_ALERT_BANNER = true;
+
+const TOP_ALERT_BANNER = {
+  title: "Cerchiamo nuovi membri. Ti aspettiamo!",
+  body: "La Stracaganass cerca nuovi membri musicisti per la stagione 2026/2027. Se hai interesse, piacere, curiosità, puoi senza impegno mandare la tua richiesta di informazioni o adesione a sabrina.mottini@hotmail.com. Nel mese di giugno 2026 sarà previta una grigliata offerta per mostrare a tutte e tutti il mondo della guggen. Ti aspettiamo!",
+};
+
 export default function StracaganassWebApp() {
   const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
