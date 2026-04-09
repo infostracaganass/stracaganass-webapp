@@ -1956,6 +1956,130 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     ) : null}
   </div>
 </Card>
+
+<Card>
+  <div
+    style={{
+      padding: 24,
+      background: "#0f172a",
+      color: "white",
+      borderRadius: 24,
+    }}
+  >
+    <button
+      onClick={() => setMembersAreaOpen((value) => !value)}
+      style={{
+        width: "100%",
+        background: "transparent",
+        border: "none",
+        color: "white",
+        padding: 0,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 16,
+        textAlign: "left",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.18)",
+            borderRadius: 16,
+            padding: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Lock size={18} color="#fde68a" />
+        </div>
+
+        <div>
+          <div style={{ fontWeight: 700, color: "white" }}>
+            Area soci
+          </div>
+          <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+            Effettua il login
+          </div>
+        </div>
+      </div>
+
+      {membersAreaOpen ? (
+        <ChevronUp size={18} color="#cbd5e1" />
+      ) : (
+        <ChevronDown size={18} color="#cbd5e1" />
+      )}
+    </button>
+
+    {membersAreaOpen ? (
+      <div style={{ marginTop: 16 }}>
+        {!memberLoggedIn ? (
+          <div style={{ display: "grid", gap: 12 }}>
+            <p style={{ color: "#cbd5e1", margin: 0 }}>
+              Accesso riservato ai soci
+            </p>
+
+            <Field label="Password area soci">
+              <TextInput
+                type="password"
+                value={memberPassword}
+                onChange={(e) => setMemberPassword(e.target.value)}
+              />
+            </Field>
+
+            {memberError ? (
+              <div
+                style={{
+                  color: "#fecaca",
+                  background: "rgba(127,29,29,0.35)",
+                  border: "1px solid rgba(248,113,113,0.35)",
+                  borderRadius: 12,
+                  padding: 10,
+                  fontSize: 14,
+                }}
+              >
+                {memberError}
+              </div>
+            ) : null}
+
+            <Button variant="secondary" onClick={loginMembersArea}>
+              Accedi
+            </Button>
+          </div>
+        ) : (
+          <div style={{ display: "grid", gap: 16 }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: 12,
+                background: "rgba(255,255,255,0.06)",
+                padding: 12,
+                borderRadius: 16,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#86efac" }}>
+                <ShieldCheck size={16} /> Sessione soci attiva
+              </div>
+
+              <Button variant="outline" onClick={logoutMembersArea}>
+                <LogOut size={16} /> Esci
+              </Button>
+            </div>
+
+            <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+              Area soci abilitata correttamente.
+            </div>
+          </div>
+        )}
+      </div>
+    ) : null}
+  </div>
+</Card>
        
         <aside style={{ display: "grid", gap: 24, alignSelf: "start" }}>
           <Card>
