@@ -372,6 +372,8 @@ const [showIosHelp, setShowIosHelp] = useState(false);
   const [appInstalled, setAppInstalled] = useState(false);
 const [installChecked, setInstallChecked] = useState(false);
 const [verificationOk, setVerificationOk] = useState(false);
+  const [showTopAlertBanner, setShowTopAlertBanner] = useState(ENABLE_TOP_ALERT_BANNER);
+const [topAlertBannerOpen, setTopAlertBannerOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
 useEffect(() => {
@@ -604,6 +606,11 @@ const newsSignature = useMemo(() => {
     .join("|");
 }, [news]);
 
+useEffect(() => {
+  setShowTopAlertBanner(ENABLE_TOP_ALERT_BANNER);
+  setTopAlertBannerOpen(false);
+}, []);
+  
   useEffect(() => {
   if (bootLoading || typeof window === "undefined") return;
 
