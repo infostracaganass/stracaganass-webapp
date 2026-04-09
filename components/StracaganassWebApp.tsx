@@ -2072,9 +2072,27 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
               </Button>
             </div>
 
-            <div style={{ color: "#cbd5e1", fontSize: 14 }}>
-              Area soci abilitata correttamente.
-            </div>
+            <div style={{ display: "grid", gap: 10 }}>
+  <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+    Area soci abilitata correttamente.
+  </div>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "1fr",
+      gap: 10,
+    }}
+  >
+    <Button variant="outline">
+      Presenze eventi
+    </Button>
+
+    <Button variant="outline">
+      Materiale soci
+    </Button>
+  </div>
+</div>
           </div>
         )}
       </div>
