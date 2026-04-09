@@ -87,12 +87,7 @@ const DEFAULT_CONFIG: Config = {
     id: "whatsapp",
     label: "WhatsApp canale",
     url: "https://whatsapp.com/channel/0029Va9XWFk11ulQK0DMLc0R"
-  },
-    {
-  id: "area_soci",
-  label: "Area soci",
-  url: "https://stracaganass0.wordpress.com/area-soci/"
-}
+  }
 ],
 };
 
