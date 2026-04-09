@@ -967,38 +967,90 @@ setError("");
         </div>
 
         <div style={{ flex: 1 }}>
-          <button
-            onClick={() => setTopAlertBannerOpen((value) => !value)}
-            style={{
-              background: "transparent",
-              border: "none",
-              color: "white",
-              padding: 0,
-              margin: 0,
-              cursor: "pointer",
-              textAlign: "left",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                fontSize: 18,
-                fontWeight: 700,
-                lineHeight: 1.2,
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                flexWrap: "wrap",
-              }}
-            >
-              <span>{TOP_ALERT_BANNER.title}</span>
-              {topAlertBannerOpen ? (
-                <ChevronUp size={16} color="white" />
-              ) : (
-                <ChevronDown size={16} color="white" />
-              )}
-            </div>
-          </button>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 10,
+    }}
+  >
+    <button
+      onClick={() => setTopAlertBannerOpen((value) => !value)}
+      style={{
+        background: "transparent",
+        border: "none",
+        color: "white",
+        padding: 0,
+        margin: 0,
+        cursor: "pointer",
+        textAlign: "left",
+        flex: 1,
+      }}
+    >
+      <div
+        style={{
+          fontSize: 18,
+          fontWeight: 700,
+          lineHeight: 1.2,
+        }}
+      >
+        {TOP_ALERT_BANNER.title}
+      </div>
+    </button>
+
+    {/* FRECCIA */}
+    <button
+      onClick={() => setTopAlertBannerOpen((value) => !value)}
+      style={{
+        background: "transparent",
+        border: "none",
+        color: "white",
+        cursor: "pointer",
+        padding: 4,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {topAlertBannerOpen ? (
+        <ChevronUp size={18} />
+      ) : (
+        <ChevronDown size={18} />
+      )}
+    </button>
+
+    {/* CHIUSURA */}
+    <button
+      onClick={() => setShowTopAlertBanner(false)}
+      style={{
+        background: "transparent",
+        border: "none",
+        color: "white",
+        cursor: "pointer",
+        padding: 4,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      ×
+    </button>
+  </div>
+
+  {topAlertBannerOpen ? (
+    <div
+      style={{
+        marginTop: 10,
+        fontSize: 14,
+        lineHeight: 1.5,
+        color: "rgba(255,255,255,0.96)",
+      }}
+    >
+      {TOP_ALERT_BANNER.body}
+    </div>
+  ) : null}
+</div>
 
           {topAlertBannerOpen ? (
             <div
