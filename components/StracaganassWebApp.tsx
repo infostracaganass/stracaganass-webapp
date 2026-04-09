@@ -1998,7 +1998,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
         {!memberLoggedIn ? (
           <div style={{ display: "grid", gap: 12 }}>
             <p style={{ color: "#cbd5e1", margin: 0 }}>
-              Accesso riservato ai soci
+            
             </p>
 
             <Field label="Password area soci">
