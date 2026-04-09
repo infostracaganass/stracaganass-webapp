@@ -1459,21 +1459,6 @@ setError("");
         News
       </div>
 
-      {visibleEvents[0]?.id === item.id ? (
-  <span
-    style={{
-      fontSize: 11,
-      fontWeight: 700,
-      color: "#1d4ed8",
-      background: "#dbeafe",
-      borderRadius: 999,
-      padding: "4px 8px",
-    }}
-  >
-    NEXT
-  </span>
-) : null}
-
       {isToday(item.date) ? (
   <span
     style={{
