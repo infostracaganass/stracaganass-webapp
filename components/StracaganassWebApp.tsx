@@ -931,7 +931,7 @@ setError("");
   }}
 >
 
-{ENABLE_TOP_ALERT_BANNER && showTopAlertBanner ? (
+{ENABLE_TOP_ALERT_BANNER && showTopAlertBanner && (
   <div
     style={{
       marginBottom: 24,
@@ -967,127 +967,88 @@ setError("");
         </div>
 
         <div style={{ flex: 1 }}>
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      gap: 10,
-    }}
-  >
-    <button
-      onClick={() => setTopAlertBannerOpen((value) => !value)}
-      style={{
-        background: "transparent",
-        border: "none",
-        color: "white",
-        padding: 0,
-        margin: 0,
-        cursor: "pointer",
-        textAlign: "left",
-        flex: 1,
-      }}
-    >
-      <div
-        style={{
-          fontSize: 18,
-          fontWeight: 700,
-          lineHeight: 1.2,
-        }}
-      >
-        {TOP_ALERT_BANNER.title}
-      </div>
-    </button>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 10,
+            }}
+          >
+            <button
+              onClick={() => setTopAlertBannerOpen((value) => !value)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "white",
+                padding: 0,
+                margin: 0,
+                cursor: "pointer",
+                textAlign: "left",
+                flex: 1,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 18,
+                  fontWeight: 700,
+                  lineHeight: 1.2,
+                }}
+              >
+                {TOP_ALERT_BANNER.title}
+              </div>
+            </button>
 
-    {/* FRECCIA */}
-    <button
-      onClick={() => setTopAlertBannerOpen((value) => !value)}
-      style={{
-        background: "transparent",
-        border: "none",
-        color: "white",
-        cursor: "pointer",
-        padding: 4,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {topAlertBannerOpen ? (
-        <ChevronUp size={18} />
-      ) : (
-        <ChevronDown size={18} />
-      )}
-    </button>
+            <button
+              onClick={() => setTopAlertBannerOpen((value) => !value)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "white",
+                cursor: "pointer",
+                padding: 4,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {topAlertBannerOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+            </button>
 
-    {/* CHIUSURA */}
-    <button
-      onClick={() => setShowTopAlertBanner(false)}
-      style={{
-        background: "transparent",
-        border: "none",
-        color: "white",
-        cursor: "pointer",
-        padding: 4,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      ×
-    </button>
-  </div>
+            <button
+              onClick={() => setShowTopAlertBanner(false)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "white",
+                cursor: "pointer",
+                padding: 4,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              ×
+            </button>
+          </div>
 
-  {topAlertBannerOpen ? (
-    <div
-      style={{
-        marginTop: 10,
-        fontSize: 14,
-        lineHeight: 1.5,
-        color: "rgba(255,255,255,0.96)",
-      }}
-    >
-      {TOP_ALERT_BANNER.body}
-    </div>
-  ) : null}
-</div>
-
-          {topAlertBannerOpen ? (
+          {topAlertBannerOpen && (
             <div
               style={{
                 marginTop: 10,
                 fontSize: 14,
                 lineHeight: 1.5,
-                color: "rgba(255,255,255,0.96)",
+                color: "rgba(255,255,255,0.95)",
               }}
             >
               {TOP_ALERT_BANNER.body}
             </div>
-          ) : null}
+          )}
         </div>
       </div>
-
-      <button
-        onClick={() => setShowTopAlertBanner(false)}
-        style={{
-          background: "transparent",
-          border: "none",
-          color: "white",
-          cursor: "pointer",
-          padding: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flex: "0 0 auto",
-        }}
-        aria-label="Chiudi banner"
-        title="Chiudi"
-      >
-        ×
-      </button>
     </div>
   </div>
-) : null}
+)}
       
       <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
