@@ -354,7 +354,13 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 const ENABLE_TOP_ALERT_BANNER = true;
 
 const TOP_ALERT_BANNER = {
-  title: "Unisciti alla Stracaganass!",
+  title: (
+  <>
+    Unisciti alla Stracaganass!
+    <br />
+    Ti aspettiamo!
+  </>
+),
   body: "La Stracaganass apre le porte a nuovi musicisti per la stagione 2026/2027. Curioso o interessato? Scrivici senza impegno a sabrina.mottini@hotmail.com. A giugno 2026 ti aspetta anche una grigliata offerta per scoprire il mondo della guggen. Vieni a conoscerci!",
 };
 
