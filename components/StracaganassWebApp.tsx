@@ -996,7 +996,7 @@ setError("");
             >
               <div
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: 700,
                   lineHeight: 1.2,
                 }}
