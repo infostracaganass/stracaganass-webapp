@@ -2005,12 +2005,38 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
             </p>
 
             <Field label="Password area soci">
-              <TextInput
-                type="password"
-                value={memberPassword}
-                onChange={(e) => setMemberPassword(e.target.value)}
-              />
-            </Field>
+  <div style={{ position: "relative" }}>
+    <TextInput
+      type={showMemberPassword ? "text" : "password"}
+      value={memberPassword}
+      onChange={(e) => setMemberPassword(e.target.value)}
+      style={{ paddingRight: 44 }}
+    />
+
+    <button
+      type="button"
+      onClick={() => setShowMemberPassword((v) => !v)}
+      style={{
+        position: "absolute",
+        top: "50%",
+        right: 10,
+        transform: "translateY(-50%)",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {showMemberPassword ? (
+        <EyeOff size={18} color="#64748b" />
+      ) : (
+        <Eye size={18} color="#64748b" />
+      )}
+    </button>
+  </div>
+</Field>
 
             {memberError ? (
               <div
@@ -2055,7 +2081,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
 
             <div style={{ display: "grid", gap: 10 }}>
   <div style={{ color: "#cbd5e1", fontSize: 14 }}>
-    Area soci abilitata correttamente.
+  
   </div>
 
   <div
