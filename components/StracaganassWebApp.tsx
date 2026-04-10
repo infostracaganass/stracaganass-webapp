@@ -29,6 +29,8 @@ Facebook,
 Instagram,
 MessageCircle,
   XCircle,
+  Eye,
+  EyeOff,
   Info,
 } from "lucide-react";
 
