@@ -474,7 +474,7 @@ const isAndroid =
 
   const interval = window.setInterval(() => {
     void loadData();
-  }, 30000);
+  }, 120000);
 
   return () => window.clearInterval(interval);
 }, []);
