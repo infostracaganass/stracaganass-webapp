@@ -378,6 +378,7 @@ const [verificationOk, setVerificationOk] = useState(false);
   const [showTopAlertBanner, setShowTopAlertBanner] = useState(ENABLE_TOP_ALERT_BANNER);
 const [topAlertBannerOpen, setTopAlertBannerOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [showMemberPassword, setShowMemberPassword] = useState(false);
 
 useEffect(() => {
   const updateLayout = () => setIsMobile(window.innerWidth < 900);
