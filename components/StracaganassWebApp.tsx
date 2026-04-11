@@ -880,8 +880,17 @@ const loginMembersArea = () => {
 const logoutMembersArea = () => {
   setMemberLoggedIn(false);
   setMembersAreaOpen(false);
+  setMembersSection("home");
+
   setMemberPassword("");
   setMemberError("");
+
+  // reset presenze
+  setAttendanceResponses({});
+  setAttendanceResponsesOpen({});
+  setAttendanceForm({});
+  setAttendanceError("");
+  setAttendanceMessage("");
 };
   
 const login = async () => {
