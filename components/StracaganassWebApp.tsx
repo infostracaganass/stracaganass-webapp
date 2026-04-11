@@ -1055,7 +1055,7 @@ const submitAttendance = async (eventId: string) => {
         eventId,
         name: form.name.trim(),
         status: form.status,
-        note: form.note.trim(),
+        note: "",
       }),
     });
 
