@@ -2397,9 +2397,10 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                 <Button
-                  onClick={() => void submitAttendance(event.id)}
-                  disabled={attendanceLoadingByEvent[event.id]}
-                >
+  onClick={() => void submitAttendance(event.id)}
+  disabled={attendanceLoadingByEvent[event.id]}
+  variant="dark"
+>
                   {attendanceLoadingByEvent[event.id] ? <Loader2 size={16} /> : null}
                   Salva risposta
                 </Button>
