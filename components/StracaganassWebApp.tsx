@@ -2404,18 +2404,29 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                   Salva risposta
                 </Button>
 
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setAttendanceResponsesOpen((prev) => ({
-                      ...prev,
-                      [event.id]: !prev[event.id],
-                    }));
-                  }}
-                >
-                  {responsesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                  {responsesOpen ? "Nascondi risposte" : "Mostra risposte"}
-                </Button>
+                <button
+  onClick={() =>
+    setAttendanceResponsesOpen((prev) => ({
+      ...prev,
+      [event.id]: !prev[event.id],
+    }))
+  }
+  style={{
+    background: "transparent",
+    border: "none",
+    padding: 0,
+    marginTop: 4,
+    cursor: "pointer",
+    fontSize: 13,
+    fontWeight: 600,
+    color: "#0369a1",
+    textDecoration: "underline",
+  }}
+>
+  {attendanceResponsesOpen[event.id]
+    ? "Nascondi risposte"
+    : "Mostra risposte"}
+</button>
               </div>
 
               {responsesOpen ? (
