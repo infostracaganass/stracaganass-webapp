@@ -975,6 +975,86 @@ setError("");
     }
   };
 
+const getAttendanceFormValue = (eventId: string) => {
+  return attendanceForm[eventId] || {
+    name: "",
+    status: "",
+    note: "",
+  };
+};
+
+const updateAttendanceForm = (
+  eventId: string,
+  patch: Partial<{ name: string; status: AttendanceStatus | ""; note: string }>
+) => {
+  setAttendanceForm((prev) => ({
+    ...prev,
+    [eventId]: {
+      name: prev[eventId]?.name || "",
+      status: prev[eventId]?.status || "",
+      note: prev[eventId]?.note || "",
+      ...patch,
+    },
+  }));
+};
+
+const loadEventResponses = async (eventId: string) => {
+  try {
+    const responses = await apiFetch<EventResponse[]>(
+      `/api/event-responses?eventId=${encodeURIComponent(eventId)}`
+    );
+
+    setAttendanceResponses((prev) => ({
+      ...prev,
+      [eventId]: responses,
+    }));
+  } catch (err) {
+    console.error("Errore caricamento risposte:", err);
+  }
+};
+
+const submitAttendance = async (eventId: string) => {
+  const form = attendanceForm[eventId];
+
+  if (!form?.name?.trim()) {
+    setAttendanceError("Inserisci il nome socio.");
+    setAttendanceMessage("");
+    return;
+  }
+
+  if (!form?.status) {
+    setAttendanceError("Seleziona una risposta.");
+    setAttendanceMessage("");
+    return;
+  }
+
+  setAttendanceLoadingByEvent((prev) => ({ ...prev, [eventId]: true }));
+  setAttendanceError("");
+  setAttendanceMessage("");
+
+  try {
+    await apiFetch<{ ok: true; response: EventResponse }>("/api/event-responses", {
+      method: "POST",
+      body: JSON.stringify({
+        eventId,
+        name: form.name.trim(),
+        status: form.status,
+        note: form.note.trim(),
+      }),
+    });
+
+    setAttendanceMessage("Risposta salvata correttamente.");
+    await loadEventResponses(eventId);
+  } catch (err) {
+    setAttendanceError(
+      err instanceof Error ? err.message : "Errore durante il salvataggio della risposta."
+    );
+    setAttendanceMessage("");
+  } finally {
+    setAttendanceLoadingByEvent((prev) => ({ ...prev, [eventId]: false }));
+  }
+};
+  
   return (
     <main
   style={{
