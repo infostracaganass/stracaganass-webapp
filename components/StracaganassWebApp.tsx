@@ -997,7 +997,6 @@ const getAttendanceFormValue = (eventId: string) => {
   return attendanceForm[eventId] || {
     name: "",
     status: "",
-    note: "",
   };
 };
 
