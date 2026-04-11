@@ -1002,14 +1002,13 @@ const getAttendanceFormValue = (eventId: string) => {
 
 const updateAttendanceForm = (
   eventId: string,
-  patch: Partial<{ name: string; status: AttendanceStatus | ""; note: string }>
+  patch: Partial<{ name: string; status: AttendanceStatus | "" }>
 ) => {
   setAttendanceForm((prev) => ({
     ...prev,
     [eventId]: {
       name: prev[eventId]?.name || "",
       status: prev[eventId]?.status || "",
-      note: prev[eventId]?.note || "",
       ...patch,
     },
   }));
