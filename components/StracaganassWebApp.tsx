@@ -2439,23 +2439,31 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                   ) : (
                     responses.map((response) => (
                       <div
-                        key={response.id}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          gap: 10,
-                          borderBottom: "1px solid rgba(255,255,255,0.08)",
-                          paddingBottom: 6,
-                        }}
-                      >
-                        <span>{response.name}</span>
-                        <span style={{ fontWeight: 700 }}>
-                          {response.status === "present" && "Presente"}
-                          {response.status === "absent" && "Assente"}
-                          {response.status === "maybe" && "Forse"}
-                        </span>
-                      </div>
+  key={response.id}
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 10,
+    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    paddingBottom: 6,
+  }}
+>
+  <span>{response.name}</span>
+
+  <span
+    style={{
+      fontWeight: 700,
+      borderRadius: 999,
+      padding: "4px 10px",
+      ...getAttendanceStatusStyles(response.status, false),
+    }}
+  >
+    {response.status === "present" && "Presente"}
+    {response.status === "absent" && "Assente"}
+    {response.status === "maybe" && "Forse"}
+  </span>
+</div>
                     ))
                   )}
                 </div>
