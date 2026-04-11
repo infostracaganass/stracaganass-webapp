@@ -2205,7 +2205,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
 
             <div style={{ display: "grid", gap: 10 }}>
   <div style={{ color: "#cbd5e1", fontSize: 14 }}>
-  
+    Area soci abilitata correttamente.
   </div>
 
   <div
@@ -2215,14 +2215,224 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
       gap: 10,
     }}
   >
-    <Button variant="outline">
+    <Button
+      variant="outline"
+      onClick={() => {
+        setMembersSection((prev) => (prev === "attendance" ? "home" : "attendance"));
+        setAttendanceError("");
+        setAttendanceMessage("");
+      }}
+    >
       Presenze eventi
     </Button>
 
-    <Button variant="outline">
+    <Button
+      variant="outline"
+      onClick={() => setMembersSection((prev) => (prev === "materials" ? "home" : "materials"))}
+    >
       Materiale soci
     </Button>
   </div>
+
+  {membersSection === "attendance" ? (
+    <div
+      style={{
+        marginTop: 8,
+        display: "grid",
+        gap: 12,
+        background: "rgba(255,255,255,0.06)",
+        borderRadius: 16,
+        padding: 12,
+      }}
+    >
+      <div style={{ fontWeight: 700, color: "white" }}>Presenze eventi</div>
+
+      {attendanceError ? (
+        <div
+          style={{
+            color: "#fecaca",
+            background: "rgba(127,29,29,0.35)",
+            border: "1px solid rgba(248,113,113,0.35)",
+            borderRadius: 12,
+            padding: 10,
+            fontSize: 14,
+          }}
+        >
+          {attendanceError}
+        </div>
+      ) : null}
+
+      {attendanceMessage ? (
+        <div
+          style={{
+            color: "#bbf7d0",
+            background: "rgba(20,83,45,0.35)",
+            border: "1px solid rgba(134,239,172,0.35)",
+            borderRadius: 12,
+            padding: 10,
+            fontSize: 14,
+          }}
+        >
+          {attendanceMessage}
+        </div>
+      ) : null}
+
+      {upcomingEvents.length === 0 ? (
+        <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+          Nessun evento disponibile.
+        </div>
+      ) : (
+        upcomingEvents.map((event) => {
+          const form = getAttendanceFormValue(event.id);
+          const responses = attendanceResponses[event.id] || [];
+          const responsesOpen = attendanceResponsesOpen[event.id] || false;
+
+          return (
+            <div
+              key={event.id}
+              style={{
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: 16,
+                padding: 12,
+                display: "grid",
+                gap: 10,
+                background: "rgba(255,255,255,0.04)",
+              }}
+            >
+              <div>
+                <div style={{ fontWeight: 700, color: "white" }}>{event.title}</div>
+                <div style={{ fontSize: 13, color: "#cbd5e1", marginTop: 4 }}>
+                  {formatDate(event.date)}{event.time ? ` • ${event.time}` : ""}
+                </div>
+              </div>
+
+              <Field label="Nome socio">
+                <TextInput
+                  value={form.name}
+                  onChange={(e) => updateAttendanceForm(event.id, { name: e.target.value })}
+                  placeholder="Inserisci il tuo nome"
+                />
+              </Field>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                <Button
+                  variant={form.status === "present" ? "secondary" : "outline"}
+                  onClick={() => updateAttendanceForm(event.id, { status: "present" })}
+                >
+                  Presente
+                </Button>
+
+                <Button
+                  variant={form.status === "absent" ? "secondary" : "outline"}
+                  onClick={() => updateAttendanceForm(event.id, { status: "absent" })}
+                >
+                  Assente
+                </Button>
+
+                <Button
+                  variant={form.status === "maybe" ? "secondary" : "outline"}
+                  onClick={() => updateAttendanceForm(event.id, { status: "maybe" })}
+                >
+                  Forse
+                </Button>
+              </div>
+
+              <Field label="Nota opzionale">
+                <TextInput
+                  value={form.note}
+                  onChange={(e) => updateAttendanceForm(event.id, { note: e.target.value })}
+                  placeholder="Facoltativa"
+                />
+              </Field>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                <Button
+                  onClick={() => void submitAttendance(event.id)}
+                  disabled={attendanceLoadingByEvent[event.id]}
+                >
+                  {attendanceLoadingByEvent[event.id] ? <Loader2 size={16} /> : null}
+                  Salva risposta
+                </Button>
+
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setAttendanceResponsesOpen((prev) => ({
+                      ...prev,
+                      [event.id]: !prev[event.id],
+                    }));
+                  }}
+                >
+                  {responsesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  {responsesOpen ? "Nascondi risposte" : "Mostra risposte"}
+                </Button>
+              </div>
+
+              {responsesOpen ? (
+                <div
+                  style={{
+                    marginTop: 4,
+                    fontSize: 13,
+                    color: "#cbd5e1",
+                    display: "grid",
+                    gap: 6,
+                    background: "rgba(255,255,255,0.04)",
+                    borderRadius: 12,
+                    padding: 10,
+                  }}
+                >
+                  <div style={{ fontWeight: 700, color: "white" }}>Risposte ricevute</div>
+
+                  {responses.length === 0 ? (
+                    <div>Nessuna risposta registrata.</div>
+                  ) : (
+                    responses.map((response) => (
+                      <div
+                        key={response.id}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          gap: 10,
+                          borderBottom: "1px solid rgba(255,255,255,0.08)",
+                          paddingBottom: 6,
+                        }}
+                      >
+                        <span>{response.name}</span>
+                        <span style={{ fontWeight: 700 }}>
+                          {response.status === "present" && "Presente"}
+                          {response.status === "absent" && "Assente"}
+                          {response.status === "maybe" && "Forse"}
+                        </span>
+                      </div>
+                    ))
+                  )}
+                </div>
+              ) : null}
+            </div>
+          );
+        })
+      )}
+    </div>
+  ) : null}
+
+  {membersSection === "materials" ? (
+    <div
+      style={{
+        marginTop: 8,
+        display: "grid",
+        gap: 10,
+        background: "rgba(255,255,255,0.06)",
+        borderRadius: 16,
+        padding: 12,
+      }}
+    >
+      <div style={{ fontWeight: 700, color: "white" }}>Materiale soci</div>
+      <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+        Sezione pronta per i link a Drive musica e foto.
+      </div>
+    </div>
+  ) : null}
 </div>
           </div>
         )}
