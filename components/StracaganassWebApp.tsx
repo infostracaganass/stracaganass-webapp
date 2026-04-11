@@ -2335,14 +2335,6 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                 </Button>
               </div>
 
-              <Field label="Nota opzionale">
-                <TextInput
-                  value={form.note}
-                  onChange={(e) => updateAttendanceForm(event.id, { note: e.target.value })}
-                  placeholder="Facoltativa"
-                />
-              </Field>
-
               <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                 <Button
                   onClick={() => void submitAttendance(event.id)}
