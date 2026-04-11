@@ -411,6 +411,20 @@ const [hasNewNews, setHasNewNews] = useState(false);
 const [memberLoggedIn, setMemberLoggedIn] = useState(false);
 const [memberPassword, setMemberPassword] = useState("");
 const [memberError, setMemberError] = useState("");
+  const [membersSection, setMembersSection] = useState<"home" | "attendance" | "materials">("home");
+
+const [attendanceLoadingByEvent, setAttendanceLoadingByEvent] = useState<Record<string, boolean>>({});
+
+const [attendanceError, setAttendanceError] = useState("");
+const [attendanceMessage, setAttendanceMessage] = useState("");
+
+const [attendanceResponses, setAttendanceResponses] = useState<Record<string, EventResponse[]>>({});
+
+const [attendanceResponsesOpen, setAttendanceResponsesOpen] = useState<Record<string, boolean>>({});
+
+const [attendanceForm, setAttendanceForm] = useState<
+  Record<string, { name: string; status: AttendanceStatus | ""; note: string }>
+>({});
   const [loading, setLoading] = useState(false);
   const [bootLoading, setBootLoading] = useState(true);
   const [error, setError] = useState("");
