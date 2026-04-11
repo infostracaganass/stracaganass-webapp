@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { db } from "@/lib/db";
 
 const ALLOWED_STATUSES = ["present", "absent", "maybe"] as const;
 
@@ -17,7 +12,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ message: "eventId mancante." }, { status: 400 });
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from("event_responses")
       .select("*")
       .eq("event_id", eventId)
@@ -57,7 +52,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Status non valido." }, { status: 400 });
     }
 
-    const { data: existing, error: existingError } = await supabase
+    const { data: existing, error: existingError } = await db
       .from("event_responses")
       .select("*")
       .eq("event_id", eventId)
@@ -69,7 +64,7 @@ export async function POST(req: NextRequest) {
     }
 
     if (existing) {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("event_responses")
         .update({
           status,
@@ -87,7 +82,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true, response: data });
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from("event_responses")
       .insert({
         event_id: eventId,
