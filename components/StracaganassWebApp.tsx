@@ -2205,7 +2205,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
 
             <div style={{ display: "grid", gap: 10 }}>
   <div style={{ color: "#cbd5e1", fontSize: 14 }}>
-    Area soci abilitata correttamente.
+    
   </div>
 
   <div
