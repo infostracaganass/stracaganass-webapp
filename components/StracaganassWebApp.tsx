@@ -2339,8 +2339,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                 />
               </Field>
 
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                <div
+              <div
   style={{
     display: "grid",
     gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
