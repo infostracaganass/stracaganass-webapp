@@ -56,6 +56,18 @@ type LinkItem = {
   url: string;
 };
 
+type AttendanceStatus = "present" | "absent" | "maybe";
+
+type EventResponse = {
+  id: string;
+  event_id: string;
+  name: string;
+  status: AttendanceStatus;
+  note?: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 type Config = {
   associationName: string;
   appTitle: string;
