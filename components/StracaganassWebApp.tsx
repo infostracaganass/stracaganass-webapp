@@ -423,7 +423,7 @@ const [attendanceResponses, setAttendanceResponses] = useState<Record<string, Ev
 const [attendanceResponsesOpen, setAttendanceResponsesOpen] = useState<Record<string, boolean>>({});
 
 const [attendanceForm, setAttendanceForm] = useState<
-  Record<string, { name: string; status: AttendanceStatus | ""; note: string }>
+  Record<string, { name: string; status: AttendanceStatus | "" }>
 >({});
   const [loading, setLoading] = useState(false);
   const [bootLoading, setBootLoading] = useState(true);
