@@ -2340,27 +2340,61 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
               </Field>
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                <Button
-                  variant={form.status === "present" ? "secondary" : "outline"}
-                  onClick={() => updateAttendanceForm(event.id, { status: "present" })}
-                >
-                  Presente
-                </Button>
+                <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gap: 8,
+  }}
+>
+  <button
+    type="button"
+    onClick={() => updateAttendanceForm(event.id, { status: "present" })}
+    style={{
+      padding: "12px 10px",
+      borderRadius: 16,
+      cursor: "pointer",
+      fontWeight: 700,
+      fontSize: 14,
+      whiteSpace: "nowrap",
+      ...getAttendanceStatusStyles("present", form.status === "present"),
+    }}
+  >
+    Presente
+  </button>
 
-                <Button
-                  variant={form.status === "absent" ? "secondary" : "outline"}
-                  onClick={() => updateAttendanceForm(event.id, { status: "absent" })}
-                >
-                  Assente
-                </Button>
+  <button
+    type="button"
+    onClick={() => updateAttendanceForm(event.id, { status: "absent" })}
+    style={{
+      padding: "12px 10px",
+      borderRadius: 16,
+      cursor: "pointer",
+      fontWeight: 700,
+      fontSize: 14,
+      whiteSpace: "nowrap",
+      ...getAttendanceStatusStyles("absent", form.status === "absent"),
+    }}
+  >
+    Assente
+  </button>
 
-                <Button
-                  variant={form.status === "maybe" ? "secondary" : "outline"}
-                  onClick={() => updateAttendanceForm(event.id, { status: "maybe" })}
-                >
-                  Forse
-                </Button>
-              </div>
+  <button
+    type="button"
+    onClick={() => updateAttendanceForm(event.id, { status: "maybe" })}
+    style={{
+      padding: "12px 10px",
+      borderRadius: 16,
+      cursor: "pointer",
+      fontWeight: 700,
+      fontSize: 14,
+      whiteSpace: "nowrap",
+      ...getAttendanceStatusStyles("maybe", form.status === "maybe"),
+    }}
+  >
+    Forse
+  </button>
+</div>
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                 <Button
