@@ -867,6 +867,7 @@ const loginMembersArea = () => {
   if (memberPassword === "straca2026!") {
     setMemberLoggedIn(true);
     setMembersAreaOpen(true);
+    setMembersSection("home");
     setMemberPassword("");
     setMemberError("");
     return;
