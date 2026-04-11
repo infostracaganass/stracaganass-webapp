@@ -1070,6 +1070,33 @@ const submitAttendance = async (eventId: string) => {
     setAttendanceLoadingByEvent((prev) => ({ ...prev, [eventId]: false }));
   }
 };
+
+const getAttendanceStatusStyles = (
+  status: AttendanceStatus,
+  active: boolean
+): React.CSSProperties => {
+  if (status === "present") {
+    return {
+      background: active ? "#16a34a" : "#f0fdf4",
+      color: active ? "white" : "#166534",
+      border: active ? "1px solid #16a34a" : "1px solid #86efac",
+    };
+  }
+
+  if (status === "absent") {
+    return {
+      background: active ? "#dc2626" : "#fef2f2",
+      color: active ? "white" : "#991b1b",
+      border: active ? "1px solid #dc2626" : "1px solid #fca5a5",
+    };
+  }
+
+  return {
+    background: active ? "#eab308" : "#fefce8",
+    color: active ? "#111827" : "#a16207",
+    border: active ? "1px solid #eab308" : "1px solid #fde68a",
+  };
+};
   
   return (
     <main
