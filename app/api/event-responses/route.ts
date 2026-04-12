@@ -35,11 +35,12 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const eventId = String(body.eventId || "").trim();
-    const rawName = String(body.name || "").trim();
-    const name = rawName.replace(/\s+/g, " ");
-    const status = String(body.status || "").trim();
-    const note = String(body.note || "").trim();
+const eventId = String(body.eventId || "").trim();
+const rawName = String(body.name || "").trim();
+const name = rawName.replace(/\s+/g, " ");
+const normalizedName = name.toLowerCase();
+const status = String(body.status || "").trim();
+const note = String(body.note || "").trim();
 
     if (!eventId || !name || !status) {
       return NextResponse.json(
