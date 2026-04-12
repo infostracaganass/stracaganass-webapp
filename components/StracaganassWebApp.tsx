@@ -329,9 +329,11 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
+  const { style, ...rest } = props;
+
   return (
     <input
-      {...props}
+      {...rest}
       style={{
         width: "100%",
         maxWidth: "100%",
@@ -344,6 +346,7 @@ function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
         fontSize: 16,
         WebkitAppearance: "none",
         appearance: "none",
+        ...style, 
       }}
     />
   );
