@@ -2335,11 +2335,11 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     </Button>
 
     <Button
-      variant="outline"
-      onClick={() => setMembersSection((prev) => (prev === "materials" ? "home" : "materials"))}
-    >
-      Materiale soci
-    </Button>
+  variant="outline"
+  onClick={() => setMembersSection("materials")}
+>
+  Materiale soci
+</Button>
   </div>
 
   {membersSection === "attendance" ? (
