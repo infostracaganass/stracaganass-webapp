@@ -384,6 +384,11 @@ const TOP_ALERT_BANNER = {
   body: "La Stracaganass apre le porte a nuovi musicisti per la stagione 2026/2027. Curioso o interessato? Scrivici senza impegno a sabrina.mottini@hotmail.com. A giugno 2026 ti aspetta anche una grigliata offerta per scoprire il mondo della guggen. Vieni a conoscerci!",
 };
 
+const MEMBERS_MATERIAL_LINKS = {
+  music: "https://drive.google.com/drive/folders/1ohzi234a0Qzh_pKy5V1i8_Mi9DaPWGU1?usp=sharing",
+  media: "https://drive.google.com/drive/folders/1SZas5nl4BHFHEKYk-Jl2AgFOrTt95g-x?usp=sharing",
+};
+
 export default function StracaganassWebApp() {
   const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
