@@ -1091,6 +1091,13 @@ const getAttendanceStatusStyles = (
     };
   }
 
+  return {
+    background: active ? "#eab308" : "#fefce8",
+    color: active ? "#111827" : "#a16207",
+    border: active ? "1px solid #eab308" : "1px solid #fde68a",
+  };
+};
+
 const getAttendanceStatusLabel = (status: AttendanceStatus) => {
   if (status === "present") return "Presenti";
   if (status === "absent") return "Assenti";
@@ -1102,13 +1109,6 @@ const getGroupedAttendanceResponses = (responses: EventResponse[]) => {
     present: responses.filter((response) => response.status === "present"),
     absent: responses.filter((response) => response.status === "absent"),
     maybe: responses.filter((response) => response.status === "maybe"),
-  };
-};
-  
-  return {
-    background: active ? "#eab308" : "#fefce8",
-    color: active ? "#111827" : "#a16207",
-    border: active ? "1px solid #eab308" : "1px solid #fde68a",
   };
 };
   
