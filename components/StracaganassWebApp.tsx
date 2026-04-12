@@ -419,6 +419,7 @@ const [hasNewNews, setHasNewNews] = useState(false);
   const [password, setPassword] = useState("");
   const [adminPanelOpen, setAdminPanelOpen] = useState(false);
   const [membersAreaOpen, setMembersAreaOpen] = useState(false);
+  const [adminSection, setAdminSection] = useState<"surveys" | "events" | "news">("surveys");
 const [memberLoggedIn, setMemberLoggedIn] = useState(false);
 const [memberPassword, setMemberPassword] = useState("");
 const [memberError, setMemberError] = useState("");
