@@ -2541,17 +2541,23 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                 <span>{response.name}</span>
 
                 <span
-                  style={{
-                    fontWeight: 700,
-                    borderRadius: 999,
-                    padding: "4px 10px",
-                    ...getAttendanceStatusStyles(response.status, false),
-                  }}
-                >
-                  {response.status === "present" && "Presente"}
-                  {response.status === "absent" && "Assente"}
-                  {response.status === "maybe" && "Forse"}
-                </span>
+  style={{
+    fontWeight: 700,
+    fontSize: 11,
+    letterSpacing: 0.6,
+    textTransform: "uppercase",
+    color:
+      response.status === "present"
+        ? "#16a34a"
+        : response.status === "absent"
+        ? "#dc2626"
+        : "#facc15",
+  }}
+>
+  {response.status === "present" && "PRESENTE"}
+  {response.status === "absent" && "ASSENTE"}
+  {response.status === "maybe" && "FORSE"}
+</span>
               </div>
             ))}
           </div>
