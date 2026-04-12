@@ -2324,19 +2324,19 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     }}
   >
     <Button
-      variant="outline"
-      onClick={() => {
-        setMembersSection((prev) => (prev === "attendance" ? "home" : "attendance"));
-        setAttendanceError("");
-        setAttendanceMessage("");
-      }}
-    >
-      Presenze eventi
-    </Button>
+  variant={membersSection === "attendance" ? "secondary" : "outline"}
+  onClick={() => {
+    setMembersSection((prev) => (prev === "attendance" ? "home" : "attendance"));
+    setAttendanceError("");
+    setAttendanceMessage("");
+  }}
+>
+  Presenze eventi
+</Button>
 
     <Button
-  variant="outline"
-  onClick={() => setMembersSection("materials")}
+  variant={membersSection === "materials" ? "secondary" : "outline"}
+  onClick={() => setMembersSection((prev) => (prev === "materials" ? "home" : "materials"))}
 >
   Materiale soci
 </Button>
