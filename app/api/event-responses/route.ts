@@ -53,16 +53,19 @@ const note = String(body.note || "").trim();
       return NextResponse.json({ message: "Status non valido." }, { status: 400 });
     }
 
-    const { data: existing, error: existingError } = await db
-      .from("event_responses")
-      .select("*")
-      .eq("event_id", eventId)
-      .eq("name", name)
-      .maybeSingle();
+    const { data: existingList, error: existingError } = await db
+  .from("event_responses")
+  .select("*")
+  .eq("event_id", eventId);
 
-    if (existingError) {
-      return NextResponse.json({ message: existingError.message }, { status: 500 });
-    }
+if (existingError) {
+  return NextResponse.json({ message: existingError.message }, { status: 500 });
+}
+
+const existing =
+  existingList?.find(
+    (response) => String(response.name || "").trim().toLowerCase() === normalizedName
+  ) || null;
 
     if (existing) {
       const { data, error } = await db
