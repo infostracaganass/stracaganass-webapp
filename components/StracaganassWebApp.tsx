@@ -2325,6 +2325,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
           const form = getAttendanceFormValue(event.id);
           const responses = attendanceResponses[event.id] || [];
           const responsesOpen = attendanceResponsesOpen[event.id] || false;
+          const groupedResponses = getGroupedAttendanceResponses(responses);
 
           return (
             <div
