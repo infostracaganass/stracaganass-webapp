@@ -1876,13 +1876,34 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
             </div>
 
             {upcomingEvents.length > 5 ? (
-              <div style={{ marginTop: 12 }}>
-                <Button variant="outline" onClick={() => setShowAllEvents((value) => !value)}>
-                  {showAllEvents ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                  {showAllEvents ? "Mostra meno" : "Mostra altro"}
-                </Button>
-              </div>
-            ) : null}
+  <div style={{ marginTop: 12 }}>
+    <button
+      onClick={() => setShowAllEvents((value) => !value)}
+      style={{
+        background: "transparent",
+        border: "none",
+        padding: 0,
+        cursor: "pointer",
+        fontSize: 15,
+        fontWeight: 600,
+        color: "#1e3a8a",
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+      }}
+    >
+      {showAllEvents ? (
+        <>
+          <ChevronUp size={16} /> Mostra meno
+        </>
+      ) : (
+        <>
+          <ChevronDown size={16} /> Mostra altro
+        </>
+      )}
+    </button>
+  </div>
+) : null}
           </section>
 
           <section
