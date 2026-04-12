@@ -3107,7 +3107,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   href="mailto:sabrina.mottini@hotmail.com"
   style={{
     position: "fixed",
-    bottom: 110,
+    bottom: 40,
     right: 20,
     background: "#0284c7",
     color: "white",
