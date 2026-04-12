@@ -355,12 +355,17 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
       {...props}
       style={{
         width: "100%",
+        maxWidth: "100%",
+        boxSizing: "border-box",
         minHeight: 100,
         padding: "12px 14px",
         borderRadius: 16,
         border: "1px solid #cbd5e1",
         background: "white",
         resize: "vertical",
+        fontSize: 16,
+        WebkitAppearance: "none",
+        appearance: "none",
       }}
     />
   );
