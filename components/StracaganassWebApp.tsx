@@ -864,7 +864,7 @@ const verifyNotifications = async () => {
 };
 
 const loginMembersArea = () => {
-  if (memberPassword === "straca2026!") {
+  if (memberPassword === "straca123") {
     setMemberLoggedIn(true);
     setMembersAreaOpen(true);
     setMembersSection("home");
