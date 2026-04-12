@@ -914,6 +914,7 @@ const login = async () => {
       });
       setAdmin(true);
 setAdminPanelOpen(true);
+      setAdminSection("surveys");
 setPassword("");
 setError("");
     } catch (err) {
@@ -929,6 +930,7 @@ setError("");
     await apiFetch<{ ok: true }>("/api/admin/logout", { method: "POST" });
     setAdmin(false);
     setAdminPanelOpen(false);
+    setAdminSection("surveys");
   } catch {
     setAdmin(false);
     setAdminPanelOpen(false);
