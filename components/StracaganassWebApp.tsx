@@ -3111,7 +3111,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     right: 20,
     background: "#0284c7",
     color: "white",
-    padding: 12,
+    padding: 14,
     borderRadius: "50%",
     display: "flex",
     alignItems: "center",
@@ -3121,7 +3121,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     zIndex: 1000,
   }}
 >
-  <Mail size={26} />
+  <Mail size={28} />
 </a>
     </main>
   );
