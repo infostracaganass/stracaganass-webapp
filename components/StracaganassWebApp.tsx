@@ -2469,37 +2469,76 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                   <div style={{ fontWeight: 700, color: "white" }}>Risposte ricevute</div>
 
                   {responses.length === 0 ? (
-                    <div>Nessuna risposta registrata.</div>
-                  ) : (
-                    responses.map((response) => (
-                      <div
-  key={response.id}
-  style={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 10,
-    borderBottom: "1px solid rgba(255,255,255,0.08)",
-    paddingBottom: 6,
-  }}
->
-  <span>{response.name}</span>
+  <div>Nessuna risposta registrata.</div>
+) : (
+  <div style={{ display: "grid", gap: 10 }}>
+    {(["present", "absent", "maybe"] as AttendanceStatus[]).map((status) => {
+      const items = groupedResponses[status];
 
-  <span
-    style={{
-      fontWeight: 700,
-      borderRadius: 999,
-      padding: "4px 10px",
-      ...getAttendanceStatusStyles(response.status, false),
-    }}
-  >
-    {response.status === "present" && "Presente"}
-    {response.status === "absent" && "Assente"}
-    {response.status === "maybe" && "Forse"}
-  </span>
-</div>
-                    ))
-                  )}
+      if (items.length === 0) return null;
+
+      return (
+        <div key={status} style={{ display: "grid", gap: 6 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 10,
+            }}
+          >
+            <span style={{ fontWeight: 700, color: "white" }}>
+              {getAttendanceStatusLabel(status)}
+            </span>
+
+            <span
+              style={{
+                fontWeight: 700,
+                borderRadius: 999,
+                padding: "4px 10px",
+                fontSize: 12,
+                ...getAttendanceStatusStyles(status, false),
+              }}
+            >
+              {items.length}
+            </span>
+          </div>
+
+          <div style={{ display: "grid", gap: 6 }}>
+            {items.map((response) => (
+              <div
+                key={response.id}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 10,
+                  borderBottom: "1px solid rgba(255,255,255,0.08)",
+                  paddingBottom: 6,
+                }}
+              >
+                <span>{response.name}</span>
+
+                <span
+                  style={{
+                    fontWeight: 700,
+                    borderRadius: 999,
+                    padding: "4px 10px",
+                    ...getAttendanceStatusStyles(response.status, false),
+                  }}
+                >
+                  {response.status === "present" && "Presente"}
+                  {response.status === "absent" && "Assente"}
+                  {response.status === "maybe" && "Forse"}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+)}
                 </div>
               ) : null}
             </div>
