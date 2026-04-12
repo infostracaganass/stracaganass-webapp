@@ -538,11 +538,6 @@ useEffect(() => {
   };
 }, [sponsorLogos, isMobile]);
 
-useEffect(() => {
-  if (!admin) return;
-  if (adminSection !== "surveys") return;
-  if (!upcomingEvents.length) return;
-
   void loadAllAdminAttendance();
 }, [admin, adminSection, upcomingEvents]);
   
@@ -645,6 +640,11 @@ useEffect(() => {
         +new Date(`${b.date}T${b.time || "00:00"}`)
     );
 }, [events]);
+
+useEffect(() => {
+  if (!admin) return;
+  if (adminSection !== "surveys") return;
+  if (!upcomingEvents.length) return;
 
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
