@@ -500,7 +500,7 @@ const isAndroid =
 
   const interval = window.setInterval(() => {
     void loadData();
-  }, 120000);
+  }, 300000);
 
   return () => window.clearInterval(interval);
 }, []);
