@@ -537,9 +537,6 @@ useEffect(() => {
     window.removeEventListener("resize", updateSponsorScrollDistance);
   };
 }, [sponsorLogos, isMobile]);
-
-  void loadAllAdminAttendance();
-}, [admin, adminSection, upcomingEvents]);
   
 useEffect(() => {
   const checkPushStatus = async () => {
@@ -645,6 +642,9 @@ useEffect(() => {
   if (!admin) return;
   if (adminSection !== "surveys") return;
   if (!upcomingEvents.length) return;
+
+  void loadAllAdminAttendance();
+}, [admin, adminSection, upcomingEvents]);
 
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
