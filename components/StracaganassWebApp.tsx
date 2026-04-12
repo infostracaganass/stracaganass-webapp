@@ -2626,21 +2626,82 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   {membersSection === "materials" ? (
     <div
       style={{
-        marginTop: 8,
         display: "grid",
-        gap: 10,
+        gap: 12,
         background: "rgba(255,255,255,0.06)",
-        borderRadius: 16,
         padding: 12,
+        borderRadius: 16,
       }}
     >
-      <div style={{ fontWeight: 700, color: "white" }}>Materiale soci</div>
-      <div style={{ color: "#cbd5e1", fontSize: 14 }}>
-        Sezione pronta per i link a Drive musica e foto.
+      <div style={{ fontWeight: 700, color: "white" }}>
+        Materiale soci
+      </div>
+
+      <div style={{ display: "grid", gap: 10 }}>
+        <a
+          href={MEMBERS_MATERIAL_LINKS.music}
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <div
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.10)",
+              borderRadius: 16,
+              padding: 12,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <div>
+              <div style={{ fontWeight: 700, color: "white" }}>
+                Spartiti e materiale
+              </div>
+              <div style={{ fontSize: 13, color: "#cbd5e1" }}>
+                Visualizza documenti
+              </div>
+            </div>
+
+            <ExternalLink size={16} color="#cbd5e1" />
+          </div>
+        </a>
+
+        <a
+          href={MEMBERS_MATERIAL_LINKS.media}
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <div
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.10)",
+              borderRadius: 16,
+              padding: 12,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <div>
+              <div style={{ fontWeight: 700, color: "white" }}>
+                Foto e video soci
+              </div>
+              <div style={{ fontSize: 13, color: "#cbd5e1" }}>
+                Carica contenuti
+              </div>
+            </div>
+
+            <ExternalLink size={16} color="#cbd5e1" />
+          </div>
+        </a>
       </div>
     </div>
   ) : null}
 </div>
+
           </div>
         )}
       </div>
