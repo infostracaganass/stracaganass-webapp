@@ -1091,6 +1091,20 @@ const getAttendanceStatusStyles = (
     };
   }
 
+const getAttendanceStatusLabel = (status: AttendanceStatus) => {
+  if (status === "present") return "Presenti";
+  if (status === "absent") return "Assenti";
+  return "Forse";
+};
+
+const getGroupedAttendanceResponses = (responses: EventResponse[]) => {
+  return {
+    present: responses.filter((response) => response.status === "present"),
+    absent: responses.filter((response) => response.status === "absent"),
+    maybe: responses.filter((response) => response.status === "maybe"),
+  };
+};
+  
   return {
     background: active ? "#eab308" : "#fefce8",
     color: active ? "#111827" : "#a16207",
