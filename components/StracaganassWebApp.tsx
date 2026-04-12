@@ -2774,12 +2774,38 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
               
             </p>
             <Field label="Password amministratore">
-              <TextInput
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Field>
+  <div style={{ position: "relative" }}>
+    <TextInput
+      type={showAdminPassword ? "text" : "password"}
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      style={{ paddingRight: 44 }}
+    />
+
+    <button
+      type="button"
+      onClick={() => setShowAdminPassword((v) => !v)}
+      style={{
+        position: "absolute",
+        top: "50%",
+        right: 10,
+        transform: "translateY(-50%)",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {showAdminPassword ? (
+        <EyeOff size={18} color="#64748b" />
+      ) : (
+        <Eye size={18} color="#64748b" />
+      )}
+    </button>
+  </div>
+</Field>
             <Button variant="secondary" onClick={() => void login()} disabled={loading}>
               {loading ? <Loader2 size={16} /> : null} Accedi
             </Button>
