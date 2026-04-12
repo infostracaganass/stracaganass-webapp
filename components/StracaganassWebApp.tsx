@@ -1112,6 +1112,27 @@ const getAttendanceStatusStyles = (
   };
 };
 
+const getAdminEventResponses = (eventId: string) => {
+  return attendanceResponses[eventId] || [];
+};
+
+const getAdminEventCounts = (eventId: string) => {
+  const responses = getAdminEventResponses(eventId);
+
+  return {
+    present: responses.filter((response) => response.status === "present").length,
+    absent: responses.filter((response) => response.status === "absent").length,
+    maybe: responses.filter((response) => response.status === "maybe").length,
+    total: responses.length,
+  };
+};
+
+const loadAllAdminAttendance = async () => {
+  if (!upcomingEvents.length) return;
+
+  await Promise.all(upcomingEvents.map((event) => loadEventResponses(event.id)));
+};
+  
 const getAttendanceStatusLabel = (status: AttendanceStatus) => {
   if (status === "present") return "Presenti";
   if (status === "absent") return "Assenti";
