@@ -2719,96 +2719,285 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
           </div>
         ) : (
           <div style={{ display: "grid", gap: 20 }}>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      gap: 12,
+      background: "rgba(255,255,255,0.06)",
+      padding: 12,
+      borderRadius: 16,
+    }}
+  >
+    <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#86efac" }}>
+      <ShieldCheck size={16} /> Sessione attiva
+    </div>
+    <Button variant="outline" onClick={() => void logout()}>
+      <LogOut size={16} /> Esci
+    </Button>
+  </div>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "1fr",
+      gap: 10,
+    }}
+  >
+    <Button
+      variant={adminSection === "surveys" ? "secondary" : "outline"}
+      onClick={() => setAdminSection("surveys")}
+    >
+      Risultati sondaggi
+    </Button>
+
+    <Button
+      variant={adminSection === "events" ? "secondary" : "outline"}
+      onClick={() => setAdminSection("events")}
+    >
+      Aggiungi eventi
+    </Button>
+
+    <Button
+      variant={adminSection === "news" ? "secondary" : "outline"}
+      onClick={() => setAdminSection("news")}
+    >
+      Aggiungi news
+    </Button>
+  </div>
+
+  {adminSection === "surveys" ? (
+    <div
+      style={{
+        display: "grid",
+        gap: 12,
+        background: "rgba(255,255,255,0.06)",
+        padding: 12,
+        borderRadius: 16,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
+        <ShieldCheck size={16} /> Risultati sondaggi
+      </div>
+
+      {upcomingEvents.length === 0 ? (
+        <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+          Nessun evento disponibile.
+        </div>
+      ) : (
+        upcomingEvents.map((event) => {
+          const responses = getAdminEventResponses(event.id);
+          const counts = getAdminEventCounts(event.id);
+
+          return (
             <div
+              key={event.id}
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: 12,
-                background: "rgba(255,255,255,0.06)",
-                padding: 12,
+                display: "grid",
+                gap: 10,
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.10)",
                 borderRadius: 16,
+                padding: 12,
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#86efac" }}>
-                <ShieldCheck size={16} /> Sessione attiva
+              <div>
+                <div style={{ fontWeight: 700, color: "white" }}>{event.title}</div>
+                <div style={{ fontSize: 13, color: "#cbd5e1", marginTop: 4 }}>
+                  {formatDate(event.date)}{event.time ? ` • ${event.time}` : ""}
+                </div>
               </div>
-              <Button variant="outline" onClick={() => void logout()}>
-                <LogOut size={16} /> Esci
-              </Button>
-            </div>
 
-            <div style={{ display: "grid", gap: 12 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
-                <Plus size={16} /> Nuovo evento
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                  gap: 8,
+                }}
+              >
+                <div
+                  style={{
+                    borderRadius: 12,
+                    padding: "10px 8px",
+                    background: "rgba(255,255,255,0.05)",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontSize: 11, color: "#cbd5e1", textTransform: "uppercase" }}>
+                    Totale
+                  </div>
+                  <div style={{ fontWeight: 800, fontSize: 18 }}>{counts.total}</div>
+                </div>
+
+                <div
+                  style={{
+                    borderRadius: 12,
+                    padding: "10px 8px",
+                    background: "rgba(22,163,74,0.12)",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontSize: 11, color: "#86efac", textTransform: "uppercase" }}>
+                    Presenti
+                  </div>
+                  <div style={{ fontWeight: 800, fontSize: 18, color: "#86efac" }}>
+                    {counts.present}
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    borderRadius: 12,
+                    padding: "10px 8px",
+                    background: "rgba(220,38,38,0.12)",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontSize: 11, color: "#fca5a5", textTransform: "uppercase" }}>
+                    Assenti
+                  </div>
+                  <div style={{ fontWeight: 800, fontSize: 18, color: "#fca5a5" }}>
+                    {counts.absent}
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    borderRadius: 12,
+                    padding: "10px 8px",
+                    background: "rgba(234,179,8,0.12)",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontSize: 11, color: "#fde68a", textTransform: "uppercase" }}>
+                    Forse
+                  </div>
+                  <div style={{ fontWeight: 800, fontSize: 18, color: "#fde68a" }}>
+                    {counts.maybe}
+                  </div>
+                </div>
               </div>
-              <Field label="Titolo">
-                <TextInput
-                  value={eventForm.title}
-                  onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
-                />
-              </Field>
-              <Field label="Data">
-                <TextInput
-                  type="date"
-                  value={eventForm.date}
-                  onChange={(e) => setEventForm({ ...eventForm, date: e.target.value })}
-                />
-              </Field>
-              <Field label="Ora">
-                <TextInput
-                  type="time"
-                  value={eventForm.time}
-                  onChange={(e) => setEventForm({ ...eventForm, time: e.target.value })}
-                />
-              </Field>
-              <Field label="Luogo">
-                <TextInput
-                  value={eventForm.place}
-                  onChange={(e) => setEventForm({ ...eventForm, place: e.target.value })}
-                />
-              </Field>
-              <Field label="Descrizione">
-                <TextArea
-                  value={eventForm.description}
-                  onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
-                />
-              </Field>
-              <Button onClick={() => void addEvent()} disabled={loading}>
-                {loading ? <Loader2 size={16} /> : null} Aggiungi evento
-              </Button>
-            </div>
 
-            <div style={{ height: 1, background: "rgba(255,255,255,0.12)" }} />
+              {responses.length > 0 ? (
+                <div style={{ display: "grid", gap: 6 }}>
+                  {(["present", "absent", "maybe"] as AttendanceStatus[]).map((status) => {
+                    const items = responses.filter((response) => response.status === status);
 
-            <div style={{ display: "grid", gap: 12 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
-                <Newspaper size={16} /> Nuova notizia
-              </div>
-              <Field label="Titolo">
-                <TextInput
-                  value={newsForm.title}
-                  onChange={(e) => setNewsForm({ ...newsForm, title: e.target.value })}
-                />
-              </Field>
-              <Field label="Data">
-                <TextInput
-                  type="date"
-                  value={newsForm.date}
-                  onChange={(e) => setNewsForm({ ...newsForm, date: e.target.value })}
-                />
-              </Field>
-              <Field label="Testo">
-                <TextArea
-                  value={newsForm.body}
-                  onChange={(e) => setNewsForm({ ...newsForm, body: e.target.value })}
-                />
-              </Field>
-              <Button variant="secondary" onClick={() => void addNews()} disabled={loading}>
-                {loading ? <Loader2 size={16} /> : null} Aggiungi notizia
-              </Button>
+                    if (items.length === 0) return null;
+
+                    return (
+                      <div key={status} style={{ display: "grid", gap: 4 }}>
+                        <div
+                          style={{
+                            fontSize: 12,
+                            fontWeight: 700,
+                            color:
+                              status === "present"
+                                ? "#86efac"
+                                : status === "absent"
+                                ? "#fca5a5"
+                                : "#fde68a",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {status === "present" && "Presenti"}
+                          {status === "absent" && "Assenti"}
+                          {status === "maybe" && "Forse"}
+                        </div>
+
+                        <div style={{ fontSize: 13, color: "#e2e8f0", lineHeight: 1.5 }}>
+                          {items.map((item) => item.name).join(", ")}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div style={{ fontSize: 13, color: "#cbd5e1" }}>
+                  Nessuna risposta registrata.
+                </div>
+              )}
             </div>
-          </div>
+          );
+        })
+      )}
+    </div>
+  ) : null}
+
+  {adminSection === "events" ? (
+    <div style={{ display: "grid", gap: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
+        <Plus size={16} /> Nuovo evento
+      </div>
+      <Field label="Titolo">
+        <TextInput
+          value={eventForm.title}
+          onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
+        />
+      </Field>
+      <Field label="Data">
+        <TextInput
+          type="date"
+          value={eventForm.date}
+          onChange={(e) => setEventForm({ ...eventForm, date: e.target.value })}
+        />
+      </Field>
+      <Field label="Ora">
+        <TextInput
+          type="time"
+          value={eventForm.time}
+          onChange={(e) => setEventForm({ ...eventForm, time: e.target.value })}
+        />
+      </Field>
+      <Field label="Luogo">
+        <TextInput
+          value={eventForm.place}
+          onChange={(e) => setEventForm({ ...eventForm, place: e.target.value })}
+        />
+      </Field>
+      <Field label="Descrizione">
+        <TextArea
+          value={eventForm.description}
+          onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
+        />
+      </Field>
+      <Button onClick={() => void addEvent()} disabled={loading}>
+        {loading ? <Loader2 size={16} /> : null} Aggiungi evento
+      </Button>
+    </div>
+  ) : null}
+
+  {adminSection === "news" ? (
+    <div style={{ display: "grid", gap: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
+        <Newspaper size={16} /> Nuova notizia
+      </div>
+      <Field label="Titolo">
+        <TextInput
+          value={newsForm.title}
+          onChange={(e) => setNewsForm({ ...newsForm, title: e.target.value })}
+        />
+      </Field>
+      <Field label="Data">
+        <TextInput
+          type="date"
+          value={newsForm.date}
+          onChange={(e) => setNewsForm({ ...newsForm, date: e.target.value })}
+        />
+      </Field>
+      <Field label="Testo">
+        <TextArea
+          value={newsForm.body}
+          onChange={(e) => setNewsForm({ ...newsForm, body: e.target.value })}
+        />
+      </Field>
+      <Button variant="secondary" onClick={() => void addNews()} disabled={loading}>
+        {loading ? <Loader2 size={16} /> : null} Aggiungi notizia
+      </Button>
+    </div>
+  ) : null}
+</div>
         )}
       </div>
     ) : null}
