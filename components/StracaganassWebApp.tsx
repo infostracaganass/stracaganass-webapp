@@ -489,6 +489,20 @@ const [sponsorScrollDistance, setSponsorScrollDistance] = useState(0);
   extra_info: "",
 });
 
+const [editingEventId, setEditingEventId] = useState<string | null>(null);
+
+const [editEventForm, setEditEventForm] = useState({
+  title: "",
+  date: "",
+  time: "",
+  place: "",
+  description: "",
+  food_info: "",
+  music_info: "",
+  end_time_info: "",
+  extra_info: "",
+});
+  
   const [newsForm, setNewsForm] = useState({
     title: "",
     date: "",
