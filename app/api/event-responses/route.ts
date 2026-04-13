@@ -35,12 +35,13 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-const eventId = String(body.eventId || "").trim();
-const rawName = String(body.name || "").trim();
-const name = rawName.replace(/\s+/g, " ");
-const normalizedName = name.toLowerCase();
-const status = String(body.status || "").trim();
-const note = String(body.note || "").trim();
+    const eventId = String(body.eventId || "").trim();
+    const rawName = String(body.name || "").trim();
+    const name = rawName.replace(/\s+/g, " ");
+    const normalizedName = name.toLowerCase();
+    const status = String(body.status || "").trim();
+    const note = String(body.note || "").trim();
+    const forceUpdate = body.forceUpdate === true;
 
     if (!eventId || !name || !status) {
       return NextResponse.json(
@@ -54,20 +55,29 @@ const note = String(body.note || "").trim();
     }
 
     const { data: existingList, error: existingError } = await db
-  .from("event_responses")
-  .select("*")
-  .eq("event_id", eventId);
+      .from("event_responses")
+      .select("*")
+      .eq("event_id", eventId);
 
-if (existingError) {
-  return NextResponse.json({ message: existingError.message }, { status: 500 });
-}
+    if (existingError) {
+      return NextResponse.json({ message: existingError.message }, { status: 500 });
+    }
 
-const existing =
-  existingList?.find(
-    (response) => String(response.name || "").trim().toLowerCase() === normalizedName
-  ) || null;
+    const existing =
+      existingList?.find(
+        (response) => String(response.name || "").trim().toLowerCase() === normalizedName
+      ) || null;
 
-    if (existing) {
+    if (existing && !forceUpdate) {
+      return NextResponse.json({
+        ok: true,
+        requiresConfirmation: true,
+        message:
+          "Questo nome è già presente per l’evento.\nSe sei la stessa persona, la risposta verrà aggiornata con l’attuale scelta.\nSe invece sei un’altra persona, inserisci l’iniziale del cognome per salvare la tua risposta.",
+      });
+    }
+
+    if (existing && forceUpdate) {
       const { data, error } = await db
         .from("event_responses")
         .update({
