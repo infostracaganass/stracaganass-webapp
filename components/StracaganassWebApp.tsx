@@ -1181,6 +1181,36 @@ const getGroupedAttendanceResponses = (responses: EventResponse[]) => {
     maybe: responses.filter((response) => response.status === "maybe"),
   };
 };
+
+const buildWhatsAppEventText = (event: EventItem) => {
+  const lines = [
+    `🟢 ${event.title}`,
+    "",
+    "Ecco le informazioni utili:",
+    `- 📆 ${formatDate(event.date)}`,
+    `- 📍 ${event.place?.trim() ? event.place.trim() : "Da definire"}`,
+    `- 🕰️ Ritrovo ${event.time?.trim() ? event.time.trim() : "orario da definire"} in loco`,
+  ];
+
+  if (event.food_info?.trim()) {
+    lines.push(`- 🍗 ${event.food_info.trim()}`);
+  }
+
+  if (event.music_info?.trim()) {
+    lines.push(`- 🎶 ${event.music_info.trim()}`);
+  }
+
+  if (event.end_time_info?.trim()) {
+    lines.push(`- 🔚 termine ore ${event.end_time_info.trim()}`);
+  }
+
+  if (event.extra_info?.trim()) {
+    lines.push("");
+    lines.push(`ℹ️ ${event.extra_info.trim()}`);
+  }
+
+  return lines.join("\n");
+};
   
   return (
     <main
