@@ -978,7 +978,17 @@ setError("");
       });
 
       setEvents((prev) => [...prev, created].sort((a, b) => +new Date(a.date) - +new Date(b.date)));
-      setEventForm({ title: "", date: "", time: "", place: "", description: "" });
+      setEventForm({
+  title: "",
+  date: "",
+  time: "",
+  place: "",
+  description: "",
+  food_info: "",
+  music_info: "",
+  end_time_info: "",
+  extra_info: "",
+});
     } catch (err) {
       alert(err instanceof Error ? err.message : "Errore creazione evento.");
     } finally {
