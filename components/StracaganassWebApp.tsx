@@ -451,6 +451,10 @@ const [attendanceResponsesOpen, setAttendanceResponsesOpen] = useState<Record<st
 const [attendanceForm, setAttendanceForm] = useState<
   Record<string, { name: string; status: AttendanceStatus | "" }>
 >({});
+  const [attendanceConfirmation, setAttendanceConfirmation] = useState<{
+  eventId: string;
+  message: string;
+} | null>(null);
   const [loading, setLoading] = useState(false);
   const [bootLoading, setBootLoading] = useState(true);
   const [error, setError] = useState("");
