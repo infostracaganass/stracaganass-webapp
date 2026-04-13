@@ -3097,6 +3097,94 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </div>
 </div>
 
+{editingEventId === event.id ? (
+  <div
+    style={{
+      display: "grid",
+      gap: 10,
+      background: "rgba(255,255,255,0.05)",
+      border: "1px solid rgba(255,255,255,0.10)",
+      borderRadius: 14,
+      padding: 12,
+    }}
+  >
+    <Field label="Titolo">
+      <TextInput
+        value={editEventForm.title}
+        onChange={(e) => setEditEventForm({ ...editEventForm, title: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Data">
+      <TextInput
+        type="date"
+        value={editEventForm.date}
+        onChange={(e) => setEditEventForm({ ...editEventForm, date: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Ora">
+      <TextInput
+        type="time"
+        value={editEventForm.time}
+        onChange={(e) => setEditEventForm({ ...editEventForm, time: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Luogo">
+      <TextInput
+        value={editEventForm.place}
+        onChange={(e) => setEditEventForm({ ...editEventForm, place: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Descrizione">
+      <TextArea
+        value={editEventForm.description}
+        onChange={(e) => setEditEventForm({ ...editEventForm, description: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Info cibo">
+      <TextInput
+        value={editEventForm.food_info}
+        onChange={(e) => setEditEventForm({ ...editEventForm, food_info: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Info suonate">
+      <TextInput
+        value={editEventForm.music_info}
+        onChange={(e) => setEditEventForm({ ...editEventForm, music_info: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Termine ore">
+      <TextInput
+        value={editEventForm.end_time_info}
+        onChange={(e) => setEditEventForm({ ...editEventForm, end_time_info: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Info supplementari">
+      <TextArea
+        value={editEventForm.extra_info}
+        onChange={(e) => setEditEventForm({ ...editEventForm, extra_info: e.target.value })}
+      />
+    </Field>
+
+    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      <Button onClick={() => void saveEventEdit()} disabled={loading}>
+        {loading ? <Loader2 size={16} /> : null} Salva modifiche
+      </Button>
+
+      <Button variant="outline" onClick={cancelEditEvent}>
+        Annulla
+      </Button>
+    </div>
+  </div>
+) : null}
+              
               <div
                 style={{
                   display: "grid",
