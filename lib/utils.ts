@@ -6,6 +6,10 @@ export const eventSchema = z.object({
   time: z.string().optional().nullable(),
   place: z.string().optional().nullable(),
   description: z.string().optional().nullable(),
+  food_info: z.string().optional().nullable(),
+  music_info: z.string().optional().nullable(),
+  end_time_info: z.string().optional().nullable(),
+  extra_info: z.string().optional().nullable(),
 });
 
 export const newsSchema = z.object({
