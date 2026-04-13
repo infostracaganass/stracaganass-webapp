@@ -2990,7 +2990,6 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     <MessageCircle size={16} color="#86efac" />
   </button>
 </div>
-              </div>
 
               <div
                 style={{
