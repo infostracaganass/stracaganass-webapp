@@ -3040,47 +3040,83 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   ) : null}
 
   {adminSection === "events" ? (
-    <div style={{ display: "grid", gap: 12 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
-        <Plus size={16} /> Nuovo evento
-      </div>
-      <Field label="Titolo">
-        <TextInput
-          value={eventForm.title}
-          onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
-        />
-      </Field>
-      <Field label="Data">
-        <TextInput
-          type="date"
-          value={eventForm.date}
-          onChange={(e) => setEventForm({ ...eventForm, date: e.target.value })}
-        />
-      </Field>
-      <Field label="Ora">
-        <TextInput
-          type="time"
-          value={eventForm.time}
-          onChange={(e) => setEventForm({ ...eventForm, time: e.target.value })}
-        />
-      </Field>
-      <Field label="Luogo">
-        <TextInput
-          value={eventForm.place}
-          onChange={(e) => setEventForm({ ...eventForm, place: e.target.value })}
-        />
-      </Field>
-      <Field label="Descrizione">
-        <TextArea
-          value={eventForm.description}
-          onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
-        />
-      </Field>
-      <Button onClick={() => void addEvent()} disabled={loading}>
-        {loading ? <Loader2 size={16} /> : null} Aggiungi evento
-      </Button>
+  <div style={{ display: "grid", gap: 12 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700 }}>
+      <Plus size={16} /> Nuovo evento
     </div>
-  ) : null}
+
+    <Field label="Titolo">
+      <TextInput
+        value={eventForm.title}
+        onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Data">
+      <TextInput
+        type="date"
+        value={eventForm.date}
+        onChange={(e) => setEventForm({ ...eventForm, date: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Ora">
+      <TextInput
+        type="time"
+        value={eventForm.time}
+        onChange={(e) => setEventForm({ ...eventForm, time: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Luogo">
+      <TextInput
+        value={eventForm.place}
+        onChange={(e) => setEventForm({ ...eventForm, place: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Descrizione">
+      <TextArea
+        value={eventForm.description}
+        onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
+      />
+    </Field>
+
+    {/* 👇 NUOVI CAMPI */}
+
+    <Field label="Info cibo">
+      <TextInput
+        value={eventForm.food_info}
+        onChange={(e) => setEventForm({ ...eventForm, food_info: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Info suonate">
+      <TextInput
+        value={eventForm.music_info}
+        onChange={(e) => setEventForm({ ...eventForm, music_info: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Termine ore">
+      <TextInput
+        value={eventForm.end_time_info}
+        onChange={(e) => setEventForm({ ...eventForm, end_time_info: e.target.value })}
+      />
+    </Field>
+
+    <Field label="Info supplementari">
+      <TextArea
+        value={eventForm.extra_info}
+        onChange={(e) => setEventForm({ ...eventForm, extra_info: e.target.value })}
+      />
+    </Field>
+
+    <Button onClick={() => void addEvent()} disabled={loading}>
+      {loading ? <Loader2 size={16} /> : null} Aggiungi evento
+    </Button>
+  </div>
+) : null}
 
   {adminSection === "news" ? (
     <div style={{ display: "grid", gap: 12 }}>
