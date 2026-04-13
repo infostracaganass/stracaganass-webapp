@@ -41,6 +41,10 @@ type EventItem = {
   time?: string | null;
   place?: string | null;
   description?: string | null;
+  food_info?: string | null;
+  music_info?: string | null;
+  end_time_info?: string | null;
+  extra_info?: string | null;
 };
 
 type NewsItem = {
