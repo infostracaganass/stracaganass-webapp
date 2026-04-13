@@ -3051,24 +3051,50 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     </div>
   </div>
 
-  <button
-    type="button"
-    onClick={() => void copyWhatsAppEventText(event)}
-    title="Copia testo WhatsApp"
+  <div
     style={{
-      background: "transparent",
-      border: "none",
-      padding: 4,
-      cursor: "pointer",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 8,
+      gap: 6,
       flex: "0 0 auto",
     }}
   >
-    <MessageCircle size={16} color="#86efac" />
-  </button>
+    <button
+      type="button"
+      onClick={() => startEditEvent(event)}
+      title="Modifica evento"
+      style={{
+        background: "transparent",
+        border: "none",
+        padding: 4,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 8,
+      }}
+    >
+      <Pencil size={15} color="#cbd5e1" />
+    </button>
+
+    <button
+      type="button"
+      onClick={() => void copyWhatsAppEventText(event)}
+      title="Copia testo WhatsApp"
+      style={{
+        background: "transparent",
+        border: "none",
+        padding: 4,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 8,
+      }}
+    >
+      <MessageCircle size={16} color="#86efac" />
+    </button>
+  </div>
 </div>
 
               <div
