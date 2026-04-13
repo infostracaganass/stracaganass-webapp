@@ -1211,6 +1211,16 @@ const buildWhatsAppEventText = (event: EventItem) => {
 
   return lines.join("\n");
 };
+
+const copyWhatsAppEventText = async (event: EventItem) => {
+  try {
+    const text = buildWhatsAppEventText(event);
+    await navigator.clipboard.writeText(text);
+    alert("Testo WhatsApp copiato.");
+  } catch {
+    alert("Impossibile copiare il testo WhatsApp.");
+  }
+};
   
   return (
     <main
