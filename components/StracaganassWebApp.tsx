@@ -478,12 +478,16 @@ const [sponsorScrollDistance, setSponsorScrollDistance] = useState(0);
 }, []);
 
   const [eventForm, setEventForm] = useState({
-    title: "",
-    date: "",
-    time: "",
-    place: "",
-    description: "",
-  });
+  title: "",
+  date: "",
+  time: "",
+  place: "",
+  description: "",
+  food_info: "",
+  music_info: "",
+  end_time_info: "",
+  extra_info: "",
+});
 
   const [newsForm, setNewsForm] = useState({
     title: "",
