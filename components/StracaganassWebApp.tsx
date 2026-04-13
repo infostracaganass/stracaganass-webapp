@@ -2586,6 +2586,42 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
         </div>
       ) : null}
 
+      {attendanceConfirmation ? (
+  <div
+    style={{
+      color: "#fde68a",
+      background: "rgba(113,63,18,0.35)",
+      border: "1px solid rgba(250,204,21,0.35)",
+      borderRadius: 12,
+      padding: 12,
+      fontSize: 14,
+      display: "grid",
+      gap: 10,
+    }}
+  >
+    <div style={{ whiteSpace: "pre-line" }}>
+      {attendanceConfirmation.message}
+    </div>
+
+    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      <Button
+        variant="secondary"
+        onClick={() => void confirmAttendanceUpdate()}
+        disabled={attendanceLoadingByEvent[attendanceConfirmation.eventId]}
+      >
+        {attendanceLoadingByEvent[attendanceConfirmation.eventId] ? (
+          <Loader2 size={16} />
+        ) : null}
+        Continua e salva
+      </Button>
+
+      <Button variant="outline" onClick={cancelAttendanceConfirmation}>
+        Modifica nome
+      </Button>
+    </div>
+  </div>
+) : null}
+
       {upcomingEvents.length === 0 ? (
         <div style={{ color: "#cbd5e1", fontSize: 14 }}>
           Nessun evento disponibile.
