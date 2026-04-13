@@ -31,6 +31,7 @@ MessageCircle,
   XCircle,
   Eye,
   EyeOff,
+  Pencil,
   Info,
 } from "lucide-react";
 
@@ -1044,6 +1045,71 @@ setError("");
     }
   };
 
+const startEditEvent = (event: EventItem) => {
+  setEditingEventId(event.id);
+  setEditEventForm({
+    title: event.title || "",
+    date: event.date || "",
+    time: event.time || "",
+    place: event.place || "",
+    description: event.description || "",
+    food_info: event.food_info || "",
+    music_info: event.music_info || "",
+    end_time_info: event.end_time_info || "",
+    extra_info: event.extra_info || "",
+  });
+};
+
+const cancelEditEvent = () => {
+  setEditingEventId(null);
+  setEditEventForm({
+    title: "",
+    date: "",
+    time: "",
+    place: "",
+    description: "",
+    food_info: "",
+    music_info: "",
+    end_time_info: "",
+    extra_info: "",
+  });
+};
+
+const saveEventEdit = async () => {
+  if (!editingEventId) return;
+
+  if (!editEventForm.title || !editEventForm.date) {
+    alert("Inserisci almeno titolo e data.");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const updated = await apiFetch<EventItem>(`/api/events/${editingEventId}`, {
+      method: "PATCH",
+      body: JSON.stringify(editEventForm),
+    });
+
+    setEvents((prev) =>
+      prev
+        .map((item) => (item.id === editingEventId ? updated : item))
+        .sort(
+          (a, b) =>
+            +new Date(`${a.date}T${a.time || "00:00"}`) -
+            +new Date(`${b.date}T${b.time || "00:00"}`)
+        )
+    );
+
+    cancelEditEvent();
+    alert("Evento aggiornato correttamente.");
+  } catch (err) {
+    alert(err instanceof Error ? err.message : "Errore aggiornamento evento.");
+  } finally {
+    setLoading(false);
+  }
+};
+  
   const deleteNews = async (id: string) => {
     setDeletingId(id);
     try {
