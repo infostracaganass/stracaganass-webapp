@@ -2956,11 +2956,40 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                 padding: 12,
               }}
             >
-              <div>
-                <div style={{ fontWeight: 700, color: "white" }}>{event.title}</div>
-                <div style={{ fontSize: 13, color: "#cbd5e1", marginTop: 4 }}>
-                  {formatDate(event.date)}{event.time ? ` • ${event.time}` : ""}
-                </div>
+              <div
+  style={{
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: 12,
+  }}
+>
+  <div>
+    <div style={{ fontWeight: 700, color: "white" }}>{event.title}</div>
+    <div style={{ fontSize: 13, color: "#cbd5e1", marginTop: 4 }}>
+      {formatDate(event.date)}{event.time ? ` • ${event.time}` : ""}
+    </div>
+  </div>
+
+  <button
+    type="button"
+    onClick={() => void copyWhatsAppEventText(event)}
+    title="Copia testo WhatsApp"
+    style={{
+      background: "transparent",
+      border: "none",
+      padding: 4,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 8,
+      flex: "0 0 auto",
+    }}
+  >
+    <MessageCircle size={16} color="#86efac" />
+  </button>
+</div>
               </div>
 
               <div
