@@ -2528,10 +2528,8 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     <Button
   variant={membersSection === "attendance" ? "secondary" : "outline"}
   onClick={() => {
-    setMembersSection((prev) => (prev === "attendance" ? "home" : "attendance"));
-    setAttendanceError("");
-    setAttendanceMessage("");
-  }}
+  setMembersSection((prev) => (prev === "attendance" ? "home" : "attendance"));
+}}
 >
   Presenze eventi
 </Button>
