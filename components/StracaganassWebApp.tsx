@@ -1167,14 +1167,26 @@ const sendAttendance = async (eventId: string, forceUpdate = false) => {
   const form = attendanceForm[eventId];
 
   if (!form?.name?.trim()) {
-    setAttendanceError("Inserisci il nome socio.");
-    setAttendanceMessage("");
+    setAttendanceErrorByEvent((prev) => ({
+      ...prev,
+      [eventId]: "Inserisci il nome socio.",
+    }));
+    setAttendanceMessageByEvent((prev) => ({
+      ...prev,
+      [eventId]: "",
+    }));
     return null;
   }
 
   if (!form?.status) {
-    setAttendanceError("Seleziona una risposta.");
-    setAttendanceMessage("");
+    setAttendanceErrorByEvent((prev) => ({
+      ...prev,
+      [eventId]: "Seleziona una risposta.",
+    }));
+    setAttendanceMessageByEvent((prev) => ({
+      ...prev,
+      [eventId]: "",
+    }));
     return null;
   }
 
@@ -1197,9 +1209,21 @@ const sendAttendance = async (eventId: string, forceUpdate = false) => {
 
 const submitAttendance = async (eventId: string) => {
   setAttendanceLoadingByEvent((prev) => ({ ...prev, [eventId]: true }));
-  setAttendanceError("");
-  setAttendanceMessage("");
-  setAttendanceConfirmation(null);
+
+  setAttendanceErrorByEvent((prev) => ({
+    ...prev,
+    [eventId]: "",
+  }));
+
+  setAttendanceMessageByEvent((prev) => ({
+    ...prev,
+    [eventId]: "",
+  }));
+
+  setAttendanceConfirmationByEvent((prev) => ({
+    ...prev,
+    [eventId]: null,
+  }));
 
   try {
     const result = await sendAttendance(eventId, false);
@@ -1207,57 +1231,98 @@ const submitAttendance = async (eventId: string) => {
     if (!result) return;
 
     if (result.requiresConfirmation) {
-      setAttendanceConfirmation({
-        eventId,
-        message:
-          result.message ||
-          "Questo nome è già presente per l’evento.\nSe sei la stessa persona, la risposta verrà aggiornata con l’attuale scelta.\nSe invece sei un’altra persona, inserisci l’iniziale del cognome per salvare la tua risposta.",
-      });
+      setAttendanceConfirmationByEvent((prev) => ({
+        ...prev,
+        [eventId]: {
+          message:
+            result.message ||
+            "Questo nome è già presente per l’evento.\nSe sei la stessa persona, la risposta verrà aggiornata con l’attuale scelta.\nSe invece sei un’altra persona, inserisci l’iniziale del cognome per salvare la tua risposta.",
+        },
+      }));
       return;
     }
 
-    setAttendanceMessage("Risposta salvata correttamente.");
+    setAttendanceMessageByEvent((prev) => ({
+      ...prev,
+      [eventId]: "Risposta salvata correttamente.",
+    }));
+
     await loadEventResponses(eventId);
   } catch (err) {
-    setAttendanceError(
-      err instanceof Error ? err.message : "Errore durante il salvataggio della risposta."
-    );
-    setAttendanceMessage("");
+    setAttendanceErrorByEvent((prev) => ({
+      ...prev,
+      [eventId]:
+        err instanceof Error
+          ? err.message
+          : "Errore durante il salvataggio della risposta.",
+    }));
+
+    setAttendanceMessageByEvent((prev) => ({
+      ...prev,
+      [eventId]: "",
+    }));
   } finally {
     setAttendanceLoadingByEvent((prev) => ({ ...prev, [eventId]: false }));
   }
 };
 
-const confirmAttendanceUpdate = async () => {
-  if (!attendanceConfirmation) return;
-
-  const { eventId } = attendanceConfirmation;
-
+const confirmAttendanceUpdate = async (eventId: string) => {
   setAttendanceLoadingByEvent((prev) => ({ ...prev, [eventId]: true }));
-  setAttendanceError("");
-  setAttendanceMessage("");
+
+  setAttendanceErrorByEvent((prev) => ({
+    ...prev,
+    [eventId]: "",
+  }));
+
+  setAttendanceMessageByEvent((prev) => ({
+    ...prev,
+    [eventId]: "",
+  }));
 
   try {
     const result = await sendAttendance(eventId, true);
 
     if (!result) return;
 
-    setAttendanceConfirmation(null);
-    setAttendanceMessage("Risposta aggiornata correttamente.");
+    setAttendanceConfirmationByEvent((prev) => ({
+      ...prev,
+      [eventId]: null,
+    }));
+
+    setAttendanceMessageByEvent((prev) => ({
+      ...prev,
+      [eventId]: "Risposta aggiornata correttamente.",
+    }));
+
     await loadEventResponses(eventId);
   } catch (err) {
-    setAttendanceError(
-      err instanceof Error ? err.message : "Errore durante l’aggiornamento della risposta."
-    );
-    setAttendanceMessage("");
+    setAttendanceErrorByEvent((prev) => ({
+      ...prev,
+      [eventId]:
+        err instanceof Error
+          ? err.message
+          : "Errore durante l’aggiornamento della risposta.",
+    }));
+
+    setAttendanceMessageByEvent((prev) => ({
+      ...prev,
+      [eventId]: "",
+    }));
   } finally {
     setAttendanceLoadingByEvent((prev) => ({ ...prev, [eventId]: false }));
   }
 };
 
-const cancelAttendanceConfirmation = () => {
-  setAttendanceConfirmation(null);
-  setAttendanceMessage("");
+const cancelAttendanceConfirmation = (eventId: string) => {
+  setAttendanceConfirmationByEvent((prev) => ({
+    ...prev,
+    [eventId]: null,
+  }));
+
+  setAttendanceMessageByEvent((prev) => ({
+    ...prev,
+    [eventId]: "",
+  }));
 };
 
 const getAttendanceStatusStyles = (
