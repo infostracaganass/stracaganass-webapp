@@ -811,6 +811,8 @@ useEffect(() => {
   return () => window.clearTimeout(timer);
 }, [bootLoading, hasNewEvents, hasNewNews, eventsSignature, newsSignature]);
 
+const todayBirthdays = useMemo(() => getTodayBirthdays(), []);
+  
 const handleInstallClick = async () => {
   setInstallPanelOpen(true);
 
