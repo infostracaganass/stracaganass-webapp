@@ -275,12 +275,14 @@ function Button({
   disabled,
   variant = "primary",
   title,
+  style,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
   variant?: "primary" | "secondary" | "outline" | "dark";
   title?: string;
+  style?: React.CSSProperties;
 }) {
   let background = "#0284c7";
   let color = "white";
