@@ -2607,6 +2607,53 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
 </Button>
   </div>
 
+{membersSection === "attendance" ? (
+  <div
+    style={{
+      marginTop: 8,
+      display: "grid",
+      gap: 12,
+      background: "rgba(255,255,255,0.06)",
+      borderRadius: 16,
+      padding: 12,
+    }}
+  >
+    <div style={{ fontWeight: 700, color: "white" }}>Presenze eventi</div>
+
+    {upcomingEvents.length === 0 ? (
+      <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+        Nessun evento disponibile.
+      </div>
+    ) : (
+      upcomingEvents.map((event) => {
+        const form = getAttendanceFormValue(event.id);
+        const responses = attendanceResponses[event.id] || [];
+        const responsesOpen = attendanceResponsesOpen[event.id] || false;
+        const groupedResponses = getGroupedAttendanceResponses(responses);
+        const eventError = attendanceErrorByEvent[event.id] || "";
+        const eventMessage = attendanceMessageByEvent[event.id] || "";
+        const eventConfirmation = attendanceConfirmationByEvent[event.id];
+
+        return (
+          <div
+            key={event.id}
+            style={{
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: 16,
+              padding: 12,
+              display: "grid",
+              gap: 10,
+              background: "rgba(255,255,255,0.04)",
+            }}
+          >
+            {/* qui continua il tuo contenuto del singolo evento */}
+          </div>
+        );
+      })
+    )}
+  </div>
+) : null}
+              
       {upcomingEvents.length === 0 ? (
         <div style={{ color: "#cbd5e1", fontSize: 14 }}>
           Nessun evento disponibile.
