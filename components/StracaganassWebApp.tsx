@@ -19,6 +19,7 @@ import {
   Mail,
   Newspaper,
   Plus,
+  Minus,
   RefreshCw,
   ShieldCheck,
   Smartphone,
