@@ -2704,6 +2704,70 @@ const eventConfirmation = attendanceConfirmationByEvent[event.id];
   </button>
 </div>
 
+{eventError ? (
+  <div
+    style={{
+      color: "#fecaca",
+      background: "rgba(127,29,29,0.35)",
+      border: "1px solid rgba(248,113,113,0.35)",
+      borderRadius: 12,
+      padding: 10,
+      fontSize: 14,
+    }}
+  >
+    {eventError}
+  </div>
+) : null}
+
+{eventMessage ? (
+  <div
+    style={{
+      color: "#bbf7d0",
+      background: "rgba(20,83,45,0.35)",
+      border: "1px solid rgba(134,239,172,0.35)",
+      borderRadius: 12,
+      padding: 10,
+      fontSize: 14,
+    }}
+  >
+    {eventMessage}
+  </div>
+) : null}
+
+{eventConfirmation ? (
+  <div
+    style={{
+      color: "#fde68a",
+      background: "rgba(113,63,18,0.35)",
+      border: "1px solid rgba(250,204,21,0.35)",
+      borderRadius: 12,
+      padding: 12,
+      fontSize: 14,
+      display: "grid",
+      gap: 10,
+    }}
+  >
+    <div style={{ whiteSpace: "pre-line" }}>
+      {eventConfirmation.message}
+    </div>
+
+    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      <Button
+        variant="secondary"
+        onClick={() => void confirmAttendanceUpdate(event.id)}
+        disabled={attendanceLoadingByEvent[event.id]}
+      >
+        {attendanceLoadingByEvent[event.id] ? <Loader2 size={16} /> : null}
+        Continua e salva
+      </Button>
+
+      <Button variant="outline" onClick={() => cancelAttendanceConfirmation(event.id)}>
+        Modifica nome
+      </Button>
+    </div>
+  </div>
+) : null}
+              
               <div style={{ display: "grid", gap: 6 }}>
   <Button
     onClick={() => void submitAttendance(event.id)}
