@@ -412,7 +412,6 @@ const BIRTHDAYS = [
 
   { day: "10-04", name: "Alan" },
   { day: "12-04", name: "Adriana" },
-  { day: "14-04", name: "Test" },
   { day: "18-04", name: "Prisca" },
 
   { day: "17-05", name: "Anto" },
@@ -424,6 +423,7 @@ const BIRTHDAYS = [
   { day: "01-07", name: "Adriano" },
   { day: "09-07", name: "Davide" },
   { day: "16-07", name: "Yudi" },
+  { day: "16-07", name: "Tarci" },
   { day: "27-07", name: "Sabri" },
 
   { day: "24-08", name: "Clorinda" },
@@ -1978,7 +1978,7 @@ const copyWhatsAppEventText = async (event: EventItem) => {
             </div>
 
             <div style={{ color: "#64748b", fontSize: 14 }}>
-              Tantissimi auguri dalla Stracaganass
+              Tantissimi auguri dalla Straca
             </div>
           </div>
         </div>
