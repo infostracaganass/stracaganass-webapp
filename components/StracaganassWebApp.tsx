@@ -2608,19 +2608,19 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </div>
 
   {membersSection === "attendance" ? (
-    <div
-      style={{
-        marginTop: 8,
-        display: "grid",
-        gap: 12,
-        background: "rgba(255,255,255,0.06)",
-        borderRadius: 16,
-        padding: 12,
-      }}
-    >
-      <div style={{ fontWeight: 700, color: "white" }}>Presenze eventi</div>
+  <div
+    style={{
+      marginTop: 8,
+      display: "grid",
+      gap: 12,
+      background: "rgba(255,255,255,0.06)",
+      borderRadius: 16,
+      padding: 12,
+    }}
+  >
+    <div style={{ fontWeight: 700, color: "white" }}>Presenze eventi</div>
 
-      {upcomingEvents.length === 0 ? (
+    {upcomingEvents.length === 0 ? (
       <div style={{ color: "#cbd5e1", fontSize: 14 }}>
         Nessun evento disponibile.
       </div>
@@ -2646,317 +2646,313 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
               background: "rgba(255,255,255,0.04)",
             }}
           >
+            <div>
+              <div style={{ fontWeight: 700, color: "white" }}>{event.title}</div>
+              <div style={{ fontSize: 13, color: "#cbd5e1", marginTop: 4 }}>
+                {formatDate(event.date)}
+                {event.time ? ` • ${event.time}` : ""}
+              </div>
+            </div>
+
+            <Field label="Nome socio">
+              <TextInput
+                value={form.name}
+                onChange={(e) =>
+                  updateAttendanceForm(event.id, { name: e.target.value })
+                }
+                placeholder="Inserisci il tuo nome"
+              />
+            </Field>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: 8,
+              }}
+            >
+              <button
+                type="button"
+                onClick={() =>
+                  updateAttendanceForm(event.id, { status: "present" })
+                }
+                style={{
+                  padding: "12px 10px",
+                  borderRadius: 16,
+                  cursor: "pointer",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  whiteSpace: "nowrap",
+                  ...getAttendanceStatusStyles(
+                    "present",
+                    form.status === "present"
+                  ),
+                }}
+              >
+                Presente
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  updateAttendanceForm(event.id, { status: "absent" })
+                }
+                style={{
+                  padding: "12px 10px",
+                  borderRadius: 16,
+                  cursor: "pointer",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  whiteSpace: "nowrap",
+                  ...getAttendanceStatusStyles(
+                    "absent",
+                    form.status === "absent"
+                  ),
+                }}
+              >
+                Assente
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  updateAttendanceForm(event.id, { status: "maybe" })
+                }
+                style={{
+                  padding: "12px 10px",
+                  borderRadius: 16,
+                  cursor: "pointer",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  whiteSpace: "nowrap",
+                  ...getAttendanceStatusStyles("maybe", form.status === "maybe"),
+                }}
+              >
+                Forse
+              </button>
+            </div>
+
+            {eventError ? (
+              <div
+                style={{
+                  color: "#fecaca",
+                  background: "rgba(127,29,29,0.35)",
+                  border: "1px solid rgba(248,113,113,0.35)",
+                  borderRadius: 12,
+                  padding: 10,
+                  fontSize: 14,
+                }}
+              >
+                {eventError}
+              </div>
+            ) : null}
+
+            {eventMessage ? (
+              <div
+                style={{
+                  color: "#bbf7d0",
+                  background: "rgba(20,83,45,0.35)",
+                  border: "1px solid rgba(74,222,128,0.35)",
+                  borderRadius: 12,
+                  padding: 10,
+                  fontSize: 14,
+                }}
+              >
+                {eventMessage}
+              </div>
+            ) : null}
+
+            {eventConfirmation ? (
+              <div
+                style={{
+                  color: "#fde68a",
+                  background: "rgba(113,63,18,0.35)",
+                  border: "1px solid rgba(250,204,21,0.35)",
+                  borderRadius: 12,
+                  padding: 12,
+                  fontSize: 14,
+                  display: "grid",
+                  gap: 10,
+                }}
+              >
+                <div style={{ whiteSpace: "pre-line" }}>
+                  {eventConfirmation.message}
+                </div>
+
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <Button
+                    variant="secondary"
+                    onClick={() => void confirmAttendanceUpdate(event.id)}
+                    disabled={attendanceLoadingByEvent[event.id]}
+                  >
+                    {attendanceLoadingByEvent[event.id] ? (
+                      <Loader2 size={16} />
+                    ) : null}
+                    Continua e salva
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    onClick={() => cancelAttendanceConfirmation(event.id)}
+                  >
+                    Modifica nome
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+
+            <div style={{ display: "grid", gap: 6 }}>
+              <Button
+                onClick={() => void submitAttendance(event.id)}
+                disabled={attendanceLoadingByEvent[event.id]}
+                variant="dark"
+              >
+                {attendanceLoadingByEvent[event.id] ? (
+                  <Loader2 size={16} />
+                ) : null}
+                Salva risposta
+              </Button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  setAttendanceResponsesOpen((prev) => ({
+                    ...prev,
+                    [event.id]: !prev[event.id],
+                  }))
+                }
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#e2e8f0",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                  justifyContent: "flex-start",
+                }}
+              >
+                {responsesOpen ? (
+                  <>
+                    <ChevronUp size={14} /> Nascondi risposte ({responses.length})
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown size={14} /> Mostra risposte ({responses.length})
+                  </>
+                )}
+              </button>
+            </div>
+
+            {responsesOpen ? (
+              <div
+                style={{
+                  marginTop: 4,
+                  fontSize: 13,
+                  color: "#cbd5e1",
+                  display: "grid",
+                  gap: 6,
+                  background: "rgba(255,255,255,0.04)",
+                  borderRadius: 12,
+                  padding: 10,
+                }}
+              >
+                <div style={{ fontWeight: 700, color: "white" }}>
+                  Risposte ricevute
+                </div>
+
+                {responses.length === 0 ? (
+                  <div>Nessuna risposta registrata.</div>
+                ) : (
+                  <div style={{ display: "grid", gap: 10 }}>
+                    {(["present", "absent", "maybe"] as AttendanceStatus[]).map(
+                      (status) => {
+                        const items = groupedResponses[status];
+
+                        if (items.length === 0) return null;
+
+                        return (
+                          <div key={status} style={{ display: "grid", gap: 6 }}>
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                gap: 10,
+                              }}
+                            >
+                              <span style={{ fontWeight: 700, color: "white" }}>
+                                {getAttendanceStatusLabel(status)}
+                              </span>
+
+                              <span
+                                style={{
+                                  fontSize: 12,
+                                  color: "#94a3b8",
+                                  fontWeight: 700,
+                                }}
+                              >
+                                {items.length}
+                              </span>
+                            </div>
+
+                            <div style={{ display: "grid", gap: 6 }}>
+                              {items.map((response) => (
+                                <div
+                                  key={response.id}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    gap: 12,
+                                    padding: "8px 10px",
+                                    borderRadius: 10,
+                                    background: "rgba(255,255,255,0.03)",
+                                    border: "1px solid rgba(255,255,255,0.06)",
+                                  }}
+                                >
+                                  <span style={{ color: "white", fontWeight: 600 }}>
+                                    {response.name}
+                                  </span>
+
+                                  <span
+                                    style={{
+                                      fontWeight: 700,
+                                      fontSize: 11,
+                                      letterSpacing: 0.6,
+                                      textTransform: "uppercase",
+                                      color:
+                                        response.status === "present"
+                                          ? "#16a34a"
+                                          : response.status === "absent"
+                                          ? "#dc2626"
+                                          : "#facc15",
+                                    }}
+                                  >
+                                    {response.status === "present" && "PRESENTE"}
+                                    {response.status === "absent" && "ASSENTE"}
+                                    {response.status === "maybe" && "FORSE"}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : null}
           </div>
         );
       })
     )}
   </div>
 ) : null}
-              
-      {upcomingEvents.length === 0 ? (
-        <div style={{ color: "#cbd5e1", fontSize: 14 }}>
-          Nessun evento disponibile.
-        </div>
-      ) : (
-        upcomingEvents.map((event) => {
-          const form = getAttendanceFormValue(event.id);
-          const responses = attendanceResponses[event.id] || [];
-          const responsesOpen = attendanceResponsesOpen[event.id] || false;
-          const groupedResponses = getGroupedAttendanceResponses(responses);
-          const eventError = attendanceErrorByEvent[event.id] || "";
-const eventMessage = attendanceMessageByEvent[event.id] || "";
-const eventConfirmation = attendanceConfirmationByEvent[event.id];
-
-          return (
-            <div
-              key={event.id}
-              style={{
-                border: "1px solid rgba(255,255,255,0.12)",
-                borderRadius: 16,
-                padding: 12,
-                display: "grid",
-                gap: 10,
-                background: "rgba(255,255,255,0.04)",
-              }}
-            >
-              <div>
-                <div style={{ fontWeight: 700, color: "white" }}>{event.title}</div>
-                <div style={{ fontSize: 13, color: "#cbd5e1", marginTop: 4 }}>
-                  {formatDate(event.date)}{event.time ? ` • ${event.time}` : ""}
-                </div>
-              </div>
-
-              <Field label="Nome socio">
-                <TextInput
-                  value={form.name}
-                  onChange={(e) => updateAttendanceForm(event.id, { name: e.target.value })}
-                  placeholder="Inserisci il tuo nome"
-                />
-              </Field>
-
-              <div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-    gap: 8,
-  }}
->
-  <button
-    type="button"
-    onClick={() => updateAttendanceForm(event.id, { status: "present" })}
-    style={{
-      padding: "12px 10px",
-      borderRadius: 16,
-      cursor: "pointer",
-      fontWeight: 700,
-      fontSize: 14,
-      whiteSpace: "nowrap",
-      ...getAttendanceStatusStyles("present", form.status === "present"),
-    }}
-  >
-    Presente
-  </button>
-
-  <button
-    type="button"
-    onClick={() => updateAttendanceForm(event.id, { status: "absent" })}
-    style={{
-      padding: "12px 10px",
-      borderRadius: 16,
-      cursor: "pointer",
-      fontWeight: 700,
-      fontSize: 14,
-      whiteSpace: "nowrap",
-      ...getAttendanceStatusStyles("absent", form.status === "absent"),
-    }}
-  >
-    Assente
-  </button>
-
-  <button
-    type="button"
-    onClick={() => updateAttendanceForm(event.id, { status: "maybe" })}
-    style={{
-      padding: "12px 10px",
-      borderRadius: 16,
-      cursor: "pointer",
-      fontWeight: 700,
-      fontSize: 14,
-      whiteSpace: "nowrap",
-      ...getAttendanceStatusStyles("maybe", form.status === "maybe"),
-    }}
-  >
-    Forse
-  </button>
-</div>
-
-{eventError ? (
-  <div
-    style={{
-      color: "#fecaca",
-      background: "rgba(127,29,29,0.35)",
-      border: "1px solid rgba(248,113,113,0.35)",
-      borderRadius: 12,
-      padding: 10,
-      fontSize: 14,
-    }}
-  >
-    {eventError}
-  </div>
-) : null}
-
-{eventMessage ? (
-  <div
-    style={{
-      color: "#bbf7d0",
-      background: "rgba(20,83,45,0.35)",
-      border: "1px solid rgba(134,239,172,0.35)",
-      borderRadius: 12,
-      padding: 10,
-      fontSize: 14,
-    }}
-  >
-    {eventMessage}
-  </div>
-) : null}
-
-{eventConfirmation ? (
-  <div
-    style={{
-      color: "#fde68a",
-      background: "rgba(113,63,18,0.35)",
-      border: "1px solid rgba(250,204,21,0.35)",
-      borderRadius: 12,
-      padding: 12,
-      fontSize: 14,
-      display: "grid",
-      gap: 10,
-    }}
-  >
-    <div style={{ whiteSpace: "pre-line" }}>
-      {eventConfirmation.message}
-    </div>
-
-    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-      <Button
-        variant="secondary"
-        onClick={() => void confirmAttendanceUpdate(event.id)}
-        disabled={attendanceLoadingByEvent[event.id]}
-      >
-        {attendanceLoadingByEvent[event.id] ? <Loader2 size={16} /> : null}
-        Continua e salva
-      </Button>
-
-      <Button variant="outline" onClick={() => cancelAttendanceConfirmation(event.id)}>
-        Modifica nome
-      </Button>
-    </div>
-  </div>
-) : null}
-              
-              <div style={{ display: "grid", gap: 6 }}>
-  <Button
-    onClick={() => void submitAttendance(event.id)}
-    disabled={attendanceLoadingByEvent[event.id]}
-    variant="dark"
-  >
-    {attendanceLoadingByEvent[event.id] ? <Loader2 size={16} /> : null}
-    Salva risposta
-  </Button>
-
-  <button
-  onClick={() =>
-    setAttendanceResponsesOpen((prev) => ({
-      ...prev,
-      [event.id]: !prev[event.id],
-    }))
-  }
-  style={{
-    background: "transparent",
-    border: "none",
-    padding: 0,
-    cursor: "pointer",
-    fontSize: 13,
-    fontWeight: 600,
-    color: "#e2e8f0",
-    display: "flex",
-    alignItems: "center",
-    gap: 4,
-    justifyContent: "flex-start",
-  }}
->
-  {attendanceResponsesOpen[event.id] ? (
-    <>
-      <ChevronUp size={14} /> Nascondi risposte ({responses.length})
-    </>
-  ) : (
-    <>
-      <ChevronDown size={14} /> Mostra risposte ({responses.length})
-    </>
-  )}
-</button>
-</div>
-
-              {responsesOpen ? (
-                <div
-                  style={{
-                    marginTop: 4,
-                    fontSize: 13,
-                    color: "#cbd5e1",
-                    display: "grid",
-                    gap: 6,
-                    background: "rgba(255,255,255,0.04)",
-                    borderRadius: 12,
-                    padding: 10,
-                  }}
-                >
-                  <div style={{ fontWeight: 700, color: "white" }}>Risposte ricevute</div>
-
-                  {responses.length === 0 ? (
-  <div>Nessuna risposta registrata.</div>
-) : (
-  <div style={{ display: "grid", gap: 10 }}>
-    {(["present", "absent", "maybe"] as AttendanceStatus[]).map((status) => {
-      const items = groupedResponses[status];
-
-      if (items.length === 0) return null;
-
-      return (
-        <div key={status} style={{ display: "grid", gap: 6 }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 10,
-            }}
-          >
-            <span style={{ fontWeight: 700, color: "white" }}>
-              {getAttendanceStatusLabel(status)}
-            </span>
-
-            <span
-              style={{
-                fontWeight: 700,
-                borderRadius: 999,
-                padding: "4px 10px",
-                fontSize: 12,
-                ...getAttendanceStatusStyles(status, false),
-              }}
-            >
-              {items.length}
-            </span>
-          </div>
-
-          <div style={{ display: "grid", gap: 6 }}>
-            {items.map((response) => (
-              <div
-                key={response.id}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 10,
-                  borderBottom: "1px solid rgba(255,255,255,0.08)",
-                  paddingBottom: 6,
-                }}
-              >
-                <span>{response.name}</span>
-
-                <span
-  style={{
-    fontWeight: 700,
-    fontSize: 11,
-    letterSpacing: 0.6,
-    textTransform: "uppercase",
-    color:
-      response.status === "present"
-        ? "#16a34a"
-        : response.status === "absent"
-        ? "#dc2626"
-        : "#facc15",
-  }}
->
-  {response.status === "present" && "PRESENTE"}
-  {response.status === "absent" && "ASSENTE"}
-  {response.status === "maybe" && "FORSE"}
-</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
-    })}
-  </div>
-)}
-                </div>
-              ) : null}
-            </div>
-          );
-        })
-      )}
-    </div>
-  ) : null}
 
   {membersSection === "materials" ? (
     <div
