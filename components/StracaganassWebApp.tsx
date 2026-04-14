@@ -2791,6 +2791,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
       variant="secondary"
       onClick={() => void confirmAttendanceUpdate(event.id)}
       disabled={attendanceLoadingByEvent[event.id]}
+      style={{ width: "100%" }}
     >
       {attendanceLoadingByEvent[event.id] ? (
         <Loader2 size={16} />
@@ -2803,6 +2804,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     <Button
       variant="outline"
       onClick={() => cancelAttendanceConfirmation(event.id)}
+      style={{ width: "100%" }}
     >
       Modifica
     </Button>
