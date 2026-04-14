@@ -2646,7 +2646,6 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
               background: "rgba(255,255,255,0.04)",
             }}
           >
-            {/* qui continua il tuo contenuto del singolo evento */}
           </div>
         );
       })
