@@ -2783,9 +2783,10 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   style={{
     display: "flex",
     gap: 10,
+    flexWrap: "wrap",
   }}
 >
-  <div style={{ flex: 1 }}>
+  <div style={{ flex: "1 1 140px" }}>
     <Button
       variant="secondary"
       onClick={() => void confirmAttendanceUpdate(event.id)}
@@ -2798,7 +2799,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
     </Button>
   </div>
 
-  <div style={{ flex: 1 }}>
+  <div style={{ flex: "1 1 140px" }}>
     <Button
       variant="outline"
       onClick={() => cancelAttendanceConfirmation(event.id)}
