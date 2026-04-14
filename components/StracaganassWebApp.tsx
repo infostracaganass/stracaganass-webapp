@@ -945,8 +945,9 @@ const logoutMembersArea = () => {
   setAttendanceResponses({});
   setAttendanceResponsesOpen({});
   setAttendanceForm({});
-  setAttendanceError("");
-  setAttendanceMessage("");
+  setAttendanceErrorByEvent({});
+setAttendanceMessageByEvent({});
+setAttendanceConfirmationByEvent({});
 };
   
 const login = async () => {
