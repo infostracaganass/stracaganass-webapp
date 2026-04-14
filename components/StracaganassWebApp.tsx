@@ -2617,6 +2617,9 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
           const responses = attendanceResponses[event.id] || [];
           const responsesOpen = attendanceResponsesOpen[event.id] || false;
           const groupedResponses = getGroupedAttendanceResponses(responses);
+          const eventError = attendanceErrorByEvent[event.id] || "";
+const eventMessage = attendanceMessageByEvent[event.id] || "";
+const eventConfirmation = attendanceConfirmationByEvent[event.id];
 
           return (
             <div
