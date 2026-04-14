@@ -402,6 +402,68 @@ const MEMBERS_MATERIAL_LINKS = {
   media: "https://drive.google.com/drive/folders/1SZas5nl4BHFHEKYk-Jl2AgFOrTt95g-x?usp=sharing",
 };
 
+const BIRTHDAYS = [
+  { day: "02-02", name: "Samuel" },
+  { day: "10-02", name: "Carmela" },
+  { day: "28-02", name: "Valérie" },
+
+  { day: "27-03", name: "Giulia" },
+  { day: "31-03", name: "Alessandra" },
+
+  { day: "10-04", name: "Alan" },
+  { day: "12-04", name: "Adriana" },
+  { day: "18-04", name: "Prisca" },
+
+  { day: "17-05", name: "Anto" },
+  { day: "18-05", name: "Lore" },
+
+  { day: "04-06", name: "Chiara" },
+  { day: "25-06", name: "Berny" },
+
+  { day: "01-07", name: "Adriano" },
+  { day: "09-07", name: "Davide" },
+  { day: "16-07", name: "Yudi" },
+  { day: "27-07", name: "Sabri" },
+
+  { day: "24-08", name: "Clorinda" },
+  { day: "30-08", name: "Remo" },
+
+  { day: "06-09", name: "Lisa" },
+  { day: "22-09", name: "Nhauel" },
+  { day: "22-09", name: "Katrin" },
+  { day: "23-09", name: "Daria" },
+  { day: "25-09", name: "Chamy" },
+  { day: "28-09", name: "Ric" },
+  { day: "30-09", name: "Miglio" },
+
+  { day: "06-10", name: "Stefy" },
+  { day: "08-10", name: "Brian" },
+  { day: "13-10", name: "Vale" },
+  { day: "22-10", name: "Luigi T." },
+
+  { day: "01-11", name: "Piter" },
+  { day: "06-11", name: "Mirco" },
+  { day: "10-11", name: "Alessandro" },
+  { day: "19-11", name: "Bobo" },
+  { day: "28-11", name: "Teto" },
+
+  { day: "11-12", name: "Alessia" },
+  { day: "23-12", name: "Sandra" },
+];
+
+function getTodayBirthdays() {
+  try {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const todayKey = `${day}-${month}`;
+
+    return BIRTHDAYS.filter((item) => item.day === todayKey);
+  } catch {
+    return [];
+  }
+}
+
 export default function StracaganassWebApp() {
   const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
