@@ -33,6 +33,7 @@ MessageCircle,
   EyeOff,
   Pencil,
   Info,
+  PartyPopper,
 } from "lucide-react";
 
 type EventItem = {
