@@ -2599,13 +2599,13 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   Presenze eventi
 </Button>
 
-    <Button
+<Button
   variant={membersSection === "materials" ? "secondary" : "outline"}
   onClick={() => setMembersSection((prev) => (prev === "materials" ? "home" : "materials"))}
 >
   Materiale soci
 </Button>
-  </div>
+</div>
 
 {membersSection === "attendance" ? (
   <div
