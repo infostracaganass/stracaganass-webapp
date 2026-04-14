@@ -2605,22 +2605,22 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
 >
   Materiale soci
 </Button>
-</div>
+  </div>
 
-{membersSection === "attendance" ? (
-  <div
-    style={{
-      marginTop: 8,
-      display: "grid",
-      gap: 12,
-      background: "rgba(255,255,255,0.06)",
-      borderRadius: 16,
-      padding: 12,
-    }}
-  >
-    <div style={{ fontWeight: 700, color: "white" }}>Presenze eventi</div>
+  {membersSection === "attendance" ? (
+    <div
+      style={{
+        marginTop: 8,
+        display: "grid",
+        gap: 12,
+        background: "rgba(255,255,255,0.06)",
+        borderRadius: 16,
+        padding: 12,
+      }}
+    >
+      <div style={{ fontWeight: 700, color: "white" }}>Presenze eventi</div>
 
-    {upcomingEvents.length === 0 ? (
+      {upcomingEvents.length === 0 ? (
       <div style={{ color: "#cbd5e1", fontSize: 14 }}>
         Nessun evento disponibile.
       </div>
