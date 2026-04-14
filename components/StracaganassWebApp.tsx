@@ -2783,26 +2783,29 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   style={{
     display: "flex",
     gap: 10,
-    flexWrap: "nowrap",
   }}
 >
-  <Button
-    variant="secondary"
-    onClick={() => void confirmAttendanceUpdate(event.id)}
-    disabled={attendanceLoadingByEvent[event.id]}
-  >
-    {attendanceLoadingByEvent[event.id] ? (
-      <Loader2 size={16} />
-    ) : null}
-    Salva
-  </Button>
+  <div style={{ flex: 1 }}>
+    <Button
+      variant="secondary"
+      onClick={() => void confirmAttendanceUpdate(event.id)}
+      disabled={attendanceLoadingByEvent[event.id]}
+    >
+      {attendanceLoadingByEvent[event.id] ? (
+        <Loader2 size={16} />
+      ) : null}
+      Salva
+    </Button>
+  </div>
 
-  <Button
-    variant="outline"
-    onClick={() => cancelAttendanceConfirmation(event.id)}
-  >
-    Modifica
-  </Button>
+  <div style={{ flex: 1 }}>
+    <Button
+      variant="outline"
+      onClick={() => cancelAttendanceConfirmation(event.id)}
+    >
+      Modifica
+    </Button>
+  </div>
 </div>
               </div>
             ) : null}
