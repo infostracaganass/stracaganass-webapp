@@ -308,18 +308,20 @@ function Button({
       disabled={disabled}
       onClick={onClick}
       style={{
-        padding: "12px 16px",
-        borderRadius: 16,
-        background,
-        color,
-        border,
-        cursor: disabled ? "not-allowed" : "pointer",
-        opacity: disabled ? 0.65 : 1,
-        fontWeight: 700,
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 8,
-      }}
+  padding: "12px 16px",
+  borderRadius: 16,
+  background,
+  color,
+  border,
+  cursor: disabled ? "not-allowed" : "pointer",
+  opacity: disabled ? 0.65 : 1,
+  fontWeight: 700,
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 8,
+  ...style,
+}}
     >
       {children}
     </button>
