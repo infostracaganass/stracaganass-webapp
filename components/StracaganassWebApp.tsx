@@ -1935,6 +1935,56 @@ const copyWhatsAppEventText = async (event: EventItem) => {
     </div>
   </Card>
 ) : null}
+
+          {todayBirthdays.length > 0 ? (
+  <Card>
+    <div style={{ padding: 24 }}>
+      <div
+        style={{
+          width: "100%",
+          background: "transparent",
+          border: "none",
+          padding: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          textAlign: "left",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div
+            style={{
+              background: "white",
+              border: "1px solid #fde68a",
+              borderRadius: 16,
+              padding: 10,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <PartyPopper size={18} color="#d97706" />
+          </div>
+
+          <div>
+            <div style={{ fontWeight: 700, color: "#0f172a" }}>
+              {todayBirthdays.length === 1
+                ? `Buon compleanno ${todayBirthdays[0].name}!`
+                : `Buon compleanno ${todayBirthdays
+                    .map((item) => item.name)
+                    .join(", ")}!`}
+            </div>
+
+            <div style={{ color: "#64748b", fontSize: 14 }}>
+              Tantissimi auguri dalla Stracaganass
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Card>
+) : null}
           
          <section
   style={{
