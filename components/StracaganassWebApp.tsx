@@ -441,8 +441,8 @@ const [memberError, setMemberError] = useState("");
 
 const [attendanceLoadingByEvent, setAttendanceLoadingByEvent] = useState<Record<string, boolean>>({});
 
-const [attendanceError, setAttendanceError] = useState("");
-const [attendanceMessage, setAttendanceMessage] = useState("");
+const [attendanceErrorByEvent, setAttendanceErrorByEvent] = useState<Record<string, string>>({});
+const [attendanceMessageByEvent, setAttendanceMessageByEvent] = useState<Record<string, string>>({});
 
 const [attendanceResponses, setAttendanceResponses] = useState<Record<string, EventResponse[]>>({});
 
@@ -451,10 +451,10 @@ const [attendanceResponsesOpen, setAttendanceResponsesOpen] = useState<Record<st
 const [attendanceForm, setAttendanceForm] = useState<
   Record<string, { name: string; status: AttendanceStatus | "" }>
 >({});
-  const [attendanceConfirmation, setAttendanceConfirmation] = useState<{
-  eventId: string;
-  message: string;
-} | null>(null);
+
+const [attendanceConfirmationByEvent, setAttendanceConfirmationByEvent] = useState<
+  Record<string, { message: string } | null>
+>({});
   const [loading, setLoading] = useState(false);
   const [bootLoading, setBootLoading] = useState(true);
   const [error, setError] = useState("");
