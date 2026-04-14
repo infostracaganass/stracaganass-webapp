@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
         ok: true,
         requiresConfirmation: true,
         message:
-          "Questo nome è già presente per l’evento.\nSe sei la stessa persona, la risposta verrà aggiornata con l’attuale scelta.\nSe invece sei un’altra persona, inserisci l’iniziale del cognome per salvare la tua risposta.",
+          "Questo nome è già presente per l’evento.\n \nSe sei la stessa persona, la risposta verrà aggiornata con l’attuale scelta.\n \nSe invece sei un’altra persona, inserisci l’iniziale del cognome per salvare la tua risposta.",
       });
     }
 
