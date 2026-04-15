@@ -3396,12 +3396,12 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
         <ShieldCheck size={16} /> Risultati sondaggi
       </div>
 
-      {upcomingEvents.length === 0 ? (
-        <div style={{ color: "#cbd5e1", fontSize: 14 }}>
-          Nessun evento disponibile.
-        </div>
-      ) : (
-        upcomingEvents.map((event) => {
+      {adminUpcomingEvents.length === 0 ? (
+  <div style={{ color: "#cbd5e1", fontSize: 14 }}>
+    Nessun evento disponibile.
+  </div>
+) : (
+  adminUpcomingEvents.map((event) => {
           const responses = getAdminEventResponses(event.id);
           const counts = getAdminEventCounts(event.id);
 
