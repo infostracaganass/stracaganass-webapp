@@ -2370,7 +2370,7 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
 )}
             </div>
 
-            {upcomingEvents.length > 5 ? (
+            {(admin ? adminUpcomingEvents.length : upcomingEvents.length) > 5 ? (
   <div style={{ marginTop: 12 }}>
     <button
       onClick={() => setShowAllEvents((value) => !value)}
