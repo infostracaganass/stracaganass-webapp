@@ -1212,6 +1212,15 @@ const toggleEventVisibility = async (event: EventItem) => {
     await apiFetch(`/api/events/${event.id}`, {
       method: "PATCH",
       body: JSON.stringify({
+        title: event.title || "",
+        date: event.date || "",
+        time: event.time || "",
+        place: event.place || "",
+        description: event.description || "",
+        food_info: event.food_info || "",
+        music_info: event.music_info || "",
+        end_time_info: event.end_time_info || "",
+        extra_info: event.extra_info || "",
         visible: nextVisible,
       }),
     });
