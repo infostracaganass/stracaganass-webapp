@@ -746,6 +746,19 @@ useEffect(() => {
     );
 }, [events]);
 
+const adminUpcomingEvents = useMemo(() => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return events
+    .filter((item) => new Date(`${item.date}T${item.time || "00:00"}`) >= today)
+    .sort(
+      (a, b) =>
+        +new Date(`${a.date}T${a.time || "00:00"}`) -
+        +new Date(`${b.date}T${b.time || "00:00"}`)
+    );
+}, [events]);
+  
 useEffect(() => {
   if (!admin) return;
   if (adminSection !== "surveys") return;
