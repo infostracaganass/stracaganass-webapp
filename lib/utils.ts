@@ -10,6 +10,7 @@ export const eventSchema = z.object({
   music_info: z.string().optional().nullable(),
   end_time_info: z.string().optional().nullable(),
   extra_info: z.string().optional().nullable(),
+  visible: z.boolean().optional(),
 });
 
 export const newsSchema = z.object({
