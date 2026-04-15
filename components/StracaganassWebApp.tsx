@@ -1205,15 +1205,26 @@ const saveEventEdit = async () => {
   }
 };
 
-  const toggleEventVisibility = async (event: EventItem) => {
+const toggleEventVisibility = async (event: EventItem) => {
+  const nextVisible = !(event.visible ?? true);
+
   try {
-    const updated = await apiFetch<EventItem>(`/api/events/${event.id}`, {
+    await apiFetch(`/api/events/${event.id}`, {
       method: "PATCH",
       body: JSON.stringify({
-        ...event,
-        visible: !(event.visible ?? true),
+        visible: nextVisible,
       }),
     });
+
+    setEvents((prev) =>
+      prev.map((item) =>
+        item.id === event.id ? { ...item, visible: nextVisible } : item
+      )
+    );
+  } catch (err) {
+    alert(err instanceof Error ? err.message : "Errore aggiornamento visibilità evento.");
+  }
+};
 
     setEvents((prev) =>
       prev.map((item) => (item.id === event.id ? updated : item))
