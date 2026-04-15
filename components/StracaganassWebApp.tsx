@@ -1152,6 +1152,7 @@ const cancelEditEvent = () => {
     music_info: "",
     end_time_info: "",
     extra_info: "",
+    visible: false,
   });
 };
 
