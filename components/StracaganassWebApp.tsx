@@ -793,10 +793,12 @@ useEffect(() => {
 useEffect(() => {
   if (!memberLoggedIn) return;
   if (membersSection !== "attendance") return;
-  if (!upcomingEvents.length) return;
+  if (!adminUpcomingEvents.length) return;
 
-  void Promise.all(upcomingEvents.map((event) => loadEventResponses(event.id)));
-}, [memberLoggedIn, membersSection, upcomingEvents]);
+  void Promise.all(
+    adminUpcomingEvents.map((event) => loadEventResponses(event.id))
+  );
+}, [memberLoggedIn, membersSection, adminUpcomingEvents]);
   
   useEffect(() => {
   if (bootLoading || typeof window === "undefined") return;
