@@ -561,6 +561,7 @@ const [sponsorScrollDistance, setSponsorScrollDistance] = useState(0);
   music_info: "",
   end_time_info: "",
   extra_info: "",
+  visible: false,
 });
 
 const [editingEventId, setEditingEventId] = useState<string | null>(null);
@@ -575,6 +576,7 @@ const [editEventForm, setEditEventForm] = useState({
   music_info: "",
   end_time_info: "",
   extra_info: "",
+  visible: false,
 });
   
   const [newsForm, setNewsForm] = useState({
