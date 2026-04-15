@@ -1081,6 +1081,7 @@ setError("");
   music_info: "",
   end_time_info: "",
   extra_info: "",
+  visible: false,
 });
     } catch (err) {
       alert(err instanceof Error ? err.message : "Errore creazione evento.");
