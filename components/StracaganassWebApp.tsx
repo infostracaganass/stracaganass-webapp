@@ -737,6 +737,7 @@ useEffect(() => {
   today.setHours(0, 0, 0, 0);
 
   return events
+    .filter((item) => (item.visible ?? true))
     .filter((item) => new Date(`${item.date}T${item.time || "00:00"}`) >= today)
     .sort(
       (a, b) =>
