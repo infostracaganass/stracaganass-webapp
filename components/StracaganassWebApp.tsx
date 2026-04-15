@@ -3411,49 +3411,71 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </div>
 
   <div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: 6,
+    flex: "0 0 auto",
+  }}
+>
+  <button
+    type="button"
+    onClick={() => startEditEvent(event)}
+    title="Modifica evento"
     style={{
+      background: "transparent",
+      border: "none",
+      padding: 4,
+      cursor: "pointer",
       display: "flex",
       alignItems: "center",
-      gap: 6,
-      flex: "0 0 auto",
+      justifyContent: "center",
+      borderRadius: 8,
     }}
   >
-    <button
-      type="button"
-      onClick={() => startEditEvent(event)}
-      title="Modifica evento"
-      style={{
-        background: "transparent",
-        border: "none",
-        padding: 4,
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 8,
-      }}
-    >
-      <Pencil size={15} color="#cbd5e1" />
-    </button>
+    <Pencil size={15} color="#cbd5e1" />
+  </button>
 
-    <button
-      type="button"
-      onClick={() => void copyWhatsAppEventText(event)}
-      title="Copia testo WhatsApp"
-      style={{
-        background: "transparent",
-        border: "none",
-        padding: 4,
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 8,
-      }}
-    >
-      <MessageCircle size={16} color="#86efac" />
-    </button>
-  </div>
+  <button
+    type="button"
+    onClick={() => void toggleEventVisibility(event)}
+    title={(event.visible ?? true) ? "Nascondi evento" : "Mostra evento"}
+    style={{
+      background: "transparent",
+      border: "none",
+      padding: 4,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 8,
+    }}
+  >
+    {(event.visible ?? true) ? (
+      <Eye size={16} color="#60a5fa" />
+    ) : (
+      <EyeOff size={16} color="#94a3b8" />
+    )}
+  </button>
+
+  <button
+    type="button"
+    onClick={() => void copyWhatsAppEventText(event)}
+    title="Copia testo WhatsApp"
+    style={{
+      background: "transparent",
+      border: "none",
+      padding: 4,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 8,
+    }}
+  >
+    <MessageCircle size={16} color="#86efac" />
+  </button>
+</div>
 </div>
 
 {editingEventId === event.id ? (
