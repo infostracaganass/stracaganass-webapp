@@ -47,6 +47,7 @@ type EventItem = {
   music_info?: string | null;
   end_time_info?: string | null;
   extra_info?: string | null;
+  visible?: boolean;
 };
 
 type NewsItem = {
