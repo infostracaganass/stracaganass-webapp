@@ -762,10 +762,10 @@ const adminUpcomingEvents = useMemo(() => {
 useEffect(() => {
   if (!admin) return;
   if (adminSection !== "surveys") return;
-  if (!upcomingEvents.length) return;
+  if (!adminUpcomingEvents.length) return;
 
   void loadAllAdminAttendance();
-}, [admin, adminSection, upcomingEvents]);
+}, [admin, adminSection, adminUpcomingEvents]);
 
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
