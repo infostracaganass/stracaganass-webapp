@@ -769,6 +769,10 @@ useEffect(() => {
 
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
+  const displayedEvents = admin
+  ? (showAllEvents ? adminUpcomingEvents : adminUpcomingEvents.slice(0, 5))
+  : visibleEvents;
+
   const eventsSignature = useMemo(() => {
   return events
     .map((item) => `${item.id}:${item.date}:${item.time || ""}:${item.title}`)
