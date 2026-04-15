@@ -1204,6 +1204,24 @@ const saveEventEdit = async () => {
     setLoading(false);
   }
 };
+
+  const toggleEventVisibility = async (event: EventItem) => {
+  try {
+    const updated = await apiFetch<EventItem>(`/api/events/${event.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        ...event,
+        visible: !(event.visible ?? true),
+      }),
+    });
+
+    setEvents((prev) =>
+      prev.map((item) => (item.id === event.id ? updated : item))
+    );
+  } catch (err) {
+    alert(err instanceof Error ? err.message : "Errore aggiornamento visibilità evento.");
+  }
+};
   
   const deleteNews = async (id: string) => {
     setDeletingId(id);
