@@ -2222,9 +2222,9 @@ const copyWhatsAppEventText = async (event: EventItem) => {
             padding: 20,
             display: "grid",
             gap: 10,
-            border: visibleEvents[0]?.id === item.id ? "2px solid #93c5fd" : "none",
+            border: displayedEvents[0]?.id === item.id ? "2px solid #93c5fd" : "none",
 borderRadius: 20,
-background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
+background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
@@ -2241,7 +2241,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
                   Evento
                 </div>
 
-                {visibleEvents[0]?.id === item.id ? (
+                {displayedEvents[0]?.id === item.id ? (
   <span
     style={{
       fontSize: 11,
@@ -2256,7 +2256,7 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </span>
 ) : null}
 
-                {visibleEvents[0]?.id === item.id && getEventCountdown(item.date, item.time) ? (
+                {displayedEvents[0]?.id === item.id && getEventCountdown(item.date, item.time) ? (
   <span
     style={{
       fontSize: 11,
