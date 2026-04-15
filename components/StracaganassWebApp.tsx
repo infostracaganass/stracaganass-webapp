@@ -1222,29 +1222,25 @@ const toggleEventVisibility = async (event: EventItem) => {
       )
     );
   } catch (err) {
-    alert(err instanceof Error ? err.message : "Errore aggiornamento visibilità evento.");
+    alert(
+      err instanceof Error
+        ? err.message
+        : "Errore aggiornamento visibilità evento."
+    );
   }
 };
 
-    setEvents((prev) =>
-      prev.map((item) => (item.id === event.id ? updated : item))
-    );
+const deleteNews = async (id: string) => {
+  setDeletingId(id);
+  try {
+    await apiFetch<{ ok: true }>(`/api/news/${id}`, { method: "DELETE" });
+    setNews((prev) => prev.filter((item) => item.id !== id));
   } catch (err) {
-    alert(err instanceof Error ? err.message : "Errore aggiornamento visibilità evento.");
+    alert(err instanceof Error ? err.message : "Errore eliminazione notizia.");
+  } finally {
+    setDeletingId("");
   }
 };
-  
-  const deleteNews = async (id: string) => {
-    setDeletingId(id);
-    try {
-      await apiFetch<{ ok: true }>(`/api/news/${id}`, { method: "DELETE" });
-      setNews((prev) => prev.filter((item) => item.id !== id));
-    } catch (err) {
-      alert(err instanceof Error ? err.message : "Errore eliminazione notizia.");
-    } finally {
-      setDeletingId("");
-    }
-  };
 
 const getAttendanceFormValue = (eventId: string) => {
   return attendanceForm[eventId] || {
