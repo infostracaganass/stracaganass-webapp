@@ -2211,8 +2211,8 @@ const copyWhatsAppEventText = async (event: EventItem) => {
 >
               {bootLoading ? (
   <div>Caricamento eventi...</div>
-) : visibleEvents.length ? (
-  visibleEvents.map((item, index) => {
+) : displayedEvents.length ? (
+  displayedEvents.map((item, index) => {
     const eventIsToday = isToday(item.date);
 
     return (
