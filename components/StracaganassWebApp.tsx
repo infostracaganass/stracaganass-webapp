@@ -1135,6 +1135,7 @@ const startEditEvent = (event: EventItem) => {
     music_info: event.music_info || "",
     end_time_info: event.end_time_info || "",
     extra_info: event.extra_info || "",
+    visible: event.visible ?? true,
   });
 };
 
