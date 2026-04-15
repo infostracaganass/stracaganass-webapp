@@ -1492,9 +1492,11 @@ const getAdminEventCounts = (eventId: string) => {
 };
 
 const loadAllAdminAttendance = async () => {
-  if (!upcomingEvents.length) return;
+  if (!adminUpcomingEvents.length) return;
 
-  await Promise.all(upcomingEvents.map((event) => loadEventResponses(event.id)));
+  await Promise.all(
+    adminUpcomingEvents.map((event) => loadEventResponses(event.id))
+  );
 };
   
 const getAttendanceStatusLabel = (status: AttendanceStatus) => {
