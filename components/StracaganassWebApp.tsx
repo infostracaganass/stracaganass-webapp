@@ -3448,26 +3448,26 @@ background: visibleEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </button>
 
   <button
-    type="button"
-    onClick={() => void toggleEventVisibility(event)}
-    title={(event.visible ?? true) ? "Nascondi evento" : "Mostra evento"}
-    style={{
-      background: "transparent",
-      border: "none",
-      padding: 4,
-      cursor: "pointer",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 8,
-    }}
-  >
-    {(event.visible ?? true) ? (
-      <Eye size={16} color="#60a5fa" />
-    ) : (
-      <EyeOff size={16} color="#94a3b8" />
-    )}
-  </button>
+  type="button"
+  onClick={() => void toggleEventVisibility(event)}
+  title={(event.visible ?? true) ? "Nascondi evento" : "Mostra evento"}
+  style={{
+    background: "transparent",
+    border: "none",
+    padding: 4,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
+  }}
+>
+  {(event.visible ?? true) ? (
+    <Eye size={16} color="#60a5fa" />
+  ) : (
+    <EyeOff size={16} color="#94a3b8" />
+  )}
+</button>
 
   <button
     type="button"
