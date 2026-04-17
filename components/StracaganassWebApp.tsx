@@ -3079,9 +3079,6 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
                   padding: 10,
                 }}
               >
-                <div style={{ fontWeight: 700, color: "white" }}>
-                  Risposte ricevute
-                </div>
 
                 {attendanceResponsesLoading[event.id] ? (
   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
