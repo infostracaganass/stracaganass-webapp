@@ -768,6 +768,14 @@ useEffect(() => {
   void loadAllAdminAttendance();
 }, [admin, adminSection, adminUpcomingEvents]);
 
+useEffect(() => {
+  if (!memberLoggedIn) return;
+  if (membersSection !== "attendance") return;
+  if (!upcomingEvents.length) return;
+
+  void Promise.all(upcomingEvents.map((event) => loadEventResponses(event.id)));
+}, [memberLoggedIn, membersSection, upcomingEvents]);
+  
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
   const displayedEvents = admin
@@ -790,15 +798,7 @@ useEffect(() => {
   setShowTopAlertBanner(ENABLE_TOP_ALERT_BANNER);
   setTopAlertBannerOpen(false);
 }, []);
-
-useEffect(() => {
-  if (!memberLoggedIn) return;
-  if (membersSection !== "attendance") return;
-  if (!upcomingEvents.length) return;
-
-  void Promise.all(upcomingEvents.map((event) => loadEventResponses(event.id)));
-}, [memberLoggedIn, membersSection, upcomingEvents]);
-  
+ 
   useEffect(() => {
   if (bootLoading || typeof window === "undefined") return;
 
