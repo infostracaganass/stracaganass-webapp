@@ -3038,13 +3038,8 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
               </Button>
 
               <button
-                type="button"
-                onClick={() =>
-                  setAttendanceResponsesOpen((prev) => ({
-                    ...prev,
-                    [event.id]: !prev[event.id],
-                  }))
-                }
+  type="button"
+  onClick={() => void toggleAttendanceResponses(event.id)}
                 style={{
                   background: "transparent",
                   border: "none",
