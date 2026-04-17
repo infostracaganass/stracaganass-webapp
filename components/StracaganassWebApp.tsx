@@ -484,6 +484,7 @@ const [verificationOk, setVerificationOk] = useState(false);
 const [topAlertBannerOpen, setTopAlertBannerOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showMemberPassword, setShowMemberPassword] = useState(false);
+  const [attendanceResponsesLoading, setAttendanceResponsesLoading] = useState<Record<string, boolean>>({});
 
 useEffect(() => {
   const updateLayout = () => setIsMobile(window.innerWidth < 900);
