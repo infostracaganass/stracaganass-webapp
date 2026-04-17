@@ -3053,14 +3053,14 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
                 }}
               >
                 {responsesOpen ? (
-                  <>
-                    <ChevronUp size={14} /> Nascondi risposte ({responses.length})
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown size={14} /> Mostra risposte ({responses.length})
-                  </>
-                )}
+  <>
+    <ChevronUp size={14} /> Nascondi risposte
+  </>
+) : (
+  <>
+    <ChevronDown size={14} /> Mostra risposte
+  </>
+)}
               </button>
             </div>
 
