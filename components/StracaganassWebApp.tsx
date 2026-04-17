@@ -791,6 +791,14 @@ useEffect(() => {
   setTopAlertBannerOpen(false);
 }, []);
 
+useEffect(() => {
+  if (!memberLoggedIn) return;
+  if (membersSection !== "attendance") return;
+  if (!upcomingEvents.length) return;
+
+  void Promise.all(upcomingEvents.map((event) => loadEventResponses(event.id)));
+}, [memberLoggedIn, membersSection, upcomingEvents]);
+  
   useEffect(() => {
   if (bootLoading || typeof window === "undefined") return;
 
