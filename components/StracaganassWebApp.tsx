@@ -228,31 +228,47 @@ function shuffleArray<T>(array: T[]) {
 }
 
 async function apiFetch<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, {
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      ...(options?.headers || {}),
-    },
-    ...options,
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000); // 10 secondi
 
-  let json: unknown = null;
   try {
-    json = await response.json();
-  } catch {
-    json = null;
-  }
+    const response = await fetch(url, {
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        ...(options?.headers || {}),
+      },
+      ...options,
+      signal: controller.signal,
+    });
 
-  if (!response.ok) {
-    const message =
-      typeof json === "object" && json !== null && "message" in json && typeof (json as { message?: unknown }).message === "string"
-        ? (json as { message: string }).message
-        : "Errore nella richiesta.";
-    throw new Error(message);
-  }
+    let json: unknown = null;
+    try {
+      json = await response.json();
+    } catch {
+      json = null;
+    }
 
-  return json as T;
+    if (!response.ok) {
+      const message =
+        typeof json === "object" &&
+        json !== null &&
+        "message" in json &&
+        typeof (json as { message?: unknown }).message === "string"
+          ? (json as { message: string }).message
+          : "Errore nella richiesta.";
+      throw new Error(message);
+    }
+
+    return json as T;
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "AbortError") {
+      throw new Error("Tempo di caricamento scaduto. Riprova.");
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
