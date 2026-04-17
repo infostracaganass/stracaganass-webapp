@@ -791,16 +791,6 @@ useEffect(() => {
   setTopAlertBannerOpen(false);
 }, []);
 
-useEffect(() => {
-  if (!memberLoggedIn) return;
-  if (membersSection !== "attendance") return;
-  if (!adminUpcomingEvents.length) return;
-
-  void Promise.all(
-    adminUpcomingEvents.map((event) => loadEventResponses(event.id))
-  );
-}, [memberLoggedIn, membersSection, adminUpcomingEvents]);
-  
   useEffect(() => {
   if (bootLoading || typeof window === "undefined") return;
 
