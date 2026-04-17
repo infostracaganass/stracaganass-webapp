@@ -3083,9 +3083,14 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
                   Risposte ricevute
                 </div>
 
-                {responses.length === 0 ? (
-                  <div>Nessuna risposta registrata.</div>
-                ) : (
+                {attendanceResponsesLoading[event.id] ? (
+  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+    <Loader2 size={14} />
+    Caricamento risposte...
+  </div>
+) : responses.length === 0 ? (
+  <div>Nessuna risposta registrata.</div>
+) : (
                   <div style={{ display: "grid", gap: 10 }}>
                     {(["present", "absent", "maybe"] as AttendanceStatus[]).map(
                       (status) => {
