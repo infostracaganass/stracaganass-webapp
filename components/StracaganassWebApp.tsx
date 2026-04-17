@@ -1280,6 +1280,11 @@ const updateAttendanceForm = (
 };
 
 const loadEventResponses = async (eventId: string) => {
+  setAttendanceResponsesLoading((prev) => ({
+    ...prev,
+    [eventId]: true,
+  }));
+
   try {
     const responses = await apiFetch<EventResponse[]>(
       `/api/event-responses?eventId=${encodeURIComponent(eventId)}`
@@ -1291,6 +1296,11 @@ const loadEventResponses = async (eventId: string) => {
     }));
   } catch (err) {
     console.error("Errore caricamento risposte:", err);
+  } finally {
+    setAttendanceResponsesLoading((prev) => ({
+      ...prev,
+      [eventId]: false,
+    }));
   }
 };
 
