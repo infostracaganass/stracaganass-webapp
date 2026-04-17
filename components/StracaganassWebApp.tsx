@@ -2830,12 +2830,12 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
   >
     <div style={{ fontWeight: 700, color: "white" }}>Presenze eventi</div>
 
-    {upcomingEvents.length === 0 ? (
+    {adminUpcomingEvents.length === 0 ? (
       <div style={{ color: "#cbd5e1", fontSize: 14 }}>
         Nessun evento disponibile.
       </div>
     ) : (
-      upcomingEvents.map((event) => {
+      adminUpcomingEvents.map((event) => {
         const form = getAttendanceFormValue(event.id);
         const responses = attendanceResponses[event.id] || [];
         const responsesOpen = attendanceResponsesOpen[event.id] || false;
