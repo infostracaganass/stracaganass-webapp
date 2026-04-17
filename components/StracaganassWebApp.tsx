@@ -1304,6 +1304,25 @@ const loadEventResponses = async (eventId: string) => {
   }
 };
 
+const toggleAttendanceResponses = async (eventId: string) => {
+  const willOpen = !attendanceResponsesOpen[eventId];
+
+  setAttendanceResponsesOpen((prev) => {
+    const next: Record<string, boolean> = {};
+
+    Object.keys(prev).forEach((key) => {
+      next[key] = false;
+    });
+
+    next[eventId] = willOpen;
+    return next;
+  });
+
+  if (willOpen) {
+    await loadEventResponses(eventId);
+  }
+};
+  
 const sendAttendance = async (eventId: string, forceUpdate = false) => {
   const form = attendanceForm[eventId];
 
