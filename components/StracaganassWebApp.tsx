@@ -1300,6 +1300,11 @@ const loadEventResponses = async (eventId: string) => {
     [eventId]: true,
   }));
 
+  setAttendanceResponsesError((prev) => ({
+    ...prev,
+    [eventId]: "",
+  }));
+
   try {
     const responses = await apiFetch<EventResponse[]>(
       `/api/event-responses?eventId=${encodeURIComponent(eventId)}`
@@ -1311,6 +1316,14 @@ const loadEventResponses = async (eventId: string) => {
     }));
   } catch (err) {
     console.error("Errore caricamento risposte:", err);
+
+    setAttendanceResponsesError((prev) => ({
+      ...prev,
+      [eventId]:
+        err instanceof Error
+          ? err.message
+          : "Errore caricamento risposte.",
+    }));
   } finally {
     setAttendanceResponsesLoading((prev) => ({
       ...prev,
@@ -1318,7 +1331,6 @@ const loadEventResponses = async (eventId: string) => {
     }));
   }
 };
-
 const toggleAttendanceResponses = async (eventId: string) => {
   if (attendanceResponsesLoading[eventId]) return;
 
