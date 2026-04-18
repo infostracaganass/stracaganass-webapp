@@ -1568,11 +1568,19 @@ const getAttendanceStatusLabel = (status: AttendanceStatus) => {
 };
 
 const getGroupedAttendanceResponses = (responses: EventResponse[]) => {
-  return {
-    present: responses.filter((response) => response.status === "present"),
-    absent: responses.filter((response) => response.status === "absent"),
-    maybe: responses.filter((response) => response.status === "maybe"),
+  const grouped = {
+    present: [] as EventResponse[],
+    absent: [] as EventResponse[],
+    maybe: [] as EventResponse[],
   };
+
+  for (const response of responses) {
+    if (response.status === "present") grouped.present.push(response);
+    else if (response.status === "absent") grouped.absent.push(response);
+    else grouped.maybe.push(response);
+  }
+
+  return grouped;
 };
 
 const buildWhatsAppEventText = (event: EventItem) => {
