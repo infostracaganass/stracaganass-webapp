@@ -3117,10 +3117,23 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
     <Loader2 size={14} />
     Caricamento risposte...
   </div>
+) : attendanceResponsesError[event.id] ? (
+  <div
+    style={{
+      color: "#fecaca",
+      background: "rgba(127,29,29,0.35)",
+      border: "1px solid rgba(248,113,113,0.35)",
+      borderRadius: 12,
+      padding: 10,
+      fontSize: 13,
+    }}
+  >
+    {attendanceResponsesError[event.id]}
+  </div>
 ) : responses.length === 0 ? (
   <div>Nessuna risposta registrata.</div>
 ) : (
-                  <div style={{ display: "grid", gap: 10 }}>
+  <div style={{ display: "grid", gap: 10 }}>
                     {(["present", "absent", "maybe"] as AttendanceStatus[]).map(
                       (status) => {
                         const items = groupedResponses[status];
