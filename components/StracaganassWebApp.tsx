@@ -785,13 +785,7 @@ useEffect(() => {
   void loadAllAdminAttendance();
 }, [admin, adminSection, adminUpcomingEvents]);
 
-useEffect(() => {
-  if (!memberLoggedIn) return;
-  if (membersSection !== "attendance") return;
-  if (!upcomingEvents.length) return;
-
-  void Promise.all(upcomingEvents.map((event) => loadEventResponses(event.id)));
-}, [memberLoggedIn, membersSection, upcomingEvents]);
+// ❌ PRELOAD RIMOSSO: caricamento risposte solo on-demand
   
   const visibleEvents = showAllEvents ? upcomingEvents : upcomingEvents.slice(0, 5);
 
