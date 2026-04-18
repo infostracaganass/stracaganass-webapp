@@ -501,6 +501,7 @@ const [topAlertBannerOpen, setTopAlertBannerOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showMemberPassword, setShowMemberPassword] = useState(false);
   const [attendanceResponsesLoading, setAttendanceResponsesLoading] = useState<Record<string, boolean>>({});
+  const [attendanceResponsesError, setAttendanceResponsesError] = useState<Record<string, string>>({});
 
 useEffect(() => {
   const updateLayout = () => setIsMobile(window.innerWidth < 900);
