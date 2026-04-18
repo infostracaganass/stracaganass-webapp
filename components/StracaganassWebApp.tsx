@@ -1319,6 +1319,8 @@ const loadEventResponses = async (eventId: string) => {
 };
 
 const toggleAttendanceResponses = async (eventId: string) => {
+  if (attendanceResponsesLoading[eventId]) return;
+
   const willOpen = !attendanceResponsesOpen[eventId];
 
   setAttendanceResponsesOpen((prev) => {
@@ -1332,9 +1334,12 @@ const toggleAttendanceResponses = async (eventId: string) => {
     return next;
   });
 
-  if (willOpen) {
-    await loadEventResponses(eventId);
-  }
+  if (!willOpen) return;
+
+  const alreadyLoaded = Array.isArray(attendanceResponses[eventId]);
+  if (alreadyLoaded) return;
+
+  await loadEventResponses(eventId);
 };
   
 const sendAttendance = async (eventId: string, forceUpdate = false) => {
