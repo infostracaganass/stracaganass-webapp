@@ -229,7 +229,7 @@ function shuffleArray<T>(array: T[]) {
 
 async function apiFetch<T>(url: string, options?: RequestInit): Promise<T> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000); // 10 secondi
+  const timeoutId = window.setTimeout(() => controller.abort(), 10000);
 
   try {
     const response = await fetch(url, {
@@ -267,7 +267,7 @@ async function apiFetch<T>(url: string, options?: RequestInit): Promise<T> {
     }
     throw err;
   } finally {
-    clearTimeout(timeout);
+    clearTimeout(timeoutId);
   }
 }
 
