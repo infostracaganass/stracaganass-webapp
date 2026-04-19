@@ -3138,20 +3138,81 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
   <div>Nessuna risposta registrata.</div>
 ) : (() => {
   const grouped = getGroupedAttendanceResponses(attendanceResponses[event.id] || []);
+  const open = attendanceCategoryOpen[event.id];
+
+  const categories = [
+    { key: "present", label: "Presenti", data: grouped.present },
+    { key: "absent", label: "Assenti", data: grouped.absent },
+    { key: "maybe", label: "Forse", data: grouped.maybe },
+  ];
 
   return (
     <div style={{ display: "grid", gap: 10 }}>
-      <div style={{ fontWeight: 700, color: "white" }}>
-        Presenti: {grouped.present.length}
-      </div>
+      {categories.map((cat) => {
+        const isOpen = open === cat.key;
 
-      <div style={{ fontWeight: 700, color: "white" }}>
-        Assenti: {grouped.absent.length}
-      </div>
+        return (
+          <div
+            key={cat.key}
+            style={{
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: 10,
+              padding: 10,
+            }}
+          >
+            {/* HEADER */}
+            <button
+              onClick={() => {
+                setAttendanceCategoryOpen((prev) => ({
+                  ...prev,
+                  [event.id]: prev[event.id] === cat.key ? null : cat.key,
+                }));
+              }}
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                background: "none",
+                border: "none",
+                color: "white",
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              <span>
+                {cat.label} ({cat.data.length})
+              </span>
+              <span>{isOpen ? "▲" : "▶"}</span>
+            </button>
 
-      <div style={{ fontWeight: 700, color: "white" }}>
-        Forse: {grouped.maybe.length}
-      </div>
+            {/* CONTENUTO (lazy e leggero) */}
+            {isOpen && (
+              <div style={{ marginTop: 8, display: "grid", gap: 6 }}>
+                {cat.data.slice(0, 30).map((r) => (
+                  <div
+                    key={r.id}
+                    style={{
+                      padding: "6px 8px",
+                      borderRadius: 8,
+                      background: "rgba(255,255,255,0.03)",
+                      fontSize: 13,
+                    }}
+                  >
+                    {r.name}
+                  </div>
+                ))}
+
+                {cat.data.length > 30 && (
+                  <div style={{ fontSize: 12, color: "#94a3b8" }}>
+                    + altri {cat.data.length - 30}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 })()}
