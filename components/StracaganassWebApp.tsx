@@ -3136,85 +3136,25 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </div>
 ) : responses.length === 0 ? (
   <div>Nessuna risposta registrata.</div>
-) : (
-  <div style={{ display: "grid", gap: 10 }}>
-                    {(["present", "absent", "maybe"] as AttendanceStatus[]).map(
-                      (status) => {
-                        const items = groupedResponses[status];
+) : (() => {
+  const grouped = getGroupedAttendanceResponses(attendanceResponses[event.id] || []);
 
-                        if (items.length === 0) return null;
+  return (
+    <div style={{ display: "grid", gap: 10 }}>
+      <div style={{ fontWeight: 700, color: "white" }}>
+        Presenti: {grouped.present.length}
+      </div>
 
-                        return (
-                          <div key={status} style={{ display: "grid", gap: 6 }}>
-                            <div
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                gap: 10,
-                              }}
-                            >
-                              <span style={{ fontWeight: 700, color: "white" }}>
-                                {getAttendanceStatusLabel(status)}
-                              </span>
+      <div style={{ fontWeight: 700, color: "white" }}>
+        Assenti: {grouped.absent.length}
+      </div>
 
-                              <span
-                                style={{
-                                  fontSize: 12,
-                                  color: "#94a3b8",
-                                  fontWeight: 700,
-                                }}
-                              >
-                                {items.length}
-                              </span>
-                            </div>
-
-                            <div style={{ display: "grid", gap: 6 }}>
-                              {items.map((response) => (
-                                <div
-                                  key={response.id}
-                                  style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                    gap: 12,
-                                    padding: "8px 10px",
-                                    borderRadius: 10,
-                                    background: "rgba(255,255,255,0.03)",
-                                    border: "1px solid rgba(255,255,255,0.06)",
-                                  }}
-                                >
-                                  <span style={{ color: "white", fontWeight: 600 }}>
-                                    {response.name}
-                                  </span>
-
-                                  <span
-                                    style={{
-                                      fontWeight: 700,
-                                      fontSize: 11,
-                                      letterSpacing: 0.6,
-                                      textTransform: "uppercase",
-                                      color:
-                                        response.status === "present"
-                                          ? "#16a34a"
-                                          : response.status === "absent"
-                                          ? "#dc2626"
-                                          : "#facc15",
-                                    }}
-                                  >
-                                    {response.status === "present" && "PRESENTE"}
-                                    {response.status === "absent" && "ASSENTE"}
-                                    {response.status === "maybe" && "FORSE"}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        );
-                      }
-                    )}
-                  </div>
-                )}
+      <div style={{ fontWeight: 700, color: "white" }}>
+        Forse: {grouped.maybe.length}
+      </div>
+    </div>
+  );
+})()}
               </div>
             ) : null}
           </div>
