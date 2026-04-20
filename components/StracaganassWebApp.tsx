@@ -3183,7 +3183,9 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
               <span>
                 {cat.label} ({cat.data.length})
               </span>
-              <span>{isOpen ? "▲" : "▶"}</span>
+              <span style={{ display: "flex", alignItems: "center" }}>
+  {isOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+</span>
             </button>
 
             {/* CONTENUTO (lazy e leggero) */}
