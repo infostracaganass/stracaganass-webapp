@@ -2324,7 +2324,9 @@ background: displayedEvents[0]?.id === item.id ? "#eff6ff" : "white",
   </span>
 ) : null}
 
-                {displayedEvents[0]?.id === item.id && getEventCountdown(item.date, item.time) ? (
+                {displayedEvents[0]?.id === item.id &&
+getEventCountdown(item.date, item.time) &&
+getEventCountdown(item.date, item.time)?.toLowerCase() !== "oggi" ? (
   <span
     style={{
       fontSize: 11,
