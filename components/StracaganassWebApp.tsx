@@ -3303,6 +3303,35 @@ getEventCountdown(item.date, item.time)?.toLowerCase() !== "oggi" ? (
             <ExternalLink size={16} color="#cbd5e1" />
           </div>
         </a>
+        <a
+  href="https://drive.google.com/drive/folders/1sGocOLvYmaYClLApKdhp2sUW4DAh9ps3?usp=sharing"
+  target="_blank"
+  rel="noreferrer"
+  style={{ textDecoration: "none" }}
+>
+  <div
+    style={{
+      background: "rgba(255,255,255,0.04)",
+      border: "1px solid rgba(255,255,255,0.10)",
+      borderRadius: 16,
+      padding: 12,
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+    }}
+  >
+    <div>
+      <div style={{ fontWeight: 700, color: "white" }}>
+        Materiale ricerca sponsor
+      </div>
+      <div style={{ fontSize: 13, color: "#cbd5e1" }}>
+        Visualizza documenti
+      </div>
+    </div>
+
+    <ExternalLink size={16} color="#cbd5e1" />
+  </div>
+</a>
       </div>
     </div>
   ) : null}
