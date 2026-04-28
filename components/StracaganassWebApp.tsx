@@ -411,7 +411,7 @@ const TOP_ALERT_BANNER = {
     Ti aspettiamo!
   </>
 ),
-  body: "Vuoi scoprire cosa significa vivere una Guggen? Ti invitiamo a passare qualche ora con noi, domenica 21 giugno al Campo di calcio di Preonzo. Ti aspetta una grigliata offerta, la possibilità di conoscere la banda, provare gli strumenti e vivere da vicino l’atmosfera Straca. Nessun impegno, nessuna pressione: vieni, scopri, valuta e poi decidi liberamente se questo mondo può fare anche per te. Per partecipare iscriviti scrivendo a sabrina.mottini@hotmail.com, oppure, tramite il modulo di contatto (bustina blu in basso a sinistra dello schermo).",
+  body: "Vuoi scoprire cosa significa vivere una Guggen? Ti invitiamo a passare qualche ora con noi, domenica 21 giugno al Campo di calcio di Preonzo. Ti aspetta una grigliata offerta, la possibilità di conoscere la banda, provare gli strumenti e vivere da vicino l’atmosfera Straca. Nessun impegno, nessuna pressione: vieni, scopri, valuta e poi decidi liberamente se questo mondo può fare anche per te. Per partecipare iscriviti scrivendo a sabrina.mottini@hotmail.com, oppure, tramite il modulo di contatto (bustina blu in basso a destra dello schermo).",
 };
 
 const MEMBERS_MATERIAL_LINKS = {
