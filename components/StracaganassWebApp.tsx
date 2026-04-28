@@ -406,7 +406,7 @@ const ENABLE_TOP_ALERT_BANNER = true;
 const TOP_ALERT_BANNER = {
   title: (
   <>
-    PORTE APERTE STRACA!
+    Porte aperte Straca.
     <br />
     Ti aspettiamo!
   </>
