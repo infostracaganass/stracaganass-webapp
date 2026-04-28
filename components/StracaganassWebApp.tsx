@@ -401,17 +401,17 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
   );
 }
 
-const ENABLE_TOP_ALERT_BANNER = false;
+const ENABLE_TOP_ALERT_BANNER = true;
 
 const TOP_ALERT_BANNER = {
   title: (
   <>
-    Unisciti alla Stracaganass!
+    PORTE APERTE STRACA!
     <br />
     Ti aspettiamo!
   </>
 ),
-  body: "La Stracaganass apre le porte a nuovi musicisti per la stagione 2026/2027. Curioso o interessato? Scrivici senza impegno a sabrina.mottini@hotmail.com. A giugno 2026 ti aspetta anche una grigliata offerta per scoprire il mondo della guggen. Vieni a conoscerci!",
+  body: "Vuoi scoprire cosa significa vivere una Guggen? Ti invitiamo a passare qualche ora con noi, domenica 21 giugno al Campo di calcio di Preonzo. Ti aspetta una grigliata offerta, la possibilità di conoscere la banda, provare gli strumenti e vivere da vicino l’atmosfera Straca. Nessun impegno, nessuna pressione: vieni, scopri, valuta e poi decidi liberamente se questo mondo può fare anche per te. Per partecipare iscriviti scrivendo a sabrina.mottini@hotmail.com, oppure, tramite il modulo di contatto (bustina blu in basso a sinistra dello schermo).",
 };
 
 const MEMBERS_MATERIAL_LINKS = {
