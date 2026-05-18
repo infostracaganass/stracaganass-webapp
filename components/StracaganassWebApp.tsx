@@ -433,6 +433,7 @@ const BIRTHDAYS = [
 
   { day: "17-05", name: "Anto" },
   { day: "18-05", name: "Lore" },
+  { day: "18-05", name: "Nic" },
 
   { day: "04-06", name: "Chiara" },
   { day: "25-06", name: "Berny" },
