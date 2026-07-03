@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "StracApp",
   description: "Eventi, notizie e link utili a portata di mano.",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
