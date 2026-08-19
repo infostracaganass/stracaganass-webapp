@@ -401,17 +401,23 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
   );
 }
 
-const ENABLE_TOP_ALERT_BANNER = false;
+const ENABLE_TOP_ALERT_BANNER = true;
 
 const TOP_ALERT_BANNER = {
   title: (
   <>
-    Porte aperte Straca.
+    Diventa sostenitore!
     <br />
-    Ti aspettiamo!
+    Campagna sponsor 2027
   </>
 ),
-  body: "Vuoi scoprire cosa significa vivere una Guggen? Ti invitiamo a passare qualche ora con noi, domenica 21 giugno al Campo di calcio di Preonzo. Ti aspetta una grigliata offerta, la possibilità di conoscere la banda, provare gli strumenti e vivere da vicino l’atmosfera Straca. Nessun impegno, nessuna pressione: vieni, scopri, valuta e poi decidi liberamente se questo mondo può fare anche per te. Per partecipare iscriviti scrivendo a sabrina.mottini@hotmail.com, oppure, tramite il modulo di contatto (bustina blu in basso a destra dello schermo).",
+  body: "Dietro ogni nota, ogni sorriso e ogni momento che portiamo nelle piazze ci sono anche persone, aziende e realtà che scelgono di credere in noi. Sostenere la Straca significa entrare a far parte di una storia fatta di musica, territorio, amicizia e condivisione. E permetterci di continuare a portarla avanti.
+    <br />
+    Vuoi esserci anche tu? La campagna sostenitori 2027 è aperta. Scopri le possibilità di sostegno contattando direttamente sabrina.mottini@hotmail.com oppure visita la pagina dedicata agli sponsor sul nostro sito web.
+La Straca suona.
+  <br />
+  Ma insieme, suoniamo più forte.
+  </>",
 };
 
 const MEMBERS_MATERIAL_LINKS = {
