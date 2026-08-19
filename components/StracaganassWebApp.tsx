@@ -411,7 +411,7 @@ const TOP_ALERT_BANNER = {
     Campagna sponsor 2027
   </>
 ),
-  body: "Dietro ogni nota, ogni sorriso e ogni momento che portiamo nelle piazze ci sono anche persone, aziende e realtà che scelgono di credere in noi. Sostenere la Straca significa entrare a far parte di una storia fatta di musica, territorio, amicizia e condivisione. Vuoi esserci anche tu? Allora sappi che la campagna sostenitori 2027 è aperta. Scopri le possibilità di sostegno contattando direttamente <strong>sabrina.mottini@hotmail.com</strong> oppure visita la pagina dedicata agli sponsor sul nostro sito web. La Straca suona. Ma insieme, suoniamo più forte.",
+  body: "Dietro ogni nota, ogni sorriso e ogni momento che portiamo nelle piazze ci sono anche persone, aziende e realtà che scelgono di credere in noi. Sostenere la Straca significa entrare a far parte di una storia fatta di musica, territorio, amicizia e condivisione. Vuoi esserci anche tu? Allora sappi che la campagna sostenitori 2027 è aperta. Scopri le possibilità di sostegno contattando direttamente sabrina.mottini@hotmail.com, oppure, visita la pagina dedicata agli sponsor sul nostro sito web. La Straca suona. Ma insieme, suoniamo più forte.",
 };
 
 const MEMBERS_MATERIAL_LINKS = {
