@@ -447,9 +447,7 @@ const BIRTHDAYS = [
   { day: "24-08", name: "Clorinda" },
   { day: "30-08", name: "Remo" },
 
-  { day: "06-09", name: "Lisa" },
   { day: "22-09", name: "Nhauel" },
-  { day: "22-09", name: "Katrin" },
   { day: "23-09", name: "Daria" },
   { day: "25-09", name: "Chamy" },
   { day: "28-09", name: "Ric" },
@@ -458,7 +456,7 @@ const BIRTHDAYS = [
   { day: "06-10", name: "Stefy" },
   { day: "08-10", name: "Brian" },
   { day: "13-10", name: "Vale" },
-  { day: "22-10", name: "Luigi T." },
+  { day: "22-10", name: "Luigi" },
 
   { day: "01-11", name: "Piter" },
   { day: "06-11", name: "Mirco" },
