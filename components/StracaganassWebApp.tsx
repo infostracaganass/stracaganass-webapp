@@ -420,20 +420,27 @@ const MEMBERS_MATERIAL_LINKS = {
 };
 
 const BIRTHDAYS = [
+  { day: "18-01", name: "Romina" },
+  
   { day: "02-02", name: "Samuel" },
   { day: "10-02", name: "Carmela" },
+  { day: "10-02", name: "David" },
+  { day: "15-02", name: "Krystan" },
   { day: "28-02", name: "Valérie" },
 
   { day: "27-03", name: "Giulia" },
   { day: "31-03", name: "Alessandra" },
 
   { day: "10-04", name: "Alan" },
+  { day: "11-04", name: "Dennis" },
   { day: "12-04", name: "Adriana" },
   { day: "18-04", name: "Prisca" },
 
+  { day: "14-05", name: "Samantha" },
   { day: "17-05", name: "Anto" },
   { day: "18-05", name: "Lore" },
   { day: "18-05", name: "Nic" },
+  { day: "31-05", name: "Ivo" },
 
   { day: "04-06", name: "Chiara" },
   { day: "25-06", name: "Berny" },
