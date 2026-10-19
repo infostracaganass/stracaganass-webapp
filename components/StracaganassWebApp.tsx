@@ -219,6 +219,7 @@ const SPONSOR_LOGOS = [
   "/sponsors/34.png",
   "/sponsors/35.png",
   "/sponsors/36.png",
+  "/sponsors/37.png",
 ];
 
 function shuffleArray<T>(array: T[]) {
