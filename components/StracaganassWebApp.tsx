@@ -401,7 +401,7 @@ function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
   );
 }
 
-const ENABLE_TOP_ALERT_BANNER = true;
+const ENABLE_TOP_ALERT_BANNER = false;
 
 const TOP_ALERT_BANNER = {
   title: (
